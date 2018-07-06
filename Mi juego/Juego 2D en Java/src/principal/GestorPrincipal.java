@@ -13,9 +13,9 @@ public class GestorPrincipal {
 	private int ancho;
 	private int alto;
 
-	public static SuperficieDibujo sd;
+	public static SuperficieDibujo sd;//De momento no se que es
 	private Ventana ventana;
-	private GestorEstados ge;
+	private GestorEstados ge;//De momento no se que es
 
 	private static int fps = 0;
 	private static int aps = 0;
@@ -30,15 +30,7 @@ public class GestorPrincipal {
 
 	public static void main(String[] args) {
 		//Para OpenGL en Mac/Linux
-		System.setProperty("sun.java2d.opengl", "True");
-		
-		/*
-		 * Para Directx en Windows
-		 * System.setProperty("sun.java2d.d3d", "True");
-		 * System.setProperty("sun.java2d.ddforcevram", "True");
-		 */
-		
-		//System.setProperty("sun.java2d.transaccel", "True");
+		//System.setProperty("sun.java2d.opengl", "True");
 		
 		GestorPrincipal gp = new GestorPrincipal("After-D", Constantes.ANCHO_PANTALLA_COMPLETA,
 				Constantes.ALTO_PANTALLA_COMPLETA);

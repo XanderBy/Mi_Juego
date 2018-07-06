@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class DatosDebug {
+	//Esta clase es informativa no sirve para nada
 	private static ArrayList<String> datos = new ArrayList<String>();
 
 	public static void enviarDato(final String dato) {
