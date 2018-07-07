@@ -8,20 +8,23 @@ import principal.Constantes;
 import principal.herramientas.DibujoDebug;
 
 public class EstructuraMenu {
-
+	//Se definen los colores
 	public final Color COLOR_BANNER_SUPERIOR;
 	public final Color COLOR_BANNER_LATERAL;
 	public final Color COLOR_FONDO;
-
+	
+	//Se defienen las "capas"
 	public final Rectangle BANNER_SUPERIOR;
 	public final Rectangle BANNER_LATERAL;
 	public final Rectangle FONDO;
-
+	
+	//Se definen los tamanos
 	public final int MARGEN_HORIZONTAL_ETIQUETAS;
 	public final int MARGEN_VERTICAL_ETIQUETAS;
 	public final int ANCHO_ETIQUETAS;
 	public final int ALTO_ETIQUETAS;
-
+	
+	//En este metodo se define la estructura basica del menu
 	public EstructuraMenu() {
 		COLOR_BANNER_SUPERIOR = new Color(0xff6700);
 		COLOR_BANNER_LATERAL = Color.black;
@@ -37,11 +40,14 @@ public class EstructuraMenu {
 		ANCHO_ETIQUETAS = 100;
 		ALTO_ETIQUETAS = 20;
 	}
-
+	
+	/*
 	public void actualizar() {
 
 	}
-
+	*/
+	
+	//Aqui dibuja el menu, pero la base
 	public void dibujar(final Graphics g) {
 		DibujoDebug.dibujarRectanguloRelleno(g, BANNER_SUPERIOR, COLOR_BANNER_SUPERIOR);
 		DibujoDebug.dibujarRectanguloRelleno(g, BANNER_LATERAL, COLOR_BANNER_LATERAL);

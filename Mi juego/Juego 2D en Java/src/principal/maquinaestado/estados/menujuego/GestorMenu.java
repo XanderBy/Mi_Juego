@@ -63,7 +63,9 @@ public class GestorMenu implements EstadoJuego {
 				if (secciones[i] instanceof  MenuEquipo) {
 					//te crea el menu en las diferentes secciones
                     MenuEquipo seccion = (MenuEquipo) secciones[i];
-                    
+                    if (seccion.objetoSeleccionado != null) {
+                        seccion.eliminarObjetoSeleccionado();
+                    }
                    
                 }
 				
@@ -77,17 +79,21 @@ public class GestorMenu implements EstadoJuego {
 	
 	//Dibuja el menu
 	public void dibujar(final Graphics g) {
+		//Te dibuja la estructura del menu
 		estructuraMenu.dibujar(g);
 
 		for (int i = 0; i < secciones.length; i++) {
 
 			if (seccionActual == secciones[i]) {
+				//Si el raton esta por encima de la seccion que se active el color en el boton del menu(mochila)
 				if (sd.obtenerRaton().obtenerRectanguloPosicion()
 						.intersects(secciones[i].obtenerEtiquetaMenuEscalada())) {
+					
 					secciones[i].dibujarEtiquetaActivaResaltada(g);
 				} else {
 					secciones[i].dibujarEtiquetaActiva(g);
 				}
+				//Si no que pase lo mismo
 			} else {
 				if (sd.obtenerRaton().obtenerRectanguloPosicion()
 						.intersects(secciones[i].obtenerEtiquetaMenuEscalada())) {
@@ -97,7 +103,7 @@ public class GestorMenu implements EstadoJuego {
 				}
 			}
 		}
-
+		//Esto es para que dibuje por así decirlo el menu del inventario equipo, etc...
 		seccionActual.dibujar(g, sd, estructuraMenu);
 	}
 }

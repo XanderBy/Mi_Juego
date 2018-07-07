@@ -51,7 +51,7 @@ public class Jugador {
 	private boolean recuperado = true;
 
 	public int limitePeso = 70;
-	public int pesoActual = 30;
+	public int pesoActual = 1;
 
 	private AlmacenEquipo ae;
 
