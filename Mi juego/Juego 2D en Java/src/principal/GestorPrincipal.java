@@ -42,7 +42,8 @@ public class GestorPrincipal {
 	private void iniciarJuego() {
 		enFuncionamiento = true;
 		inicializar();
-		musica.repetir();
+		//E desactivado la musica
+		//musica.repetir();
 	}
 
 	private void inicializar() {

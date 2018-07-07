@@ -1,7 +1,6 @@
 package principal.control;
 
 import java.awt.Cursor;
-import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -9,13 +8,10 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-
 import javax.swing.SwingUtilities;
-
 import principal.Constantes;
 import principal.graficos.SuperficieDibujo;
 import principal.herramientas.CargadorRecursos;
-import principal.herramientas.DatosDebug;
 
 public class Raton extends MouseAdapter {
 	
@@ -85,7 +81,7 @@ public class Raton extends MouseAdapter {
 		return posicion;
 	}
 	
-	//haces del raton un rectangulo aun no se para que
+	//haces del raton un rectangulo para cuando presiones botones saber si se encuentra encima del boton
 	public Rectangle obtenerRectanguloPosicion() {
 		final Rectangle area = new Rectangle(obtenerPuntoPosicion().x, obtenerPuntoPosicion().y, 1, 1);
 

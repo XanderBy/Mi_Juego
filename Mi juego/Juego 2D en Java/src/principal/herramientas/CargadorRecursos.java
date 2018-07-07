@@ -23,6 +23,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.DataLine.Info;
 
 public class CargadorRecursos {
+	//Esta clase existe para no tener que hacer siempre lo mismo son metodos simples 
+	
 	public static BufferedImage cargarImagenCompatibleOpaca(final String ruta) {
 		Image imagen = null;
 
