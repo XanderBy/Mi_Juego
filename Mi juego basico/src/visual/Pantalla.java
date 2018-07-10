@@ -11,6 +11,10 @@ public class Pantalla extends JFrame {
 	
 	public Pantalla(int ancho, int alto) {
 		this.setSize(ancho, alto);
+		this.setTitle("Juego Prueba");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.isFocusable();
 	}
 
 }
