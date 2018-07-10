@@ -1,17 +1,17 @@
 
-import java.awt.Graphics;
-
 import visual.Pantalla;
+import visual.SuperficieDibujo;
 
 public class BuclePrincipal implements Runnable {
 	private static boolean corriendo = false;
 	private Thread hilo = new Thread(this);
-	Pantalla pantalla = new Pantalla(500, 500);
-
+	
+	SuperficieDibujo sd= new SuperficieDibujo(500, 500);
+	Pantalla pantalla = new Pantalla(500, 500, sd);
 	public void actualizar() {
 
 		while (corriendo) {
-			System.out.println("Hola");
+			dibujar();
 		}
 		parar();
 	}
@@ -41,7 +41,8 @@ public class BuclePrincipal implements Runnable {
 		}
 	}
 
-	public void dibujar(Graphics g) {
+	public void dibujar() {
+		sd.dibujar();
 	}
 
 	public static void main(String args[]) {
