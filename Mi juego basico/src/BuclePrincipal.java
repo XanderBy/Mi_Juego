@@ -1,28 +1,36 @@
 
+import Controles.Teclado;
+import constantes.Constantes;
 import visual.Pantalla;
 import visual.SuperficieDibujo;
 
 public class BuclePrincipal implements Runnable {
+	
 	private static boolean corriendo = false;
 	private Thread hilo = new Thread(this);
+	Teclado teclado=new Teclado();
+	SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado);
+	Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
 	
-	SuperficieDibujo sd= new SuperficieDibujo(500, 500);
-	Pantalla pantalla = new Pantalla(500, 500, sd);
-	public void actualizar() {
+	public void actualizar() 
+	{
 
 		while (corriendo) {
 			dibujar();
+			teclado.actualizar();
 		}
 		parar();
 	}
 
 	@Override
-	public void run() {
+	public void run() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void iniciar() {
+	public void iniciar() 
+	{
 
 		hilo.start();
 		BuclePrincipal.corriendo = true;
@@ -30,22 +38,27 @@ public class BuclePrincipal implements Runnable {
 		actualizar();
 	}
 
-	public void parar() {
+	public void parar() 
+	{
 
-		try {
+		try 
+		{
 			corriendo = false;
 			hilo.join();
-		} catch (InterruptedException e) {
+		} catch (InterruptedException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void dibujar() {
+	public void dibujar() 
+	{
 		sd.dibujar();
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) 
+	{
 		BuclePrincipal bp = new BuclePrincipal();
 		bp.iniciar();
 	}
