@@ -4,13 +4,14 @@ import constantes.Constantes;
 import visual.Pantalla;
 import visual.SuperficieDibujo;
 
-public class BuclePrincipal implements Runnable {
+public class BuclePrincipal implements Runnable 
+{
 	
 	private static boolean corriendo = false;
 	private Thread hilo = new Thread(this);
-	Teclado teclado=new Teclado();
-	SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado);
-	Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
+	private Teclado teclado=new Teclado();
+	private SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado);
+	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
 	
 	public void actualizar() 
 	{

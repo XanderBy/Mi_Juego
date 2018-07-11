@@ -1,5 +1,6 @@
 package CosasBasicas;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,8 +12,8 @@ public class Sprites
 	//Esta clase es dudosa creo que seria mejor coger la misma imagen
 	private int ancho;
 	private int alto;
-	private int[] pixeles= new int[ancho * alto];
-	private BufferedImage imagen;
+	private int[] pixeles;
+	public BufferedImage imagen;
 	public Sprites(int ancho, int alto, String url) 
 	{
 		try 
@@ -23,20 +24,26 @@ public class Sprites
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		introducirImagenesArray(imagen);
+		
+		pixeles=new int[imagen.getWidth() * imagen.getHeight()];
+		introducirImagenesArray(imagen, imagen.getWidth(), imagen.getHeight());
 	}
 	
-	public void introducirImagenesArray(BufferedImage imagen) 
-	{
-		for (int x = 0; x < pixeles.length; x++) 
+	public Color introducirImagenesArray(BufferedImage imagen, int ancho, int alto) 
+	{	
+		
+		for (int x = 0; x < ancho; x++) 
 		{
-			for (int y = 0; y < pixeles.length; y++) 
-			{
-				pixeles[(x*y)+1]= imagen.getRGB(x, y);
+			for (int y = 0; y < alto; y++) 
+			{	
+				return Color.getColor("", this.pixeles[(x*y)]= imagen.getRGB(x, y));
+				
+				
 			}
-			
+				
 			
 		}
+		return null;
 	}
 	
 }

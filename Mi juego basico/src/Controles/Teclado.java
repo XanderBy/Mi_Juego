@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Teclado implements KeyListener
 {	
 
-	private boolean[] teclado=new boolean[4];
+	public boolean[] teclado=new boolean[4];
 	private static boolean arriba=false;
 	private static boolean abajo=false;
 	private static boolean izquierda=false;
@@ -27,15 +27,19 @@ public class Teclado implements KeyListener
 		{
 		case KeyEvent.VK_W:
 			teclado[0]=true;
+			Tecla.acciones(this);
 			break;
 		case KeyEvent.VK_S:
 			teclado[1]=true;
+			Tecla.acciones(this);
 			break;
 		case KeyEvent.VK_A:
 			teclado[2]=true;
+			Tecla.acciones(this);
 			break;
 		case KeyEvent.VK_D:
 			teclado[3]=true;
+			Tecla.acciones(this);
 			break;
 			default:
 				System.out.println("tecla introducida no valida");
