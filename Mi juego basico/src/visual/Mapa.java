@@ -1,5 +1,6 @@
 package visual;
 
-public class Mapa {
+public class Mapa 
+{
 
 }

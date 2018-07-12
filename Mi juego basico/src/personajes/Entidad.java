@@ -28,10 +28,6 @@ public class Entidad
 		cargarImagen(ancho, alto, url);
 	}
 
-
-
-
-
 	public void cargarImagen(int ancho, int alto, String url) {
 		Sprites sprite=new Sprites(ancho, alto, url);
 		

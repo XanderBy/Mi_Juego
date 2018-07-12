@@ -1,5 +1,6 @@
 package gestores;
 
-public class GestorPadre {
-
+public abstract class GestorPadre 
+{
+	public abstract void dibujar();
 }

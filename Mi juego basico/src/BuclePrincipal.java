@@ -1,4 +1,5 @@
 
+import Controles.Raton;
 import Controles.Teclado;
 import constantes.Constantes;
 import visual.Pantalla;
@@ -9,23 +10,27 @@ public class BuclePrincipal implements Runnable
 	
 	private static boolean corriendo = false;
 	private Thread hilo = new Thread(this);
-	private Teclado teclado=new Teclado();
-	private SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado);
+	private static Teclado teclado=new Teclado();
+	private static Raton raton= new Raton();
+	public static SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
 	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
-	
 	public void actualizar() 
 	{
 
 		while (corriendo) {
 			dibujar();
 			teclado.actualizar();
+			raton.actualizar();
 		}
 		parar();
 	}
 
 	@Override
 	public void run() 
-	{
+	{	
+		System.out.println("Error");
+		SuperficieDibujo.getArraySuperficie()[0]=sd;
+		System.out.println(sd.getMousePosition());
 		// TODO Auto-generated method stub
 
 	}

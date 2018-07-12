@@ -2,7 +2,6 @@ package visual;
 
 import javax.swing.JFrame;
 
-import Controles.Teclado;
 
 public class Pantalla extends JFrame {
 
@@ -21,6 +20,7 @@ public class Pantalla extends JFrame {
 		this.add(superficieDibujo);
 		this.pack();
 		this.setLocationRelativeTo(null);
+		
 	}
 
 }
