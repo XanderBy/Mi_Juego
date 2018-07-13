@@ -13,7 +13,6 @@ import Controles.Raton;
 import Controles.Teclado;
 import CosasBasicas.Sprites;
 import constantes.Constantes;
-import personajes.Jugador;
 
 public class SuperficieDibujo extends Canvas {
 

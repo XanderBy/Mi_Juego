@@ -1,4 +1,6 @@
 
+
+
 import Controles.Raton;
 import Controles.Teclado;
 import constantes.Constantes;
@@ -14,24 +16,61 @@ public class BuclePrincipal implements Runnable
 	private static Raton raton= new Raton();
 	public static SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
 	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
+	//para los fps
+	//-
+	private static int fps=0;
+	private static int aps;
+	//-
 	public void actualizar() 
-	{
-
-		while (corriendo) {
-			dibujar();
-			teclado.actualizar();
-			raton.actualizar();
-		}
-		parar();
+	{	
+		aps++;
+		dibujar();
+		teclado.actualizar();
+		raton.actualizar();
+		
 	}
 
 	@Override
 	public void run() 
 	{	
-		System.out.println("Error");
 		SuperficieDibujo.getArraySuperficie()[0]=sd;
-		System.out.println(sd.getMousePosition());
-		// TODO Auto-generated method stub
+		
+		//-
+		final int NS_POR_SEGUNDO=1000000000;
+		final int APS_OBJETIVO= 60;
+		final double NS_POR_ACTUALIZACION= NS_POR_SEGUNDO/ APS_OBJETIVO;
+		long referenciaActualizacion= System.nanoTime();
+		long referenciaContador= System.nanoTime();
+		double tiempoTranscurrido;
+		double delta=0;
+		//-
+		
+		while (corriendo) 
+		{
+			
+			//-
+			final long inicioBucle= System.nanoTime();
+			tiempoTranscurrido= inicioBucle - referenciaActualizacion;
+			referenciaActualizacion=inicioBucle;
+			delta +=tiempoTranscurrido/NS_POR_ACTUALIZACION;
+			
+			while(delta >=1) 
+			{
+				//Menos actualizar que eso es obligatorio
+				actualizar();
+				delta --;
+			}
+			
+			if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) 
+			{
+				System.out.println("Fps: " + fps);
+				fps=0;
+				aps=0;
+				referenciaContador=System.nanoTime();
+			}
+			//-
+		}
+		parar();
 
 	}
 
@@ -41,7 +80,7 @@ public class BuclePrincipal implements Runnable
 		hilo.start();
 		BuclePrincipal.corriendo = true;
 
-		actualizar();
+		//actualizar();
 	}
 
 	public void parar() 
@@ -59,7 +98,8 @@ public class BuclePrincipal implements Runnable
 	}
 
 	public void dibujar() 
-	{
+	{	
+		fps++;
 		sd.dibujar();
 	}
 
