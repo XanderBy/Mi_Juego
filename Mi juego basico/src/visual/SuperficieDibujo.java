@@ -13,6 +13,7 @@ import Controles.Raton;
 import Controles.Teclado;
 import CosasBasicas.Sprites;
 import constantes.Constantes;
+import personajes.Jugador;
 
 public class SuperficieDibujo extends Canvas {
 
@@ -25,10 +26,11 @@ public class SuperficieDibujo extends Canvas {
 	private Dimension dimension;
 	public static Point posicionRaton;
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];
-	
-	Sprites sprite= new Sprites(99, 140, "C:\\Users\\alexi\\Desktop\\descarga.jpg");
+	//Prueba esto se borrará
+	//-
+	private Sprites sprite= new Sprites(99, 140, "C:\\Users\\alexi\\Desktop\\descarga.jpg");
 	public static Rectangle rectangulo;
-	
+	//-
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
 	{
 		setPreferredSize(dimension= new Dimension(ancho, alto));

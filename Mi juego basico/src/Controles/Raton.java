@@ -18,18 +18,17 @@ public class Raton implements MouseListener
 		//Esta mal coge la posicion de la pantalla
 		SuperficieDibujo.arraySuperficie[0].actualizar();
 		puntaRaton=SuperficieDibujo.arraySuperficie[0].posicionRaton;
-		System.out.println("dadawdw " + puntaRaton);
+		System.out.println("posicion raton:" + puntaRaton);
 		if(puntaRaton==null) {
 			puntaRaton=new Point(0, 0);
 		}
-		puntero= new Rectangle((int) puntaRaton.getX(),(int) puntaRaton.getY(), 5, 5);
+		puntero= new Rectangle((int) puntaRaton.getX(),(int) puntaRaton.getY(), 2, 2);
 		
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{	
-		System.out.println("dwadw");
 		if(puntero.intersects(SuperficieDibujo.rectangulo)) {
 			System.out.println("Hola");
 		}

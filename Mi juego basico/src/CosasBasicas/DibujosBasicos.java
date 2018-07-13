@@ -7,11 +7,11 @@ import java.awt.Rectangle;
 public class DibujosBasicos 
 {
 	
-	public void pintarRectangulo(Graphics g, int ancho, int alto,int posicionX, int posicionY, Color color) 
+	public static void pintarRectangulo(Graphics g, int ancho, int alto,int posicionX, int posicionY)//Color color 
 	{
 		Rectangle rectangulo=new Rectangle(posicionX, posicionY, ancho, alto);
-		g.setColor(color);
-		g.fillRect(posicionX, posicionY, ancho, alto);
+		//g.setColor(color);
+		//g.fillRect(posicionX, posicionY, ancho, alto);
 		
 		
 	}
