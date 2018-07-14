@@ -11,6 +11,7 @@ import java.awt.image.BufferStrategy;
 
 import Controles.Raton;
 import Controles.Teclado;
+import CosasBasicas.AccionesBasicas;
 import CosasBasicas.Sprites;
 import constantes.Constantes;
 import personajes.Jugador;
@@ -31,7 +32,7 @@ public class SuperficieDibujo extends Canvas {
 	//-
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	public static Rectangle rectangulo;
-	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, 1,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
+	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, 2,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
 	//-
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
 	{
@@ -56,10 +57,10 @@ public class SuperficieDibujo extends Canvas {
 		}
 		g= (Graphics2D) buffer.getDrawGraphics();
 		g.clearRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		g.scale(3, 1.5);
+		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
 		mapa.dibujar(g);
-		rectangulo= new Rectangle(250, 250, 50, 50);
+		rectangulo= new Rectangle(AccionesBasicas.escalarPantallaX(250),AccionesBasicas.escalarPantallaY(250),AccionesBasicas.escalarPantallaX(50),AccionesBasicas.escalarPantallaY(50));
 		g.drawRect(250, 250, 50, 50);
 		jugador.dibujar(g);
 		
