@@ -2,17 +2,17 @@ package personajes;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
-
 import CosasBasicas.DibujosBasicos;
+import CosasBasicas.Sprites;
 import interfaces.MetodosEntidades;
 
 public class Enemigo extends Entidad implements MetodosEntidades
 {
 
-	public Enemigo(String url, int ancho, int alto, Point posicionInicio, int vida, int resistencia,
-			int velocidadMovimiento) 
+	public Enemigo(int ancho, int alto, Point posicionInicio, int vida, int resistencia,
+			int velocidadMovimiento, String urlQuieto) 
 	{
-		super(url, ancho, alto, posicionInicio, vida, resistencia, velocidadMovimiento);
+		super(ancho, alto, posicionInicio, vida, resistencia, velocidadMovimiento, urlQuieto);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -13,6 +13,7 @@ import Controles.Raton;
 import Controles.Teclado;
 import CosasBasicas.Sprites;
 import constantes.Constantes;
+import personajes.Jugador;
 
 public class SuperficieDibujo extends Canvas {
 
@@ -24,11 +25,13 @@ public class SuperficieDibujo extends Canvas {
 	private Graphics2D g;
 	private Dimension dimension;
 	public static Point posicionRaton;
+	private static Point posicionJugador= new Point(50, 50);
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];
-	//Prueba esto se borrará
+	//Prueba esto puede que se borré
 	//-
-	private Sprites sprite= new Sprites(99, 140, "C:\\Users\\alexi\\Desktop\\descarga.jpg");
+	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	public static Rectangle rectangulo;
+	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, 1,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
 	//-
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
 	{
@@ -52,18 +55,16 @@ public class SuperficieDibujo extends Canvas {
 			return;
 		}
 		g= (Graphics2D) buffer.getDrawGraphics();
-		
 		g.clearRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		g.drawRect(250, 250, 50, 50);
-		rectangulo= new Rectangle(250, 250, 50, 50);
-		// g.scale(1.5, 1.5);
-		g.drawImage((Image) sprite.imagen, 100, 100, 99, 140,(Color) sprite.introducirImagenesArray(sprite.imagen, 99, 140), null);
+		g.scale(3, 1.5);
 		
+		mapa.dibujar(g);
+		rectangulo= new Rectangle(250, 250, 50, 50);
+		g.drawRect(250, 250, 50, 50);
+		jugador.dibujar(g);
 		
 		g.dispose();
-		
 		buffer.show();
-		//repaint(0, 0, Constantes.ANCHO, Constantes.ALTO);
 	}
 	public static SuperficieDibujo[] getArraySuperficie() {
 		return arraySuperficie;

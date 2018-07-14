@@ -1,5 +1,7 @@
 package Controles;
 
+import visual.SuperficieDibujo;
+
 public class Tecla extends Teclado
 {	
 	
@@ -7,8 +9,7 @@ public class Tecla extends Teclado
 	{
 		if(teclado.teclado[0]==true) 
 		{	
-			System.out.println("Hola");
-			//Pasara x cosas
+			SuperficieDibujo.jugador.moverArriba(SuperficieDibujo.jugador.getPosicion(), SuperficieDibujo.jugador.getVelocidadMovimiento());
 		}
 		if(teclado.teclado[1]==true) 
 		{	

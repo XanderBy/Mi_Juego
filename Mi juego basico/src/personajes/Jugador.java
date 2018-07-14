@@ -8,9 +8,9 @@ import interfaces.MetodosEntidades;
 public class Jugador extends Entidad implements MetodosEntidades
 {
 
-	public Jugador(String url, int ancho, int alto, Point posicion, int vida, int resistencia,
-			int velocidadMovimiento) {
-		super(url, ancho, alto, posicion, vida, resistencia, velocidadMovimiento);
+	public Jugador(int ancho, int alto, Point posicion, int vida, int resistencia,
+			int velocidadMovimiento, String urlQuieto) {
+		super(ancho, alto, posicion, vida, resistencia, velocidadMovimiento, urlQuieto);
 		// TODO Auto-generated constructor stub
 		
 	}
@@ -31,7 +31,8 @@ public class Jugador extends Entidad implements MetodosEntidades
 	@Override
 	public void dibujar(Graphics2D g) 
 	{
-		DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
+		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
+		DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
 	}
 
 	@Override
