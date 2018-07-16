@@ -37,7 +37,7 @@ public class BuclePrincipal implements Runnable
 		
 		//-
 		final int NS_POR_SEGUNDO=1000000000;
-		final int APS_OBJETIVO= 120;
+		final int APS_OBJETIVO= 2000;
 		final double NS_POR_ACTUALIZACION= NS_POR_SEGUNDO/ APS_OBJETIVO;
 		long referenciaActualizacion= System.nanoTime();
 		long referenciaContador= System.nanoTime();

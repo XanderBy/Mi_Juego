@@ -24,13 +24,27 @@ public class DibujosBasicos
 	{
 		g.drawImage(sprite.imagen, jugador.getPosicion().x, jugador.getPosicion().y, sprite.introducirImagenesArray(sprite.imagen), null);
 	}
-	public static void pintarImagenMapa(Graphics2D g, Sprites sprite, Mapa mapa)
+	public static void pintarImagenMapa(Graphics2D g, SpritesMapa sprite, Mapa mapa)
 	{
-		g.drawImage(sprite.imagen, mapa.getPosicion().x, mapa.getPosicion().y, sprite.introducirImagenesArray(sprite.imagen), null);
+		g.drawImage(sprite.imagen, mapa.getPosicion().x, mapa.getPosicion().y, sprite.introducirImagenesArrayMapa(sprite.imagen), null);
 	}
-	public void pintarTexto(Graphics g, int posicionX, int posicionY, String texto) 
-	{
+	public static void pintarTexto(Graphics g, int posicionX, int posicionY, String texto) 
+	{	
+		g.setColor(Color.WHITE);
 		g.drawString(texto, posicionX, posicionY);
 	}
-	
+	public static void pintarRectanguloColor(Graphics g, int ancho, int alto,int posicionX, int posicionY, Color color)//Color color 
+	{
+		g.setColor(color);
+		g.fillRect(posicionX, posicionY, ancho, alto);
+	}
+	public static void pintarBoton(Graphics g, int ancho, int alto,int posicionX, int posicionY, Color color)//Color color 
+	{
+		
+		Rectangle nombre=new Rectangle(posicionX, posicionY, ancho, alto);
+		g.setColor(color);
+		g.fillRect(posicionX, posicionY, ancho, alto);
+		
+		
+	}
 }

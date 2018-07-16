@@ -1,20 +1,15 @@
 package visual;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
-
 import Controles.Raton;
 import Controles.Teclado;
-import CosasBasicas.AccionesBasicas;
-import CosasBasicas.Sprites;
 import constantes.Constantes;
-import personajes.Jugador;
+import gestores.GestorJuego;
+import gestores.GestorMenuPrincipal;
 
 public class SuperficieDibujo extends Canvas {
 
@@ -26,13 +21,11 @@ public class SuperficieDibujo extends Canvas {
 	private Graphics2D g;
 	private Dimension dimension;
 	public static Point posicionRaton;
-	private static Point posicionJugador= new Point(50, 50);
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];
+	private GestorJuego gj=new GestorJuego();
+	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	//Prueba esto puede que se borré
 	//-
-	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
-	public static Rectangle rectangulo;
-	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, 2,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
 	//-
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
 	{
@@ -57,12 +50,17 @@ public class SuperficieDibujo extends Canvas {
 		}
 		g= (Graphics2D) buffer.getDrawGraphics();
 		g.clearRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
-		mapa.dibujar(g);
-		rectangulo= new Rectangle(AccionesBasicas.escalarPantallaX(250),AccionesBasicas.escalarPantallaY(250),AccionesBasicas.escalarPantallaX(50),AccionesBasicas.escalarPantallaY(50));
-		g.drawRect(250, 250, 50, 50);
-		jugador.dibujar(g);
+		if(GestorMenuPrincipal.activoMenuPrincipal==true) 
+		{
+			gmp.dibujar(g);
+		}
+		if(GestorJuego.activoJuego==true) 
+		{
+			gj.dibujar(g);
+		}
+		
+		
 		
 		g.dispose();
 		buffer.show();

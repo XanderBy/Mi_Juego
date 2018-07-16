@@ -4,6 +4,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import gestores.GestorJuego;
+import gestores.GestorMenuPrincipal;
 import visual.SuperficieDibujo;
 
 public class Raton implements MouseListener
@@ -12,6 +15,7 @@ public class Raton implements MouseListener
 	public static Point puntaRaton;
 	private Rectangle puntero;
 	private SuperficieDibujo sd;
+	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	
 	public void actualizar()
 	{	
@@ -29,9 +33,20 @@ public class Raton implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{	
-		if(puntero.intersects(SuperficieDibujo.rectangulo)) {
-			System.out.println("Hola");
+		if(GestorMenuPrincipal.activoMenuPrincipal==true) {
+			if(puntero.intersects(gmp.nuevaPartida)) {
+				GestorJuego.activoJuego=true;
+				System.out.println("Hola");
+			}
 		}
+		if(GestorJuego.activoJuego==true) {
+			GestorMenuPrincipal.activoMenuPrincipal=false;
+			if(puntero.intersects(GestorJuego.rectangulo)) {
+				System.out.println("Hola");
+			}
+		}
+		
+		
 		
 	}
 

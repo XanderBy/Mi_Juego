@@ -1,6 +1,6 @@
 package Controles;
 
-import visual.SuperficieDibujo;
+import gestores.GestorJuego;
 
 public class Tecla extends Teclado
 {	
@@ -9,20 +9,20 @@ public class Tecla extends Teclado
 	{
 		if(teclado.teclado[0]==true) 
 		{	
-			SuperficieDibujo.jugador.moverArriba(SuperficieDibujo.jugador.getPosicion(), SuperficieDibujo.jugador.getVelocidadMovimiento());
+			GestorJuego.jugador.moverArriba(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimiento());
 		}
 		if(teclado.teclado[1]==true) 
 		{	
-			SuperficieDibujo.jugador.moverAbajo(SuperficieDibujo.jugador.getPosicion(), SuperficieDibujo.jugador.getVelocidadMovimiento());
+			GestorJuego.jugador.moverAbajo(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimiento());
 		}
 		if(teclado.teclado[2]==true) 
 		{	
-			SuperficieDibujo.jugador.moverIzquierda(SuperficieDibujo.jugador.getPosicion(), SuperficieDibujo.jugador.getVelocidadMovimiento());
+			GestorJuego.jugador.moverIzquierda(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimiento());
 			//Pasara x cosas
 		}
 		if(teclado.teclado[3]==true) 
 		{	
-			SuperficieDibujo.jugador.moverDerecha(SuperficieDibujo.jugador.getPosicion(), SuperficieDibujo.jugador.getVelocidadMovimiento());
+			GestorJuego.jugador.moverDerecha(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimiento());
 			//Pasara x cosas
 		}
 		
