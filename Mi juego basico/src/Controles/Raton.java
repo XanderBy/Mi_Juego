@@ -44,6 +44,7 @@ public class Raton implements MouseListener
 			if(puntero.intersects(GestorJuego.rectangulo)) {
 				System.out.println("Hola");
 			}
+			
 		}
 		
 		
