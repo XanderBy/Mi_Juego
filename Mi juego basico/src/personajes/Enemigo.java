@@ -11,7 +11,7 @@ public class Enemigo extends Entidad implements MetodosEntidades
 	public Enemigo(int ancho, int alto, Point posicionInicio, int vida, int resistencia,
 			int velocidadMovimiento, String urlQuieto) 
 	{
-		super(ancho, alto, posicionInicio, vida, resistencia, velocidadMovimiento, urlQuieto);
+		super(ancho, alto, posicionInicio, vida, resistencia, velocidadMovimiento, velocidadMovimiento, velocidadMovimiento, velocidadMovimiento, urlQuieto);
 		// TODO Auto-generated constructor stub
 	}
 

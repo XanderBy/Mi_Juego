@@ -15,21 +15,27 @@ public class Entidad
 	private Sprites sprite;
 	private int vida;
 	private int resistencia;
-	private int velocidadMovimiento;
+	private int velocidadMovimientoXIzquierda;
+	private int velocidadMovimientoYArriba;
+	private int velocidadMovimientoXDerecha;
+	private int velocidadMovimientoYAbajo;
 	private Point posicion;
 	private int ancho;
 	private int alto;
 		
 	
 	public Entidad(int ancho, int alto, Point posicion, int vida, int resistencia,
-			int velocidadMovimiento, String urlQuieto) {
+			int velocidadMovimientoXIzquierda,int velocidadMovimientoYArriba,int velocidadMovimientoXDerecha,int velocidadMovimientoYAbajo, String urlQuieto) {
 		super();
 		this.ancho=ancho;
 		this.alto=alto;
 		this.posicion=posicion;
 		this.vida = vida;
 		this.resistencia = resistencia;
-		this.velocidadMovimiento = velocidadMovimiento;
+		this.velocidadMovimientoXIzquierda = velocidadMovimientoXIzquierda;
+		this.velocidadMovimientoYArriba = velocidadMovimientoYArriba;
+		this.velocidadMovimientoXDerecha = velocidadMovimientoXDerecha;
+		this.velocidadMovimientoYAbajo = velocidadMovimientoYAbajo;
 		this.urlQuieto=urlQuieto;
 		cargarImagen(ancho, alto, urlQuieto);
 	}
@@ -63,12 +69,36 @@ public class Entidad
 		this.resistencia = resistencia;
 	}
 
-	public int getVelocidadMovimiento() {
-		return velocidadMovimiento;
+	public int getVelocidadMovimientoXIzquierda() {
+		return velocidadMovimientoXIzquierda;
 	}
 
-	public void setVelocidadMovimiento(int velocidadMovimiento) {
-		this.velocidadMovimiento = velocidadMovimiento;
+	public void setVelocidadMovimientoXIzquierda(int velocidadMovimientoXIzquierda) {
+		this.velocidadMovimientoXIzquierda = velocidadMovimientoXIzquierda;
+	}
+
+	public int getVelocidadMovimientoYArriba() {
+		return velocidadMovimientoYArriba;
+	}
+
+	public void setVelocidadMovimientoYArriba(int velocidadMovimientoYArriba) {
+		this.velocidadMovimientoYArriba = velocidadMovimientoYArriba;
+	}
+
+	public int getVelocidadMovimientoXDerecha() {
+		return velocidadMovimientoXDerecha;
+	}
+
+	public void setVelocidadMovimientoXDerecha(int velocidadMovimientoXDerecha) {
+		this.velocidadMovimientoXDerecha = velocidadMovimientoXDerecha;
+	}
+
+	public int getVelocidadMovimientoYAbajo() {
+		return velocidadMovimientoYAbajo;
+	}
+
+	public void setVelocidadMovimientoYAbajo(int velocidadMovimientoYAbajo) {
+		this.velocidadMovimientoYAbajo = velocidadMovimientoYAbajo;
 	}
 
 	public Point getPosicion() {

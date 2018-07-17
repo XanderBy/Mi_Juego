@@ -14,7 +14,7 @@ public class GestorJuego extends GestorPadre
 {	
 
 	private static Point posicionJugador= new Point(300, 255);
-	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, 2,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
+	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
 	
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	public static Rectangle rectangulo;

@@ -5,4 +5,5 @@ public class Constantes {
 	public static final int ALTO=500;
 	public static final double ESCALAX=3;
 	public static final double ESCALAY=1.5;
+	public static int velocidadGeneral=2;
 }
