@@ -20,6 +20,7 @@ public class Tecla extends Teclado
 		}
 		if(teclado.teclado[2]==true) 
 		{	
+			
 			GestorJuego.jugador.moverIzquierda(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXIzquierda());
 			//Pasara x cosas
 			

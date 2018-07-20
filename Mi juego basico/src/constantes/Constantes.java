@@ -6,4 +6,6 @@ public class Constantes {
 	public static final double ESCALAX=3;
 	public static final double ESCALAY=1.5;
 	public static int velocidadGeneral=2;
+	public static final int ANCHOMAPA=640;
+	public static final int ALTOMAPA=640;
 }

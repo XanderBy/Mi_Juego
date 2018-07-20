@@ -2,17 +2,22 @@ package visual;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import CosasBasicas.Sprites;
 import CosasBasicas.SpritesMapa;
+import constantes.Constantes;
 import gestores.GestorJuego;
 
 public class Mapa extends Sprites
 {	
 	public static Point posicion= new Point(0, 0);
 	private static SpritesMapa sprite;
+	public static int paredArribaX=0;
+	public static int paredArribaY=0;
+	
 	
 	public Mapa(int ancho, int alto, String url) {
 		super(ancho, alto, url);

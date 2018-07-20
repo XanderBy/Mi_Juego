@@ -63,7 +63,7 @@ public class BuclePrincipal implements Runnable
 			
 			if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) 
 			{
-				System.out.println("Fps: " + fps);
+				//System.out.println("Fps: " + fps);
 				fps=0;
 				aps=0;
 				referenciaContador=System.nanoTime();

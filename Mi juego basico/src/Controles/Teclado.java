@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Teclado implements KeyListener
 {	
 
-	public boolean[] teclado=new boolean[4];
+	public static boolean[] teclado=new boolean[4];
 	private static boolean arriba=false;
 	private static boolean abajo=false;
 	private static boolean izquierda=false;

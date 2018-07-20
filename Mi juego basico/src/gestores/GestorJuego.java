@@ -18,6 +18,19 @@ public class GestorJuego extends GestorPadre
 	
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	public static Rectangle rectangulo;
+	public static int rectanguloAx= 0;
+	public static int rectanguloAy= 0;
+	public static Rectangle paredArriba;
+	public static int rectanguloDx= Constantes.ANCHOMAPA;
+	public static int rectanguloDy= 0;
+	public static Rectangle paredDerecha;
+	public static int rectanguloIx= 0;
+	public static int rectanguloIy= 0;
+	public static Rectangle paredIzquierda;
+	public static int rectanguloAbx= 0;
+	public static int rectanguloAby= Constantes.ALTOMAPA;
+	public static Rectangle paredAbajo;
+	
 	public static boolean activoJuego=false;
 	public static ArrayList<Rectangle> colisiones=new ArrayList<Rectangle>();
 	
@@ -36,14 +49,31 @@ public class GestorJuego extends GestorPadre
 		rectangulo= new Rectangle(rectangulo1x,rectangulo1y,50,50);
 		g.drawRect(rectangulo.x, rectangulo.y, 50, 50);
 		jugador.dibujar(g);
+		paredAbajo= new Rectangle(rectanguloAbx,rectanguloAby, Constantes.ANCHOMAPA, 3);
+		paredIzquierda= new Rectangle(rectanguloIx,rectanguloIy, 3, Constantes.ALTOMAPA);
+		paredArriba= new Rectangle(rectanguloAx,rectanguloAy, Constantes.ANCHOMAPA, 3);
+		paredDerecha= new Rectangle(rectanguloDx,rectanguloDy, 3, Constantes.ALTOMAPA);
+		g.drawRect(rectanguloAbx,rectanguloAby, Constantes.ANCHOMAPA, 3);
+		g.drawRect(rectanguloAx,rectanguloAy, 3, Constantes.ALTOMAPA);
+		g.drawRect(rectanguloDx,rectanguloDy, 3, Constantes.ALTOMAPA);
+		g.drawRect(rectanguloIx,rectanguloIy, Constantes.ANCHOMAPA, 3);
 		
 	}
 	public static void cargarArray() 
 	{
 		colisiones.add(rectangulo);
+		colisiones.add(paredArriba);
+		colisiones.add(paredAbajo);
+		colisiones.add(paredIzquierda);
+		colisiones.add(paredDerecha);
 	}
 	public static void eliminarArrar()
-	{
-		colisiones.remove(0);
+	{	
+		colisiones.removeAll(colisiones);
+		//colisiones.remove(0);
+		//colisiones.remove(1);
+		//colisiones.remove(2);
+		//colisiones.remove(3);
+		//colisiones.remove(4);
 	}
 }

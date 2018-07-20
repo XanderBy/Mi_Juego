@@ -3,6 +3,8 @@ package personajes;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+
+import Controles.Teclado;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
@@ -19,6 +21,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public static Rectangle areaJugador6;
 	public static Rectangle areaJugador7;
 	public static Rectangle areaJugador8;
+	private static int cont=0;
 	
 	public static boolean booleanJugador1=false;
 	public static boolean booleanJugador2=false;
@@ -62,16 +65,19 @@ public class Jugador extends Entidad implements MetodosEntidades
 	}
 	public void colisionMover()
 	{	
-		//Kado izquierdo
+		//lado izquierdo
 		if(booleanJugador1==true && booleanJugador8==true && booleanJugador7==true || booleanJugador1==true && booleanJugador8==true || booleanJugador8==true && booleanJugador7==true || booleanJugador1==true || booleanJugador7==true || booleanJugador8==true) 
 		{
 			System.out.println("Parado");
-			this.setVelocidadMovimientoXIzquierda(0);
+			GestorJuego.jugador.setVelocidadMovimientoXIzquierda(0);
+			
 		}else
 		{
+			//Teclado.teclado[2]=true;
+			System.out.println("No esta parado");
 			this.setVelocidadMovimientoXIzquierda(Constantes.velocidadGeneral);
 		}
-		
+		//arriba
 		if(booleanJugador1==true && booleanJugador2==true && booleanJugador3==true||booleanJugador1==true && booleanJugador2==true||booleanJugador2==true && booleanJugador3==true|| booleanJugador2==true||booleanJugador3==true|| booleanJugador1==true) 
 		{
 			this.setVelocidadMovimientoYArriba(0);
@@ -79,6 +85,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 		{
 			this.setVelocidadMovimientoYArriba(Constantes.velocidadGeneral);
 		}
+		//derecha
 		if(booleanJugador3==true && booleanJugador4==true && booleanJugador5==true ||booleanJugador3==true && booleanJugador4==true || booleanJugador4==true && booleanJugador5==true||booleanJugador3==true||booleanJugador5==true|| booleanJugador4==true) 
 		{
 			this.setVelocidadMovimientoXDerecha(0);
@@ -86,6 +93,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 		{
 			this.setVelocidadMovimientoXDerecha(Constantes.velocidadGeneral);
 		}
+		//Abajo
 		if(booleanJugador5==true && booleanJugador6==true && booleanJugador7==true || booleanJugador5==true && booleanJugador6==true || booleanJugador6==true && booleanJugador7==true||booleanJugador7==true||booleanJugador6==true||booleanJugador5==true) 
 		{
 			this.setVelocidadMovimientoYAbajo(0);
@@ -99,105 +107,94 @@ public class Jugador extends Entidad implements MetodosEntidades
 		GestorJuego.cargarArray();
 		//areaJugador8= new Rectangle(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y+GestorJuego.jugador.getAlto()/2 , 2, 2);
 		//GestorJuego.rectangulo= new Rectangle(GestorJuego.rectangulo1x,GestorJuego.rectangulo1y,50,50);
+		//GestorJuego.jugador.colisionMover();
 		for (Rectangle a: GestorJuego.colisiones) 
-		{
+		{	
+			
+			cont++;
+			//System.out.println(GestorJuego.colisiones.size());
 			if(areaJugador1.intersects(a)) 
-			{
-				System.out.println("Holaaaa1");
+			{	
+				//GestorJuego.jugador.colisionMover();
+				System.out.println("area1 verdahh");
 				booleanJugador1=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador1.intersects(a)) 
 			{
-				System.out.println("Holaaaa1");
+				//GestorJuego.jugador.colisionMover();
+				System.out.println("area1 nopp");
 				booleanJugador1=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador2.intersects(a)) 
 			{
 				booleanJugador2=true;
-				System.out.println("Holaaaa2");
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador2.intersects(a)) 
 			{
 				booleanJugador2=false;
-				System.out.println("Holaaaa2");
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador3.intersects(a)) 
 			{
-				System.out.println("Holaaaa3");
 				booleanJugador3=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador3.intersects(a)) 
 			{
-				System.out.println("Holaaaa3");
 				booleanJugador3=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador4.intersects(a)) 
 			{
-				System.out.println("Holaaaa4");
 				booleanJugador4=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador4.intersects(a)) 
 			{
-				System.out.println("Holaaaa4");
 				booleanJugador4=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador5.intersects(a)) 
 			{
-				System.out.println("Holaaaa5");
 				booleanJugador5=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador5.intersects(a)) 
 			{
-				System.out.println("Holaaaa5");
 				booleanJugador5=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador6.intersects(a)) 
 			{
-				System.out.println("Holaaaa6");
 				booleanJugador6=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador6.intersects(a)) 
 			{
-				System.out.println("Holaaaa6");
 				booleanJugador6=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador7.intersects(a)) 
 			{
-				System.out.println("Holaaaa7");
 				booleanJugador7=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador7.intersects(a)) 
 			{
-				System.out.println("Holaaaa7");
 				booleanJugador7=false;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(areaJugador8.intersects(a)) 
-			{
-				System.out.println("Holaaaa8");
+			{	
+				//GestorJuego.jugador.colisionMover();
+				System.out.println("area8 siii");
 				booleanJugador8=true;
-				GestorJuego.jugador.colisionMover();
 			}
 			if(!areaJugador8.intersects(a)) 
-			{
-				System.out.println("Holaaaa8");
+			{	
+				System.out.println("area8 siii");
+				//GestorJuego.jugador.colisionMover();
 				booleanJugador8=false;
-				GestorJuego.jugador.colisionMover();
 			}
+			if(booleanJugador1==true || booleanJugador2==true || booleanJugador3==true || booleanJugador4==true || booleanJugador5==true || booleanJugador6==true || booleanJugador7==true || booleanJugador8==true) {
+				System.out.println("ha entrado");
+				GestorJuego.jugador.colisionMover();
+				break;
+			}
+			
 		}
+		GestorJuego.jugador.colisionMover();
+		System.out.println(cont);
+		cont=0;
 		GestorJuego.eliminarArrar();
 	}
 	@Override
@@ -218,8 +215,8 @@ public class Jugador extends Entidad implements MetodosEntidades
 		areaJugador4= new Rectangle(this.getPosicion().x+ this.getAncho(), this.getPosicion().y+this.getAlto()/2 , 2, 2);
 		g.drawRect(this.getPosicion().x + this.getAncho(), this.getPosicion().y+ this.getAlto()/2, 2, 2);
 		
-		areaJugador5= new Rectangle(this.getPosicion().x+ this.getAncho()+10, this.getPosicion().y+this.getAlto()-10 , 2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho()-10, this.getPosicion().y+ this.getAlto()+10, 2, 2);
+		areaJugador5= new Rectangle(this.getPosicion().x+ this.getAncho()-10, this.getPosicion().y+this.getAlto()-10 , 2, 2);
+		g.drawRect(this.getPosicion().x + this.getAncho()-10, this.getPosicion().y+ this.getAlto()-10, 2, 2);
 		
 		areaJugador6= new Rectangle(this.getPosicion().x+ this.getAncho()/2, this.getPosicion().y+this.getAlto() , 2, 2);
 		g.drawRect(this.getPosicion().x + this.getAncho()/2, this.getPosicion().y+ this.getAlto(), 2, 2);
