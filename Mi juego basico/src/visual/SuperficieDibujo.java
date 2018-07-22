@@ -8,6 +8,8 @@ import java.awt.image.BufferStrategy;
 import Controles.Raton;
 import Controles.Teclado;
 import constantes.Constantes;
+import gestores.GestorEscape;
+import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 
@@ -23,7 +25,9 @@ public class SuperficieDibujo extends Canvas {
 	public static Point posicionRaton;
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];
 	private GestorJuego gj=new GestorJuego();
+	private GestorInventario gi=new GestorInventario();
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
+	private GestorEscape ge=new GestorEscape();
 	//Prueba esto puede que se borré
 	//-
 	//-
@@ -59,7 +63,14 @@ public class SuperficieDibujo extends Canvas {
 		{
 			gj.dibujar(g);
 		}
-		
+		if(GestorInventario.activoInventario==true) 
+		{
+			gi.dibujar(g);
+		}
+		if(GestorEscape.activoEscape==true) 
+		{
+			ge.dibujar(g);
+		}
 		
 		
 		g.dispose();

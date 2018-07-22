@@ -75,7 +75,7 @@ public class Sprites
 						return null;
 						
 					}else {
-						System.out.println("dadwa");
+						//System.out.println("dadwa");
 					return Color.getColor("", this.pixeles[(x*y)]= imagen.getRGB(x, y));
 					}
 					

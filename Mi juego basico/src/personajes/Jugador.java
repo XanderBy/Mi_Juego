@@ -3,10 +3,12 @@ package personajes;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import Controles.Teclado;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
+import armas.Objetos;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
@@ -21,8 +23,9 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public static Rectangle areaJugador6;
 	public static Rectangle areaJugador7;
 	public static Rectangle areaJugador8;
-	private static int cont=0;
+	public static Rectangle areaJugadorInfluencia;
 	
+	public static ArrayList <Objetos> inventarioArray=new ArrayList <Objetos>();
 	public static boolean booleanJugador1=false;
 	public static boolean booleanJugador2=false;
 	public static boolean booleanJugador3=false;
@@ -69,7 +72,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 		if(booleanJugador1==true && booleanJugador8==true && booleanJugador7==true || booleanJugador1==true && booleanJugador8==true || booleanJugador8==true && booleanJugador7==true || booleanJugador1==true || booleanJugador7==true || booleanJugador8==true) 
 		{
 			System.out.println("Parado");
-			GestorJuego.jugador.setVelocidadMovimientoXIzquierda(0);
+			this.setVelocidadMovimientoXIzquierda(0);
 			
 		}else
 		{
@@ -104,14 +107,13 @@ public class Jugador extends Entidad implements MetodosEntidades
 	}
 	public static void colision() 
 	{	
-		GestorJuego.cargarArray();
+		GestorJuego.cargarArrayColisiones();
 		//areaJugador8= new Rectangle(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y+GestorJuego.jugador.getAlto()/2 , 2, 2);
 		//GestorJuego.rectangulo= new Rectangle(GestorJuego.rectangulo1x,GestorJuego.rectangulo1y,50,50);
 		//GestorJuego.jugador.colisionMover();
 		for (Rectangle a: GestorJuego.colisiones) 
 		{	
 			
-			cont++;
 			//System.out.println(GestorJuego.colisiones.size());
 			if(areaJugador1.intersects(a)) 
 			{	
@@ -193,9 +195,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 			
 		}
 		GestorJuego.jugador.colisionMover();
-		System.out.println(cont);
-		cont=0;
-		GestorJuego.eliminarArrar();
+		GestorJuego.eliminarArrayColisiones();
 	}
 	@Override
 	public void dibujar(Graphics2D g) 
@@ -203,6 +203,8 @@ public class Jugador extends Entidad implements MetodosEntidades
 		
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
 		DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
+		areaJugadorInfluencia=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
+		
 		areaJugador1= new Rectangle(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
 		g.drawRect(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
 		
@@ -233,5 +235,13 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public void dano(int dano) 
 	{
 		this.setVida(this.getVida() - dano);
+	}
+	public void cogerObjetos(Objetos objeto) 
+	{
+		inventarioArray.add(objeto);
+	}
+	public void soltarObjetos(Objetos objeto) 
+	{
+		inventarioArray.remove(objeto);
 	}
 }

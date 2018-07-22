@@ -1,5 +1,8 @@
 package Controles;
 
+import armas.Objetos;
+import gestores.GestorEscape;
+import gestores.GestorInventario;
 import gestores.GestorJuego;
 import personajes.Jugador;
 
@@ -31,6 +34,35 @@ public class Tecla extends Teclado
 			//Pasara x cosas
 			
 		}
-		
+		if(teclado.teclado[4]==true) 
+		{	
+			if(GestorInventario.activoInventario==true) {
+				GestorInventario.activoInventario=false;
+				GestorJuego.activoJuego=true;
+			}else {
+				GestorInventario.activoInventario=true;
+				GestorJuego.activoJuego=false;
+			}
+			
+		}
+		if(teclado.teclado[5]==true) 
+		{	
+			if(GestorEscape.activoEscape==true) {
+				GestorEscape.activoEscape=false;
+				GestorJuego.activoJuego=true;
+			}else {
+				GestorEscape.activoEscape=true;
+				GestorJuego.activoJuego=false;
+			}
+			
+		}
+		if(teclado.teclado[6]==true) 
+		{	
+			for (Objetos a : GestorJuego.objetosMapa) {
+				//if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.areaObjetoInfluencia)) {
+					GestorJuego.jugador.cogerObjetos(a);
+				//}
+			}
+		}
 	}
 }

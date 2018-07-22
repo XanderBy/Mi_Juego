@@ -18,7 +18,7 @@ public class GestorMenuPrincipal extends GestorPadre
 	//Aqui lo que pase mientras estas con el menu
 	@Override
 	public void dibujar(Graphics2D g) {
-		DibujosBasicos.pintarRectanguloColor(g, AccionesBasicas.escalarPantallaX(Constantes.ANCHO), AccionesBasicas.escalarPantallaY(Constantes.ALTO), 0, 0, Color.BLACK);
+		DibujosBasicos.pintarRectanguloColor(g, Constantes.ANCHO, Constantes.ALTO, 0, 0, Color.BLACK);
 		
 		
 		

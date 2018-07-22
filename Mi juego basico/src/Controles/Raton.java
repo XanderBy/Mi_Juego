@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import gestores.GestorEscape;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 import visual.SuperficieDibujo;
@@ -36,13 +37,18 @@ public class Raton implements MouseListener
 		if(GestorMenuPrincipal.activoMenuPrincipal==true) {
 			if(puntero.intersects(gmp.nuevaPartida)) {
 				GestorJuego.activoJuego=true;
-				System.out.println("Hola");
 			}
 		}
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
 			if(puntero.intersects(GestorJuego.rectangulo)) {
 				System.out.println("Hola");
+			}
+			
+		}
+		if(GestorEscape.activoEscape==true) {
+			if(puntero.intersects(GestorEscape.salir)) {
+				System.exit(0);
 			}
 			
 		}

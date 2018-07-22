@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import CosasBasicas.AccionesBasicas;
+import armas.Objetos;
 import constantes.Constantes;
 import personajes.Jugador;
 import visual.Mapa;
@@ -13,8 +14,8 @@ import visual.Mapa;
 public class GestorJuego extends GestorPadre
 {	
 
-	private static Point posicionJugador= new Point(300, 255);
-	public static Jugador jugador= new Jugador(135, 135, posicionJugador, 10, 10, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\descarga.gif");
+	private static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
+	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 10, 10, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
 	
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	public static Rectangle rectangulo;
@@ -33,6 +34,7 @@ public class GestorJuego extends GestorPadre
 	
 	public static boolean activoJuego=false;
 	public static ArrayList<Rectangle> colisiones=new ArrayList<Rectangle>();
+	public static ArrayList<Objetos> objetosMapa=new ArrayList<Objetos>();
 	
 	public static int rectangulo1x= 250;
 	public static int rectangulo1y= 250;
@@ -42,7 +44,7 @@ public class GestorJuego extends GestorPadre
 	public void dibujar(Graphics2D g) {
 		
 		//g.fillRect(0, 0, 2000, 1000);
-		//g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
+		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		mapa.dibujar(g);
 		//rectangulo= new Rectangle(AccionesBasicas.escalarPantallaX(250),AccionesBasicas.escalarPantallaY(250),AccionesBasicas.escalarPantallaX(50),AccionesBasicas.escalarPantallaY(50));
 		
@@ -59,7 +61,7 @@ public class GestorJuego extends GestorPadre
 		g.drawRect(rectanguloIx,rectanguloIy, Constantes.ANCHOMAPA, 3);
 		
 	}
-	public static void cargarArray() 
+	public static void cargarArrayColisiones() 
 	{
 		colisiones.add(rectangulo);
 		colisiones.add(paredArriba);
@@ -67,7 +69,7 @@ public class GestorJuego extends GestorPadre
 		colisiones.add(paredIzquierda);
 		colisiones.add(paredDerecha);
 	}
-	public static void eliminarArrar()
+	public static void eliminarArrayColisiones()
 	{	
 		colisiones.removeAll(colisiones);
 		//colisiones.remove(0);
@@ -75,5 +77,11 @@ public class GestorJuego extends GestorPadre
 		//colisiones.remove(2);
 		//colisiones.remove(3);
 		//colisiones.remove(4);
+	}
+	public static void cargarArrayObjetos() {
+		
+	}
+	public static void eliminarArrayObjetos() {
+		objetosMapa.removeAll(objetosMapa);
 	}
 }
