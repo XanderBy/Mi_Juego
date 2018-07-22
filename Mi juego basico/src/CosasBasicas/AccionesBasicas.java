@@ -21,6 +21,7 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx + velocidad;
 		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx + velocidad;
 		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx + velocidad;
+		GestorJuego.arma1.posicion.x=GestorJuego.arma1.posicion.x + velocidad;
 	}
 	public static void correccionXNegativo(int velocidad) 
 	{
@@ -30,6 +31,7 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx - velocidad;
 		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx - velocidad;
 		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx - velocidad;
+		GestorJuego.arma1.posicion.x=GestorJuego.arma1.posicion.x - velocidad;
 	}
 	public static void correccionYPositivo(int velocidad) 
 	{
@@ -39,6 +41,7 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby + velocidad;
 		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy + velocidad;
 		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy + velocidad;
+		GestorJuego.arma1.posicion.y=GestorJuego.arma1.posicion.y + velocidad;
 	}
 	public static void correccionYNegativo(int velocidad) 
 	{
@@ -48,5 +51,6 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby - velocidad;
 		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy - velocidad;
 		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy - velocidad;
+		GestorJuego.arma1.posicion.y=GestorJuego.arma1.posicion.y - velocidad;
 	}
 }

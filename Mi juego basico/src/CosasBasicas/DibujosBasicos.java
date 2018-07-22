@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import objetos.Armas;
 import personajes.Jugador;
 import visual.Mapa;
 
@@ -23,6 +24,10 @@ public class DibujosBasicos
 	public static void pintarImagenJugador(Graphics2D g, Sprites sprite, Jugador jugador)
 	{
 		g.drawImage(sprite.imagen, jugador.getPosicion().x, jugador.getPosicion().y, sprite.introducirImagenesArray(sprite.imagen), null);
+	}
+	public static void pintarImagenArmas(Graphics2D g, Sprites sprite, Armas armas)
+	{
+		g.drawImage(sprite.imagen, armas.posicion.x, armas.posicion.y, sprite.introducirImagenesArray(sprite.imagen), null);
 	}
 	public static void pintarImagenMapa(Graphics2D g, SpritesMapa sprite, Mapa mapa)
 	{

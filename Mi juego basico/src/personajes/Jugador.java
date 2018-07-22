@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import Controles.Teclado;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
-import armas.Objetos;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
+import objetos.Objetos;
 
 public class Jugador extends Entidad implements MetodosEntidades
 {
@@ -204,6 +204,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
 		DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
 		areaJugadorInfluencia=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
+		g.drawRect(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
 		
 		areaJugador1= new Rectangle(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
 		g.drawRect(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);

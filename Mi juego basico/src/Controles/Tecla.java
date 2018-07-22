@@ -1,10 +1,9 @@
 package Controles;
 
-import armas.Objetos;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
-import personajes.Jugador;
+import objetos.Objetos;
 
 public class Tecla extends Teclado
 {	
@@ -58,10 +57,14 @@ public class Tecla extends Teclado
 		}
 		if(teclado.teclado[6]==true) 
 		{	
+			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
+			
 			for (Objetos a : GestorJuego.objetosMapa) {
-				//if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.areaObjetoInfluencia)) {
+				if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.areaObjetoInfluencia)) {
 					GestorJuego.jugador.cogerObjetos(a);
-				//}
+					System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
+					a.cogido=true;
+				}
 			}
 		}
 	}
