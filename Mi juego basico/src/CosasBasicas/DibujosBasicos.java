@@ -27,7 +27,9 @@ public class DibujosBasicos
 	}
 	public static void pintarImagenArmas(Graphics2D g, Sprites sprite, Armas armas)
 	{
+
 		g.drawImage(sprite.imagen, armas.posicion.x, armas.posicion.y, sprite.introducirImagenesArray(sprite.imagen), null);
+		g.drawRect(armas.posicion.x, armas.posicion.y, armas.ancho, armas.alto);
 	}
 	public static void pintarImagenMapa(Graphics2D g, SpritesMapa sprite, Mapa mapa)
 	{

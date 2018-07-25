@@ -14,6 +14,7 @@ public class Teclado implements KeyListener
 	private static boolean inventario=false;
 	private static boolean escape=false;
 	private static boolean cogerObjeto=false;
+	private static boolean disparar=false;
 	
 	public void actualizar() 
 	{
@@ -24,6 +25,7 @@ public class Teclado implements KeyListener
 		teclado[4]=inventario;
 		teclado[5]=escape;
 		teclado[6]=cogerObjeto;
+		teclado[7]=disparar;
 	}
 
 	@Override
@@ -59,6 +61,10 @@ public class Teclado implements KeyListener
 			teclado[6]=true;
 			Tecla.acciones(this);
 			break;
+		case KeyEvent.VK_SPACE:
+			teclado[7]=true;
+			Tecla.acciones(this);
+			break;
 			default:
 				System.out.println("tecla introducida no valida");
 				break;
@@ -91,6 +97,10 @@ public class Teclado implements KeyListener
 			break;
 		case KeyEvent.VK_E:
 			teclado[6]=false;
+			Tecla.acciones(this);
+			break;
+		case KeyEvent.VK_SPACE:
+			teclado[7]=false;
 			Tecla.acciones(this);
 			break;
 			default:

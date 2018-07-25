@@ -19,14 +19,14 @@ public class GestorEscape extends GestorPadre {
 		
 		
 		g.setColor(Color.red);
-		opciones=new Rectangle(Constantes.ANCHO/3, (Constantes.ALTO+250)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+250)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		opciones=new Rectangle(Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		
-		creditos=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+500)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+500)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		creditos=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		
-		salir=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+750)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+750)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		salir=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		
 	}
 

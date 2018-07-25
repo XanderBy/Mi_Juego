@@ -13,8 +13,8 @@ public class Objetos
 	public Rectangle areaObjetoInfluencia;
 	private String url;
 	public Sprites sprite;
-	private int ancho;
-	private int alto;
+	public int ancho;
+	public int alto;
 	public boolean cogido=false;
 	
 	
@@ -41,6 +41,15 @@ public class Objetos
 		if(cogido==false)
 		{
 			DibujosBasicos.pintarImagenArmas(g, arma.sprite, arma);
+			areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
+		}else {
+			try
+			{
+			areaObjetoInfluencia=null;
+			}catch (Exception e) 
+			{
+				// TODO: handle exception
+			}
 		}
 	}
 	

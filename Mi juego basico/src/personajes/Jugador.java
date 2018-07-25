@@ -71,13 +71,10 @@ public class Jugador extends Entidad implements MetodosEntidades
 		//lado izquierdo
 		if(booleanJugador1==true && booleanJugador8==true && booleanJugador7==true || booleanJugador1==true && booleanJugador8==true || booleanJugador8==true && booleanJugador7==true || booleanJugador1==true || booleanJugador7==true || booleanJugador8==true) 
 		{
-			System.out.println("Parado");
 			this.setVelocidadMovimientoXIzquierda(0);
 			
 		}else
 		{
-			//Teclado.teclado[2]=true;
-			System.out.println("No esta parado");
 			this.setVelocidadMovimientoXIzquierda(Constantes.velocidadGeneral);
 		}
 		//arriba
@@ -118,13 +115,11 @@ public class Jugador extends Entidad implements MetodosEntidades
 			if(areaJugador1.intersects(a)) 
 			{	
 				//GestorJuego.jugador.colisionMover();
-				System.out.println("area1 verdahh");
 				booleanJugador1=true;
 			}
 			if(!areaJugador1.intersects(a)) 
 			{
 				//GestorJuego.jugador.colisionMover();
-				System.out.println("area1 nopp");
 				booleanJugador1=false;
 			}
 			if(areaJugador2.intersects(a)) 
@@ -178,17 +173,15 @@ public class Jugador extends Entidad implements MetodosEntidades
 			if(areaJugador8.intersects(a)) 
 			{	
 				//GestorJuego.jugador.colisionMover();
-				System.out.println("area8 siii");
 				booleanJugador8=true;
 			}
 			if(!areaJugador8.intersects(a)) 
 			{	
-				System.out.println("area8 siii");
 				//GestorJuego.jugador.colisionMover();
 				booleanJugador8=false;
 			}
 			if(booleanJugador1==true || booleanJugador2==true || booleanJugador3==true || booleanJugador4==true || booleanJugador5==true || booleanJugador6==true || booleanJugador7==true || booleanJugador8==true) {
-				System.out.println("ha entrado");
+			
 				GestorJuego.jugador.colisionMover();
 				break;
 			}
@@ -204,7 +197,7 @@ public class Jugador extends Entidad implements MetodosEntidades
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
 		DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
 		areaJugadorInfluencia=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
-		g.drawRect(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
+		g.drawRect(this.getPosicion().x-(this.getPosicion().x/4), this.getPosicion().y-(this.getPosicion().x/4), this.getAncho() + (this.getPosicion().x/2), this.getAlto()+ (this.getPosicion().x/2));
 		
 		areaJugador1= new Rectangle(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
 		g.drawRect(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);

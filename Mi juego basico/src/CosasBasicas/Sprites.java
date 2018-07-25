@@ -27,50 +27,19 @@ public class Sprites
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		pixeles=new int[imagen.getWidth() * imagen.getHeight()];
+		pixeles=new int[ancho * alto];
 		introducirImagenesArray(imagen);
 	}
-	public Color introducirImagenesArrayMapa(BufferedImage imagen) 
-	{	
-		
-			for (int x = 250; x < Constantes.ANCHO; x++) 
-			{
-				for (int y = 250; y < Constantes.ALTO; y++) 
-				{	
-					//De momento dibujaría todo el mapa
-					if(ancho > Constantes.ANCHO) {
-						
-						break;
-					}
-					if(imagen.getTransparency()==2) {
-						return null;
-						
-					}else {
-						System.out.println("El resto");
-					return Color.getColor("", this.pixeles[(x*y)]= imagen.getRGB(x, y));
-					}
-					
-					
-				}
-					
-				
-			}
-		
-		return null;
-	}
+	
 	public Color introducirImagenesArray(BufferedImage imagen) 
 	{	
 		
-			for (int x = 0; x < Constantes.ANCHO; x++) 
+			for (int x = 0; x < this.ancho; x++) 
 			{
-				for (int y = 0; y < Constantes.ALTO; y++) 
+				for (int y = 0; y < this.alto; y++) 
 				{	
-					//De momento dibujaría todo el mapa
-					if(ancho > Constantes.ANCHO) {
-						
-						break;
-					}
+					
+					
 					if(imagen.getTransparency()==2) {
 						return null;
 						
@@ -84,7 +53,6 @@ public class Sprites
 					
 				
 			}
-		
 		return null;
 	}
 	

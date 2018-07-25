@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import Controles.Raton;
 import Controles.Teclado;
 import constantes.Constantes;
+import dibujadoBasePantalla.ParteInferior;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -61,7 +62,10 @@ public class SuperficieDibujo extends Canvas {
 		}
 		if(GestorJuego.activoJuego==true) 
 		{
+			
 			gj.dibujar(g);
+			ParteInferior.dibujar(g);
+			
 		}
 		if(GestorInventario.activoInventario==true) 
 		{

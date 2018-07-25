@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
+import dibujadoBasePantalla.ParteInferior;
 import objetos.Armas;
+import objetos.Bala;
 import objetos.Objetos;
 import personajes.Jugador;
 import visual.Mapa;
@@ -24,7 +26,7 @@ public class GestorJuego extends GestorPadre
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 10); 
+	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 14); 
 	public static Rectangle rectangulo;
 	
 	public static int rectanguloAx= 0;
@@ -53,7 +55,6 @@ public class GestorJuego extends GestorPadre
 	//Aqui lo que pase mientras se juega
 	@Override
 	public void dibujar(Graphics2D g) {
-		cargarArrayObjetos();
 		
 		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
@@ -72,7 +73,8 @@ public class GestorJuego extends GestorPadre
 		rectangulo= new Rectangle(rectangulo1x,rectangulo1y,50,50);
 		g.drawRect(rectangulo.x, rectangulo.y, 50, 50);
 		//---
-		
+
+		recorrerArrayBalaMover(g);
 		
 		
 		g.drawRect(rectanguloAbx,rectanguloAby, Constantes.ANCHOMAPA, 3);
@@ -80,7 +82,8 @@ public class GestorJuego extends GestorPadre
 		g.drawRect(rectanguloDx,rectanguloDy, 3, Constantes.ALTOMAPA);
 		g.drawRect(rectanguloIx,rectanguloIy, Constantes.ANCHOMAPA, 3);
 		
-		eliminarArrayObjetos();
+		
+		
 		
 	}
 	public void dibujarArmas(Graphics2D g) 
@@ -104,5 +107,25 @@ public class GestorJuego extends GestorPadre
 	}
 	public static void eliminarArrayObjetos() {
 		objetosMapa.removeAll(objetosMapa);
+	}
+	public static void recorrerArrayBalaMover(Graphics2D g) {
+		try
+		{
+		for (Bala bala : Bala.ArrayBalas) {
+			
+			Bala.contador++;
+			
+			if(Bala.contador!=100)
+			{
+				bala.recorridoBala(bala, g);
+			}else
+			{
+				Bala.ArrayBalas.remove(bala);
+				
+			}
+		}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

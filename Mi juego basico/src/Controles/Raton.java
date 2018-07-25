@@ -38,6 +38,9 @@ public class Raton implements MouseListener
 			if(puntero.intersects(gmp.nuevaPartida)) {
 				GestorJuego.activoJuego=true;
 			}
+			if(puntero.intersects(GestorMenuPrincipal.salir)) {
+				System.exit(0);
+			}
 		}
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
@@ -52,6 +55,7 @@ public class Raton implements MouseListener
 			}
 			
 		}
+		
 		
 		
 		

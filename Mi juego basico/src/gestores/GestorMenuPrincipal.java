@@ -23,19 +23,19 @@ public class GestorMenuPrincipal extends GestorPadre
 		
 		
 		g.setColor(Color.red);
-		nuevaPartida=new Rectangle(Constantes.ANCHO/3, Constantes.ALTO/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, Constantes.ALTO/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO/3)+35, (Constantes.ALTO/3)+30, "Nueva Partida");
+		nuevaPartida=new Rectangle(Constantes.ANCHO/3, Constantes.ALTO/5, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, Constantes.ALTO/5, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, (Constantes.ALTO/4), "Nueva Partida");
 		
 		g.setColor(Color.red);
-		opciones=new Rectangle(Constantes.ANCHO/3, (Constantes.ALTO+250)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+250)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		opciones=new Rectangle(Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		
-		creditos=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+500)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+500)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		creditos=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		
-		salir=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+750)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
-		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+750)/3, Constantes.ANCHO/3, Constantes.ANCHO/12);
+		salir=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		}
 
 }

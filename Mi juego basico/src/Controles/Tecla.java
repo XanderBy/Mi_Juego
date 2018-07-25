@@ -1,12 +1,16 @@
 package Controles;
 
+import java.awt.Point;
+
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
+import objetos.Bala;
 import objetos.Objetos;
 
 public class Tecla extends Teclado
 {	
+
 	
 	public static void acciones(Teclado teclado) 
 	{
@@ -58,14 +62,22 @@ public class Tecla extends Teclado
 		if(teclado.teclado[6]==true) 
 		{	
 			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
-			
+			GestorJuego.cargarArrayObjetos();
 			for (Objetos a : GestorJuego.objetosMapa) {
 				if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.areaObjetoInfluencia)) {
+					
 					GestorJuego.jugador.cogerObjetos(a);
 					System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
 					a.cogido=true;
+					GestorJuego.objetosMapa.remove(a);
 				}
-			}
+				}
+			GestorJuego.eliminarArrayObjetos();
+		}
+		if(teclado.teclado[7]==true) 
+		{	
+			Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+			Bala bala= new Bala(posicionBala, "s");
 		}
 	}
 }
