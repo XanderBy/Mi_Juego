@@ -10,32 +10,32 @@ import objetos.Objetos;
 
 public class Tecla extends Teclado
 {	
-
+	private static String direccion;
 	
 	public static void acciones(Teclado teclado) 
 	{
 		if(teclado.teclado[0]==true) 
 		{	
 			GestorJuego.jugador.moverArriba(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoYArriba());
-			
+			direccion="norte";
 		}
 		if(teclado.teclado[1]==true) 
 		{	
 			GestorJuego.jugador.moverAbajo(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoYAbajo());
-			
+			direccion="sur";
 		}
 		if(teclado.teclado[2]==true) 
 		{	
 			
 			GestorJuego.jugador.moverIzquierda(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXIzquierda());
 			//Pasara x cosas
-			
+			direccion="oeste";
 		}
 		if(teclado.teclado[3]==true) 
 		{	
 			GestorJuego.jugador.moverDerecha(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXDerecha());
 			//Pasara x cosas
-			
+			direccion="este";
 		}
 		if(teclado.teclado[4]==true) 
 		{	
@@ -77,7 +77,7 @@ public class Tecla extends Teclado
 		if(teclado.teclado[7]==true) 
 		{	
 			Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "s");
+			Bala bala= new Bala(posicionBala, direccion);
 		}
 	}
 }

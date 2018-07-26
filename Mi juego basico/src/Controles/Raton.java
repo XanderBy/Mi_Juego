@@ -48,6 +48,7 @@ public class Raton implements MouseListener
 				System.out.println("Hola");
 			}
 			
+			
 		}
 		if(GestorEscape.activoEscape==true) {
 			if(puntero.intersects(GestorEscape.salir)) {

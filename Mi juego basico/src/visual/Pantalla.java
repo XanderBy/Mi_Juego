@@ -16,7 +16,7 @@ public class Pantalla extends JFrame {
 	{
 		this.setUndecorated(true);
 		this.setSize(ancho, alto);
-		this.setTitle("CatBie");
+		this.setTitle("The Villain Cat");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setFocusable(true);

@@ -21,7 +21,7 @@ public class GestorJuego extends GestorPadre
 	private static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
 	
 	//Principal---
-	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 10, 10, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
+	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	//---
 	

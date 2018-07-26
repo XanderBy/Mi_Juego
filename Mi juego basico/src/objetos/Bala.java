@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Bala {
 	public Point posicion;
 	private Rectangle rectangulo;
-	private String direccion;
+	public final String direccion;
 	public static int contador=0;
 	public static ArrayList<Bala>ArrayBalas=new ArrayList<Bala>();
 	
@@ -22,9 +22,35 @@ public class Bala {
 	}
 	
 	public void recorridoBala(Bala bala, Graphics2D g) {
-		bala.posicion.x++;
-		rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
-		g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+		switch(direccion)
+		{
+		case "norte":
+			bala.posicion.y--;
+			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
+			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			break;
+		case "sur":
+			bala.posicion.y++;
+			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
+			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			break;
+
+		case "este":
+			bala.posicion.x++;
+			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
+			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			break;
+
+		case "oeste":
+			bala.posicion.x--;
+			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
+			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			break;
+			default:
+				System.out.println("Error direccion bala!!");
+				break;
+		}
+		
 	}
 	 
 }
