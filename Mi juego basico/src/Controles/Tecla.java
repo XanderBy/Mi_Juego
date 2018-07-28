@@ -1,7 +1,6 @@
 package Controles;
 
 import java.awt.Point;
-
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -11,6 +10,8 @@ import objetos.Objetos;
 public class Tecla extends Teclado
 {	
 	private static String direccion;
+	public static int contDerecha=0;
+	private static int espera=0;
 	
 	public static void acciones(Teclado teclado) 
 	{
@@ -34,7 +35,21 @@ public class Tecla extends Teclado
 		if(teclado.teclado[3]==true) 
 		{	
 			GestorJuego.jugador.moverDerecha(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXDerecha());
+			
 			//Pasara x cosas
+			if(espera==5)
+			{
+				contDerecha++;
+				if(contDerecha == 2)
+				{
+					contDerecha=0;
+				}
+				espera=0;
+			}
+				espera++;
+			
+			
+			
 			direccion="este";
 		}
 		if(teclado.teclado[4]==true) 

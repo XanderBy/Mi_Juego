@@ -20,6 +20,8 @@ public class ParteInferior {
 		g.drawString("Estamina: ", SuperficieDibujo.arraySuperficie[0].getWidth()/200, (SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/35);
 		g.drawString(String.valueOf(GestorJuego.jugador.getResistencia()), SuperficieDibujo.arraySuperficie[0].getWidth()/25,(SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/35);	
 		g.drawString("Armadura: ", SuperficieDibujo.arraySuperficie[0].getWidth()/200, (SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/50);
+		g.drawString(String.valueOf(GestorJuego.jugador.getArmadura()), SuperficieDibujo.arraySuperficie[0].getWidth()/25, (SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/50);
+		
 		g.setColor(Color.white);
 		g.drawRect(SuperficieDibujo.arraySuperficie[0].getWidth()/9, (SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/27, 25, 25);
 		g.drawRect(SuperficieDibujo.arraySuperficie[0].getWidth()/9 - SuperficieDibujo.arraySuperficie[0].getWidth()/30, (SuperficieDibujo.arraySuperficie[0].getHeight()/4) - SuperficieDibujo.arraySuperficie[0].getHeight()/27, 25, 25);

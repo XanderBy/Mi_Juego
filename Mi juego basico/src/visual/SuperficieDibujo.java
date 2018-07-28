@@ -21,7 +21,7 @@ public class SuperficieDibujo extends Canvas {
 	 */
 	private static final long serialVersionUID = 1L;
 	private BufferStrategy buffer;
-	private Graphics2D g;
+	public static Graphics2D g;
 	private Dimension dimension;
 	public static Point posicionRaton;
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];

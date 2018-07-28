@@ -5,16 +5,22 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import Controles.Tecla;
 import Controles.Teclado;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
+import CosasBasicas.Sprites;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
 import objetos.Objetos;
+import visual.SuperficieDibujo;
 
 public class Jugador extends Entidad implements MetodosEntidades
 {
+
+	private int resistencia;
+	private int armadura;
 	public static Rectangle areaJugador1;
 	public static Rectangle areaJugador2;
 	public static Rectangle areaJugador3;
@@ -35,10 +41,16 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public static boolean booleanJugador7=false;
 	public static boolean booleanJugador8=false;
 	
-	public Jugador(int ancho, int alto, Point posicion, int vida, int resistencia,
+	public Jugador(int ancho, int alto, Point posicion, int vida, int resistencia,int armadura,
 			int velocidadMovimientoXIzquierda,int velocidadMovimientoYArriba,int  velocidadMovimientoXDerecha,int velocidadMovimientoYAbajo, String urlQuieto) {
-		super(ancho, alto, posicion, vida, resistencia, velocidadMovimientoXIzquierda,velocidadMovimientoYArriba,velocidadMovimientoXDerecha,velocidadMovimientoYAbajo, urlQuieto);
+		super(ancho, alto, posicion, vida, velocidadMovimientoXIzquierda,velocidadMovimientoYArriba,velocidadMovimientoXDerecha,velocidadMovimientoYAbajo, urlQuieto);
 		// TODO Auto-generated constructor stub
+		this.resistencia = resistencia;
+		this.armadura=armadura;
+		Sprites derecha1=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\1derecha.gif");
+		Sprites derecha2=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\2derecha.gif");
+		this.imagenesDerecha.add(derecha1);
+		this.imagenesDerecha.add(derecha2);
 		
 	}
 	
@@ -195,7 +207,9 @@ public class Jugador extends Entidad implements MetodosEntidades
 	{	
 		
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
-		DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
+		//DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
+		DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesDerecha.get(Tecla.contDerecha), GestorJuego.jugador);
+		
 		areaJugadorInfluencia=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
 		g.drawRect(this.getPosicion().x-(this.getPosicion().x/4), this.getPosicion().y-(this.getPosicion().x/4), this.getAncho() + (this.getPosicion().x/2), this.getAlto()+ (this.getPosicion().x/2));
 		
@@ -238,4 +252,21 @@ public class Jugador extends Entidad implements MetodosEntidades
 	{
 		inventarioArray.remove(objeto);
 	}
+	
+	public int getResistencia() {
+		return resistencia;
+	}
+
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
+	}
+
+	public int getArmadura() {
+		return armadura;
+	}
+
+	public void setArmadura(int armadura) {
+		this.armadura = armadura;
+	}
+	
 }

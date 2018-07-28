@@ -1,7 +1,5 @@
 package visual;
 
-import java.awt.Window;
-
 import javax.swing.JFrame;
 
 

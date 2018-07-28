@@ -2,6 +2,8 @@ package personajes;
 
 import java.awt.Image;
 import java.awt.Point;
+import java.util.ArrayList;
+
 import CosasBasicas.Sprites;
 
 public class Entidad
@@ -14,7 +16,6 @@ public class Entidad
 	private String urlAbajo;
 	private Sprites sprite;
 	private int vida;
-	private int resistencia;
 	private int velocidadMovimientoXIzquierda;
 	private int velocidadMovimientoYArriba;
 	private int velocidadMovimientoXDerecha;
@@ -22,16 +23,18 @@ public class Entidad
 	private Point posicion;
 	private int ancho;
 	private int alto;
-		
+	public ArrayList<Sprites> imagenesDerecha=new ArrayList<Sprites>();
+	public ArrayList<Sprites> imagenesAbajo=new ArrayList<Sprites>();
+	public ArrayList<Sprites> imagenesIzquierda=new ArrayList<Sprites>();
+	public ArrayList<Sprites> imagenesArriba=new ArrayList<Sprites>();
 	
-	public Entidad(int ancho, int alto, Point posicion, int vida, int resistencia,
+	public Entidad(int ancho, int alto, Point posicion, int vida,
 			int velocidadMovimientoXIzquierda,int velocidadMovimientoYArriba,int velocidadMovimientoXDerecha,int velocidadMovimientoYAbajo, String urlQuieto) {
 		super();
 		this.ancho=ancho;
 		this.alto=alto;
 		this.posicion=posicion;
 		this.vida = vida;
-		this.resistencia = resistencia;
 		this.velocidadMovimientoXIzquierda = velocidadMovimientoXIzquierda;
 		this.velocidadMovimientoYArriba = velocidadMovimientoYArriba;
 		this.velocidadMovimientoXDerecha = velocidadMovimientoXDerecha;
@@ -59,14 +62,6 @@ public class Entidad
 
 	public void setVida(int vida) {
 		this.vida = vida;
-	}
-
-	public int getResistencia() {
-		return resistencia;
-	}
-
-	public void setResistencia(int resistencia) {
-		this.resistencia = resistencia;
 	}
 
 	public int getVelocidadMovimientoXIzquierda() {
