@@ -15,6 +15,7 @@ public class Tecla extends Teclado
 	
 	public static void acciones(Teclado teclado) 
 	{
+		
 		if(teclado.teclado[0]==true) 
 		{	
 			GestorJuego.jugador.moverArriba(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoYArriba());

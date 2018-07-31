@@ -2,6 +2,7 @@ package CosasBasicas;
 
 import constantes.Constantes;
 import gestores.GestorJuego;
+import objetos.Objetos;
 
 public class AccionesBasicas {
 	
@@ -21,7 +22,15 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx + velocidad;
 		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx + velocidad;
 		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx + velocidad;
-		GestorJuego.arma1.posicion.x=GestorJuego.arma1.posicion.x + velocidad;
+		GestorJuego.cargarArrayObjetos();
+		for (Objetos a : GestorJuego.objetosMapa) 
+		{
+			if(a.cogido==false) 
+			{
+				a.posicion.x=a.posicion.x + velocidad;
+			}
+		}
+		GestorJuego.eliminarArrayObjetos();
 	}
 	public static void correccionXNegativo(int velocidad) 
 	{
@@ -31,7 +40,16 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx - velocidad;
 		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx - velocidad;
 		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx - velocidad;
-		GestorJuego.arma1.posicion.x=GestorJuego.arma1.posicion.x - velocidad;
+		GestorJuego.cargarArrayObjetos();
+		for (Objetos a : GestorJuego.objetosMapa) 
+		{
+			if(a.cogido==false) 
+			{
+			a.posicion.x=a.posicion.x - velocidad;
+			}
+		}
+		GestorJuego.eliminarArrayObjetos();
+		
 	}
 	public static void correccionYPositivo(int velocidad) 
 	{
@@ -41,7 +59,15 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby + velocidad;
 		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy + velocidad;
 		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy + velocidad;
-		GestorJuego.arma1.posicion.y=GestorJuego.arma1.posicion.y + velocidad;
+		GestorJuego.cargarArrayObjetos();
+		for (Objetos a : GestorJuego.objetosMapa) 
+		{
+			if(a.cogido==false) 
+			{
+				a.posicion.y=a.posicion.y + velocidad;
+			}
+		}
+		GestorJuego.eliminarArrayObjetos();
 	}
 	public static void correccionYNegativo(int velocidad) 
 	{
@@ -51,6 +77,14 @@ public class AccionesBasicas {
 		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby - velocidad;
 		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy - velocidad;
 		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy - velocidad;
-		GestorJuego.arma1.posicion.y=GestorJuego.arma1.posicion.y - velocidad;
+		GestorJuego.cargarArrayObjetos();
+		for (Objetos a : GestorJuego.objetosMapa) 
+		{
+			if(a.cogido==false) 
+			{
+				a.posicion.y=a.posicion.y - velocidad;
+			}
+		}
+		GestorJuego.eliminarArrayObjetos();
 	}
 }

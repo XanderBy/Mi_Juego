@@ -31,7 +31,9 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public static Rectangle areaJugador8;
 	public static Rectangle areaJugadorInfluencia;
 	
+	
 	public static ArrayList <Objetos> inventarioArray=new ArrayList <Objetos>();
+	
 	public static boolean booleanJugador1=false;
 	public static boolean booleanJugador2=false;
 	public static boolean booleanJugador3=false;

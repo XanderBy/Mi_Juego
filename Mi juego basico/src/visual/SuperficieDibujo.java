@@ -13,6 +13,7 @@ import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
+import gestores.GestorOpciones;
 
 public class SuperficieDibujo extends Canvas {
 
@@ -20,18 +21,30 @@ public class SuperficieDibujo extends Canvas {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
 	private BufferStrategy buffer;
+	
+	
 	public static Graphics2D g;
+	
+	
 	private Dimension dimension;
+	
+	
 	public static Point posicionRaton;
+	
+	
 	public static SuperficieDibujo[] arraySuperficie= new SuperficieDibujo[1];
+	
+	
 	private GestorJuego gj=new GestorJuego();
 	private GestorInventario gi=new GestorInventario();
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	private GestorEscape ge=new GestorEscape();
-	//Prueba esto puede que se borré
-	//-
-	//-
+	private GestorOpciones go=new GestorOpciones();
+	
+	
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
 	{
 		setPreferredSize(dimension= new Dimension(ancho, alto));
@@ -39,6 +52,7 @@ public class SuperficieDibujo extends Canvas {
 		this.addKeyListener(teclado);
 		this.addMouseListener(raton);
 	}
+	
 	
 	public void actualizar() {
 		posicionRaton=this.getMousePosition();
@@ -75,15 +89,21 @@ public class SuperficieDibujo extends Canvas {
 		{
 			ge.dibujar(g);
 		}
-		
+		if(GestorOpciones.activoOpciones==true) 
+		{
+			go.dibujar(g);
+		}
 		
 		g.dispose();
 		buffer.show();
 	}
+	
+	
 	public static SuperficieDibujo[] getArraySuperficie() {
 		return arraySuperficie;
 	}
 
+	
 	public static void setArraySuperficie(SuperficieDibujo[] arraySuperficie) {
 		SuperficieDibujo.arraySuperficie = arraySuperficie;
 	}

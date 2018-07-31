@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import gestores.GestorEscape;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
+import gestores.GestorOpciones;
 import visual.SuperficieDibujo;
 
 public class Raton implements MouseListener
@@ -41,6 +42,11 @@ public class Raton implements MouseListener
 			if(puntero.intersects(GestorMenuPrincipal.salir)) {
 				System.exit(0);
 			}
+			if(puntero.intersects(GestorMenuPrincipal.opciones)) {
+				GestorMenuPrincipal.activoMenuPrincipal=false;
+				GestorOpciones.activoOpciones=true;
+				
+			}
 		}
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
@@ -54,9 +60,14 @@ public class Raton implements MouseListener
 			if(puntero.intersects(GestorEscape.salir)) {
 				System.exit(0);
 			}
+			if(puntero.intersects(GestorEscape.opciones)) {
+				GestorEscape.activoEscape=false;
+				GestorOpciones.activoOpciones=true;
+			}
+		}
+		if(GestorOpciones.activoOpciones==true) {
 			
 		}
-		
 		
 		
 		
