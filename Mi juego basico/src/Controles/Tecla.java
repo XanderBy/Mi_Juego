@@ -1,6 +1,7 @@
 package Controles;
 
 import java.awt.Point;
+
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -9,31 +10,50 @@ import objetos.Objetos;
 
 public class Tecla extends Teclado
 {	
-	private static String direccion;
+	public static String direccion;
 	public static int contDerecha=0;
 	private static int espera=0;
 	
 	public static void acciones(Teclado teclado) 
 	{
 		
-		if(teclado.teclado[0]==true) 
+		if(teclado.tecladoPulsado[1]==true) 
 		{	
 			GestorJuego.jugador.moverArriba(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoYArriba());
 			direccion="norte";
+			if(teclado.tecladoPulsado[0]==true) {
+
+				Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+				Bala bala= new Bala(posicionBala, Tecla.direccion);
+				
+			}
 		}
-		if(teclado.teclado[1]==true) 
+		if(teclado.tecladoPulsado[2]==true) 
 		{	
 			GestorJuego.jugador.moverAbajo(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoYAbajo());
 			direccion="sur";
+			if(teclado.tecladoPulsado[0]==true) {
+
+				Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+				Bala bala= new Bala(posicionBala, Tecla.direccion);
+				
+			}
 		}
-		if(teclado.teclado[2]==true) 
+		if(teclado.tecladoPulsado[3]==true) 
 		{	
 			
 			GestorJuego.jugador.moverIzquierda(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXIzquierda());
 			//Pasara x cosas
 			direccion="oeste";
+			if(teclado.tecladoPulsado[0]==true) {
+
+				Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+				Bala bala= new Bala(posicionBala, Tecla.direccion);
+				
+			}
 		}
-		if(teclado.teclado[3]==true) 
+		
+		if(teclado.tecladoPulsado[4]==true) 
 		{	
 			GestorJuego.jugador.moverDerecha(GestorJuego.jugador.getPosicion(), GestorJuego.jugador.getVelocidadMovimientoXDerecha());
 			
@@ -51,9 +71,16 @@ public class Tecla extends Teclado
 			
 			
 			
-			direccion="este";
+			direccion="este"; 
+					if(teclado.tecladoPulsado[0]==true) {
+
+						Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+						Bala bala= new Bala(posicionBala, Tecla.direccion);
+						
+					}
+			
 		}
-		if(teclado.teclado[4]==true) 
+		if(teclado.tecladoPulsado[5]==true) 
 		{	
 			if(GestorInventario.activoInventario==true) {
 				GestorInventario.activoInventario=false;
@@ -64,7 +91,7 @@ public class Tecla extends Teclado
 			}
 			
 		}
-		if(teclado.teclado[5]==true) 
+		if(teclado.tecladoPulsado[6]==true) 
 		{	
 			if(GestorEscape.activoEscape==true) {
 				GestorEscape.activoEscape=false;
@@ -75,7 +102,7 @@ public class Tecla extends Teclado
 			}
 			
 		}
-		if(teclado.teclado[6]==true) 
+		if(teclado.tecladoPulsado[7]==true) 
 		{	
 			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
 			GestorJuego.cargarArrayObjetos();
@@ -90,10 +117,11 @@ public class Tecla extends Teclado
 				}
 			GestorJuego.eliminarArrayObjetos();
 		}
-		if(teclado.teclado[7]==true) 
-		{	
-			Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
-			Bala bala= new Bala(posicionBala, direccion);
-		}
+		//if(teclado.teclado[7]==true) 
+		//{	
+			//Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+			//Bala bala= new Bala(posicionBala, Tecla.direccion);
+			
+	//	}
 	}
 }

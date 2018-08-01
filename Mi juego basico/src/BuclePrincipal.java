@@ -12,9 +12,10 @@ public class BuclePrincipal implements Runnable
 	
 	private static boolean corriendo = false;
 	private Thread hilo = new Thread(this);
+	
 	private static Teclado teclado=new Teclado();
 	private static Raton raton= new Raton();
-	public static SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
+	static SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
 	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
 	//para los fps
 	//-
@@ -25,8 +26,8 @@ public class BuclePrincipal implements Runnable
 	{	
 		aps++;
 		dibujar();
-		teclado.actualizar();
 		raton.actualizar();
+		
 		
 	}
 
@@ -34,7 +35,6 @@ public class BuclePrincipal implements Runnable
 	public void run() 
 	{	
 		SuperficieDibujo.getArraySuperficie()[0]=sd;
-		
 		//-
 		final int NS_POR_SEGUNDO=1000000000;
 		final int APS_OBJETIVO= 120;
@@ -76,7 +76,6 @@ public class BuclePrincipal implements Runnable
 
 	public void iniciar() 
 	{
-
 		hilo.start();
 		BuclePrincipal.corriendo = true;
 
@@ -90,6 +89,7 @@ public class BuclePrincipal implements Runnable
 		{
 			corriendo = false;
 			hilo.join();
+			
 		} catch (InterruptedException e) 
 		{
 			// TODO Auto-generated catch block

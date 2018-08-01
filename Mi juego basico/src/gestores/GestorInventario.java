@@ -2,6 +2,7 @@ package gestores;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
@@ -42,7 +43,9 @@ public class GestorInventario extends GestorPadre {
 			contY+= SuperficieDibujo.arraySuperficie[0].getHeight()/4;
 			for (int j = 0; j < GestorJuego.jugador.inventarioArray.size(); j++) 
 			{
+				Point posicionNueva=new Point(AccionesBasicas.escalarPantallaX(contX), AccionesBasicas.escalarPantallaY(contY));
 				
+				GestorJuego.jugador.inventarioArray.get(i+j).posicion=posicionNueva;
 				DibujosBasicos.pintarImagenArmas(g, GestorJuego.jugador.inventarioArray.get(i+j).sprite,(Armas) GestorJuego.jugador.inventarioArray.get(i+j));
 				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 			}

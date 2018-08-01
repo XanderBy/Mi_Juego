@@ -21,14 +21,16 @@ public class Raton implements MouseListener
 	
 	public void actualizar()
 	{	
-		//Esta mal coge la posicion de la pantalla
-		SuperficieDibujo.arraySuperficie[0].actualizar();
-		puntaRaton=SuperficieDibujo.arraySuperficie[0].posicionRaton;
-		//System.out.println("posicion raton:" + puntaRaton);
-		if(puntaRaton==null) {
-			puntaRaton=new Point(0, 0);
-		}
-		puntero= new Rectangle((int) puntaRaton.getX(),(int) puntaRaton.getY(), 2, 2);
+		
+		
+			SuperficieDibujo.arraySuperficie[0].actualizar();
+			puntaRaton=SuperficieDibujo.arraySuperficie[0].posicionRaton;
+			//System.out.println("posicion raton:" + puntaRaton);
+			if(puntaRaton==null) {
+				puntaRaton=new Point(0, 0);
+			}
+			puntero= new Rectangle((int) puntaRaton.getX(),(int) puntaRaton.getY(), 2, 2);
+			
 		
 	}
 	
@@ -53,6 +55,8 @@ public class Raton implements MouseListener
 			if(puntero.intersects(GestorJuego.rectangulo)) {
 				System.out.println("Hola");
 			}
+				
+			
 			
 			
 		}
@@ -100,5 +104,5 @@ public class Raton implements MouseListener
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 }

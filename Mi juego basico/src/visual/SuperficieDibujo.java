@@ -25,7 +25,6 @@ public class SuperficieDibujo extends Canvas {
 	
 	private BufferStrategy buffer;
 	
-	
 	public static Graphics2D g;
 	
 	
