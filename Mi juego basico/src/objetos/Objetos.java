@@ -26,8 +26,8 @@ public class Objetos
 		this.ancho = ancho;
 		this.alto = alto;
 		cargarImagen(ancho, alto, url);
-		areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
-		cogido=false;
+		this.areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
+		this.cogido=false;
 	}
 
 
@@ -36,21 +36,52 @@ public class Objetos
 		sprite= new Sprites(ancho, alto, url);
 	}
 	
-	public void dibujar(Graphics2D g, Armas arma) 
+	public void dibujar(Graphics2D g, Objetos arma) 
 	{
-		if(cogido==false)
+		if(arma.isCogido()==false)
 		{
-			DibujosBasicos.pintarImagenArmas(g, arma.sprite, arma);
-			areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
+			//System.out.println("No cogido");
+			DibujosBasicos.pintarImagenArmas(g, arma.sprite, (Armas) arma);
+			arma.areaObjetoInfluencia=new Rectangle(this.posicion.x, this.posicion.y, this.ancho, this.alto);
 		}else {
 			try
 			{
-			areaObjetoInfluencia=null;
+				arma.areaObjetoInfluencia=new Rectangle(100000, 100000, 0, 0);
 			}catch (Exception e) 
 			{
 				// TODO: handle exception
 			}
 		}
+	}
+
+
+	public Point getPosicion() {
+		return posicion;
+	}
+
+
+	public void setPosicion(Point posicion) {
+		this.posicion = posicion;
+	}
+
+
+	public boolean isCogido() {
+		return cogido;
+	}
+
+
+	public void setCogido(boolean cogido) {
+		this.cogido = cogido;
+	}
+
+
+	public Rectangle getAreaObjetoInfluencia() {
+		return areaObjetoInfluencia;
+	}
+
+
+	public void setAreaObjetoInfluencia(Rectangle areaObjetoInfluencia) {
+		this.areaObjetoInfluencia = areaObjetoInfluencia;
 	}
 	
 }

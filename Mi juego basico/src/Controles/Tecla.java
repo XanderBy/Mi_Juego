@@ -106,22 +106,27 @@ public class Tecla extends Teclado
 		{	
 			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
 			GestorJuego.cargarArrayObjetos();
-			for (Objetos a : GestorJuego.objetosMapa) {
-				if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.areaObjetoInfluencia)) {
+			System.out.println(GestorJuego.objetosMapa.size());
+			for (Objetos a : GestorJuego.objetosMapa) 
+			{
+				System.out.println(a.getAreaObjetoInfluencia());
+				if(GestorJuego.jugador.areaJugadorInfluencia.intersects(a.getAreaObjetoInfluencia())) 
+				{
 					
 					GestorJuego.jugador.cogerObjetos(a);
 					System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
-					a.cogido=true;
-					GestorJuego.objetosMapa.remove(a);
+					a.setCogido(true);
+					
+					break;
 				}
 				}
 			GestorJuego.eliminarArrayObjetos();
 		}
-		//if(teclado.teclado[7]==true) 
-		//{	
-			//Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
-			//Bala bala= new Bala(posicionBala, Tecla.direccion);
+		if(teclado.tecladoPulsado[0]==true) 
+		{	
+			Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
+			Bala bala= new Bala(posicionBala, Tecla.direccion);
 			
-	//	}
+		}
 	}
 }

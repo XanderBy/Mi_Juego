@@ -18,6 +18,8 @@ import visual.Mapa;
 public class GestorJuego extends GestorPadre
 {	
 	private static Point posicionObjeto1=new Point(AccionesBasicas.escalarPantallaX(300), AccionesBasicas.escalarPantallaY(300));
+	private static Point posicionObjeto2=new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(400));
+	
 	private static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
 	
 	//Principal---
@@ -27,6 +29,8 @@ public class GestorJuego extends GestorPadre
 	
 	
 	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 14); 
+	public static Armas arma2=new Armas(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 14); 
+	
 	public static Rectangle rectangulo;
 	
 	public static int rectanguloAx= 0;
@@ -89,6 +93,7 @@ public class GestorJuego extends GestorPadre
 	public void dibujarArmas(Graphics2D g) 
 	{
 		arma1.dibujar(g, arma1);
+		arma2.dibujar(g, arma2);
 	}
 	public static void cargarArrayColisiones() 
 	{
@@ -104,6 +109,7 @@ public class GestorJuego extends GestorPadre
 	}
 	public static void cargarArrayObjetos() {
 		objetosMapa.add(arma1);
+		objetosMapa.add(arma2);
 	}
 	public static void eliminarArrayObjetos() {
 		objetosMapa.removeAll(objetosMapa);

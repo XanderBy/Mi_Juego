@@ -22,6 +22,7 @@ public class GestorInventario extends GestorPadre {
 		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
 		g.setColor(Color.WHITE);
+		//Superficie Dibujada
 		for (int i = 0; i < 3; i++) 
 		{
 			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
@@ -35,18 +36,49 @@ public class GestorInventario extends GestorPadre {
 		}
 		contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 		contY=0;
-		
-		
-		for (int i = 0; i < GestorJuego.jugador.inventarioArray.size(); i++) 
+		int largo=0;
+		if(GestorJuego.jugador.inventarioArray.size()<=3)
+		{
+			largo=1;
+		}
+		if(3 < GestorJuego.jugador.inventarioArray.size() && GestorJuego.jugador.inventarioArray.size()<=6)
+		{
+			largo=2;
+		}
+		if(6 < GestorJuego.jugador.inventarioArray.size() && GestorJuego.jugador.inventarioArray.size()<=9)
+		{
+			largo=3;
+		}
+		int ancho=0;
+		if(GestorJuego.jugador.inventarioArray.size()<=3)
+		{
+			ancho=2;
+		}
+		if(3 < GestorJuego.jugador.inventarioArray.size() && GestorJuego.jugador.inventarioArray.size()<=6)
+		{
+			ancho=3;
+		}
+		if(6 < GestorJuego.jugador.inventarioArray.size() && GestorJuego.jugador.inventarioArray.size()<=9)
+		{
+			ancho=4;
+		}
+
+		//objetos dibujados
+		for (int i = 0; i < largo; i++) 
 		{
 			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 			contY+= SuperficieDibujo.arraySuperficie[0].getHeight()/4;
-			for (int j = 0; j < GestorJuego.jugador.inventarioArray.size(); j++) 
+			for (int j = 0; j < ancho; j++) 
 			{
+				if(i+j == (GestorJuego.jugador.inventarioArray.size())) {
+					break;
+				}
 				Point posicionNueva=new Point(AccionesBasicas.escalarPantallaX(contX), AccionesBasicas.escalarPantallaY(contY));
 				
-				GestorJuego.jugador.inventarioArray.get(i+j).posicion=posicionNueva;
-				DibujosBasicos.pintarImagenArmas(g, GestorJuego.jugador.inventarioArray.get(i+j).sprite,(Armas) GestorJuego.jugador.inventarioArray.get(i+j));
+					GestorJuego.jugador.inventarioArray.get(i+j).posicion=posicionNueva;
+					DibujosBasicos.pintarImagenArmas(g, GestorJuego.jugador.inventarioArray.get(i+j).sprite,(Armas) GestorJuego.jugador.inventarioArray.get(i+j));
+					
+				
 				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 			}
 		}
