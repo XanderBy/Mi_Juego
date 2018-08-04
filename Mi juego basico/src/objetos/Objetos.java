@@ -12,20 +12,24 @@ public class Objetos
 	public Point posicion;
 	public Rectangle areaObjetoInfluencia;
 	private String url;
+	private String urlInventario;
 	public Sprites sprite;
+	public Sprites spriteInventario;
 	public int ancho;
 	public int alto;
 	public boolean cogido=false;
 	
 	
-	public Objetos(Point posicion, String url, int ancho, int alto) 
+	public Objetos(Point posicion, String url,String urlInventario, int ancho, int alto) 
 	{
 		super();
 		this.posicion = posicion;
 		this.url = url;
+		this.urlInventario = urlInventario;
 		this.ancho = ancho;
 		this.alto = alto;
 		cargarImagen(ancho, alto, url);
+		cargarImagenInventario(ancho, alto, urlInventario);
 		this.areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
 		this.cogido=false;
 	}
@@ -36,6 +40,10 @@ public class Objetos
 		sprite= new Sprites(ancho, alto, url);
 	}
 	
+	public void cargarImagenInventario(int ancho, int alto, String urlInventario) 
+	{
+		spriteInventario= new Sprites(ancho, alto, urlInventario);
+	}
 	public void dibujar(Graphics2D g, Objetos arma) 
 	{
 		if(arma.isCogido()==false)

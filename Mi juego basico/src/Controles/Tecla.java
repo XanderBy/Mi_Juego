@@ -95,7 +95,7 @@ public class Tecla extends Teclado
 		{	
 			if(GestorEscape.activoEscape==true) {
 				GestorEscape.activoEscape=false;
-				GestorJuego.activoJuego=true;
+				GestorJuego.activoJuego=false;
 			}else {
 				GestorEscape.activoEscape=true;
 				GestorJuego.activoJuego=false;

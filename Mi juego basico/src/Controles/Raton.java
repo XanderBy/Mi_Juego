@@ -6,9 +6,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import gestores.GestorEscape;
+import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 import gestores.GestorOpciones;
+import objetos.Objetos;
 import visual.SuperficieDibujo;
 
 public class Raton implements MouseListener
@@ -18,6 +20,7 @@ public class Raton implements MouseListener
 	private Rectangle puntero;
 	private SuperficieDibujo sd;
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
+	public static Objetos recuadroInventario=null;
 	
 	public void actualizar()
 	{	
@@ -37,7 +40,8 @@ public class Raton implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{	
-		if(GestorMenuPrincipal.activoMenuPrincipal==true) {
+		if(GestorMenuPrincipal.activoMenuPrincipal==true) 
+		{
 			if(puntero.intersects(gmp.nuevaPartida)) {
 				GestorJuego.activoJuego=true;
 			}
@@ -50,6 +54,7 @@ public class Raton implements MouseListener
 				
 			}
 		}
+		
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
 			if(puntero.intersects(GestorJuego.rectangulo)) {
@@ -72,7 +77,32 @@ public class Raton implements MouseListener
 		if(GestorOpciones.activoOpciones==true) {
 			
 		}
-		
+		if(GestorInventario.activoInventario==true) 
+		{
+			if(e.getButton()== e.BUTTON3)
+			{
+				for (Objetos a : GestorJuego.jugador.inventarioArray) 
+				{	
+					
+					if (puntero.intersects(a.getAreaObjetoInfluencia())) {
+						System.out.println(23111111);
+						recuadroInventario=a;
+						break;
+					}
+				}
+			}
+			
+			if(e.getButton()== e.BUTTON1 || e.getButton()== e.BUTTON3)
+			{
+				for (Objetos a : GestorJuego.jugador.inventarioArray) 
+				{	
+					if (!puntero.intersects(a.getAreaObjetoInfluencia())) {
+						System.out.println("nah");
+						recuadroInventario=null;
+					}
+				}
+			}
+		}
 		
 		
 	}

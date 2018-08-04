@@ -3,7 +3,10 @@ package gestores;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 
+import Controles.Raton;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
@@ -19,7 +22,7 @@ public class GestorInventario extends GestorPadre {
 	public void dibujar(Graphics2D g) {
 		g.setColor(Color.darkGray);
 		g.fillRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
+		//g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
 		g.setColor(Color.WHITE);
 		//Superficie Dibujada
@@ -30,7 +33,7 @@ public class GestorInventario extends GestorPadre {
 			for (int j = 0; j < 3; j++) 
 			{
 				
-				g.drawRect(AccionesBasicas.escalarPantallaX(contX), AccionesBasicas.escalarPantallaY(contY), 25, 25);
+				g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
 				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 			}
 		}
@@ -73,18 +76,25 @@ public class GestorInventario extends GestorPadre {
 				if(i+j == (GestorJuego.jugador.inventarioArray.size())) {
 					break;
 				}
-				Point posicionNueva=new Point(AccionesBasicas.escalarPantallaX(contX), AccionesBasicas.escalarPantallaY(contY));
-				
-					GestorJuego.jugador.inventarioArray.get(i+j).posicion=posicionNueva;
-					DibujosBasicos.pintarImagenArmas(g, GestorJuego.jugador.inventarioArray.get(i+j).sprite,(Armas) GestorJuego.jugador.inventarioArray.get(i+j));
+				Point posicionNueva=new Point(contX, contY);
 					
-				
+					GestorJuego.jugador.inventarioArray.get(i+j).posicion=posicionNueva;
+					//System.out.println(posicionNueva);
+					g.drawImage(GestorJuego.jugador.inventarioArray.get(i+j).spriteInventario.imagen, GestorJuego.jugador.inventarioArray.get(i+j).posicion.x, GestorJuego.jugador.inventarioArray.get(i+j).posicion.y, GestorJuego.jugador.inventarioArray.get(i+j).spriteInventario.introducirImagenesArray(GestorJuego.jugador.inventarioArray.get(i+j).spriteInventario.imagen), null);
+					  
+					GestorJuego.jugador.inventarioArray.get(i+j).areaObjetoInfluencia= new Rectangle(GestorJuego.jugador.inventarioArray.get(i+j).posicion.x, GestorJuego.jugador.inventarioArray.get(i+j).posicion.y, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
+					
+					
 				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 			}
 		}
 		contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
 		contY=0;
-		
+		if(Raton.recuadroInventario!=null) {
+			g.setColor(Color.GREEN);
+			g.fillRect(Raton.recuadroInventario.posicion.x + 10, Raton.recuadroInventario.posicion.y + 10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
+			
+		}
 		
 	}
 

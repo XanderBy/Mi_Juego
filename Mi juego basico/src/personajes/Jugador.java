@@ -55,7 +55,11 @@ public class Jugador extends Entidad implements MetodosEntidades
 		this.imagenesDerecha.add(derecha2);
 		
 	}
-	
+	public void refrescarInventario() {
+		for (Objetos a : inventarioArray) {
+			a.getPosicion();
+		}
+	}
 	public void moverArriba(Point posicion, int velocidadMovimiento) {
 		GestorJuego.mapa.posicion.y=GestorJuego.mapa.posicion.y +velocidadMovimiento;
 		AccionesBasicas.correccionYPositivo(velocidadMovimiento);

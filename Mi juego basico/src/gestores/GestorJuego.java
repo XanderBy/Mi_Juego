@@ -28,8 +28,8 @@ public class GestorJuego extends GestorPadre
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 14); 
-	public static Armas arma2=new Armas(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", 10, 14); 
+	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14); 
+	public static Armas arma2=new Armas(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14); 
 	
 	public static Rectangle rectangulo;
 	
