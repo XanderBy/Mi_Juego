@@ -59,29 +59,44 @@ public class GestorInventario extends GestorPadre {
 		
 		contY=0;
 		int largo=0;
-		if(GestorJuego.jugador.inventarioArray.length<=3)
+		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+			
+			if(GestorJuego.jugador.inventarioArray[i]==null) {
+				break;
+			}
+			largo++;
+		}
+		if(largo<=3)
 		{
 			largo=1;
 		}
-		if(3 < GestorJuego.jugador.inventarioArray.length && GestorJuego.jugador.inventarioArray.length<=6)
+		if(3 < largo && largo<=6)
 		{
 			largo=2;
 		}
-		if(6 < GestorJuego.jugador.inventarioArray.length && GestorJuego.jugador.inventarioArray.length<=9)
+		if(6 < largo && largo<=9)
 		{
 			largo=3;
 		}
 		int ancho=0;
-		if(GestorJuego.jugador.inventarioArray.length<=3)
+		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+			
+			if(GestorJuego.jugador.inventarioArray[i]==null) {
+				break;
+			}
+			ancho++;
+		}
+		if(ancho<=3)
 		{
 			ancho=2;
 		}
-		if(3 < GestorJuego.jugador.inventarioArray.length && GestorJuego.jugador.inventarioArray.length<=6)
+		if(3 < ancho && ancho<=6)
 		{
 			ancho=3;
 		}
-		if(6 < GestorJuego.jugador.inventarioArray.length && GestorJuego.jugador.inventarioArray.length<=9)
+		if(6 < ancho && ancho<=9)
 		{
+			
 			ancho=4;
 		}
 
@@ -97,7 +112,7 @@ public class GestorInventario extends GestorPadre {
 				}
 				try {
 				Point posicionNueva=new Point(contX, contY);
-					System.out.println(i+j);
+					//System.out.println(i+j);
 					GestorJuego.jugador.inventarioArray[i+j].posicion=posicionNueva;
 					//System.out.println(posicionNueva);
 					g.drawImage(GestorJuego.jugador.inventarioArray[i+j].spriteInventario.imagen, GestorJuego.jugador.inventarioArray[i+j].posicion.x, GestorJuego.jugador.inventarioArray[i+j].posicion.y, GestorJuego.jugador.inventarioArray[i+j].spriteInventario.introducirImagenesArray(GestorJuego.jugador.inventarioArray[i+j].spriteInventario.imagen), null);
@@ -134,6 +149,8 @@ public class GestorInventario extends GestorPadre {
 		}
 		if(poderMover==true) 
 		{
+			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
+			contY=0;
 			g.setColor(Color.ORANGE);
 			//Superficie Dibujada
 			for (int i = 0; i < 3; i++) 

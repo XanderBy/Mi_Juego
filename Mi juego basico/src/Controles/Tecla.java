@@ -106,7 +106,7 @@ public class Tecla extends Teclado
 		{	
 			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.length);
 			GestorJuego.cargarArrayObjetos();
-			System.out.println(GestorJuego.objetosMapa.size());
+			//System.out.println(GestorJuego.objetosMapa.size());
 			for (Objetos a : GestorJuego.objetosMapa) 
 			{
 				System.out.println(a.getAreaObjetoInfluencia());

@@ -57,6 +57,7 @@ public class Raton implements MouseListener
 			}
 		}
 		
+		
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
 			if(puntero.intersects(GestorJuego.rectangulo)) {
@@ -67,6 +68,8 @@ public class Raton implements MouseListener
 			
 			
 		}
+		
+		
 		if(GestorEscape.activoEscape==true) {
 			if(puntero.intersects(GestorEscape.salir)) {
 				System.exit(0);
@@ -76,9 +79,13 @@ public class Raton implements MouseListener
 				GestorOpciones.activoOpciones=true;
 			}
 		}
+		
+		
 		if(GestorOpciones.activoOpciones==true) {
 			
 		}
+		
+		
 		if(GestorInventario.activoInventario==true) 
 		{
 			
@@ -87,9 +94,12 @@ public class Raton implements MouseListener
 				
 				if(puntero.intersects(GestorInventario.moverObjeto)) 
 				{
+					posicionObjetos=GestorInventario.moverObjeto.getLocation();
+					GestorInventario.poderMover=false;
 					System.out.println("Hola");
 				}
 			}
+			
 			try
 			{
 				if(puntero.intersects(GestorInventario.mover)) 
@@ -137,10 +147,17 @@ public class Raton implements MouseListener
 			{
 				for (Objetos a : GestorJuego.jugador.inventarioArray) 
 				{	
-					if (!puntero.intersects(a.getAreaObjetoInfluencia())) {
+					try
+					{
+						if (!puntero.intersects(a.getAreaObjetoInfluencia())) {
+							
+							recuadroInventario=null;
+						}
+					}catch (Exception ee) 
+					{
 						
-						recuadroInventario=null;
 					}
+					
 				}
 			}
 		}
