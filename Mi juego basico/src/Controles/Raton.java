@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import CosasBasicas.AccionesBasicas;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -21,6 +22,7 @@ public class Raton implements MouseListener
 	private SuperficieDibujo sd;
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	public static Objetos recuadroInventario=null;
+	public Point posicionObjetos;
 	
 	public void actualizar()
 	{	
@@ -79,6 +81,45 @@ public class Raton implements MouseListener
 		}
 		if(GestorInventario.activoInventario==true) 
 		{
+			
+			if(GestorInventario.poderMover==true)
+			{
+				
+				if(puntero.intersects(GestorInventario.moverObjeto)) 
+				{
+					System.out.println("Hola");
+				}
+			}
+			try
+			{
+				if(puntero.intersects(GestorInventario.mover)) 
+				{
+					GestorInventario.poderMover=true;
+				}
+				if(puntero.intersects(GestorInventario.soltar)) 
+				{
+					for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+						//GestorJuego.jugador.inventarioArray.remove(recuadroInventario);
+						if(GestorJuego.jugador.inventarioArray[i]==recuadroInventario)
+						{
+							GestorJuego.jugador.inventarioArray[i]=null;
+						}
+					}
+					
+					recuadroInventario.cogido=false;
+					posicionObjetos=new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
+					recuadroInventario.posicion=posicionObjetos;
+					
+					recuadroInventario=null;
+				}
+				if(puntero.intersects(GestorInventario.utilizar)) 
+				{
+					
+				}
+			}catch(NullPointerException ee) {
+				
+			}
+			
 			if(e.getButton()== e.BUTTON3)
 			{
 				for (Objetos a : GestorJuego.jugador.inventarioArray) 
@@ -92,12 +133,12 @@ public class Raton implements MouseListener
 				}
 			}
 			
-			if(e.getButton()== e.BUTTON1 || e.getButton()== e.BUTTON3)
+			if(e.getButton()== e.BUTTON1)
 			{
 				for (Objetos a : GestorJuego.jugador.inventarioArray) 
 				{	
 					if (!puntero.intersects(a.getAreaObjetoInfluencia())) {
-						System.out.println("nah");
+						
 						recuadroInventario=null;
 					}
 				}

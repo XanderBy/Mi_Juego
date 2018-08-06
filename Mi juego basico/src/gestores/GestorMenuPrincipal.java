@@ -25,17 +25,24 @@ public class GestorMenuPrincipal extends GestorPadre
 		g.setColor(Color.red);
 		nuevaPartida=new Rectangle(Constantes.ANCHO/3, Constantes.ALTO/5, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		g.fillRect( Constantes.ANCHO/3, Constantes.ALTO/5, Constantes.ANCHO/3, Constantes.ANCHO/18);
-		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, (Constantes.ALTO/4), "Nueva Partida");
+		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, (Constantes.ALTO/4), "NUEVA PARTIDA");
 		
 		g.setColor(Color.red);
 		opciones=new Rectangle(Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO + (Constantes.ALTO/2))/4, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, ((Constantes.ALTO/3)+ (Constantes.ALTO/2))/2, "OPCIONES");
 		
+		g.setColor(Color.red);
 		creditos=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/3, Constantes.ANCHO/3, Constantes.ANCHO/18);
+		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, ((Constantes.ALTO/9)+ (Constantes.ALTO/2)+ (Constantes.ALTO/2))/2, "CREDITOS");
 		
+		g.setColor(Color.red);
 		salir=new Rectangle( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
 		g.fillRect( Constantes.ANCHO/3, (Constantes.ALTO+ (Constantes.ALTO/2))/2, Constantes.ANCHO/3, Constantes.ANCHO/18);
-		}
+		DibujosBasicos.pintarTexto(g, (Constantes.ANCHO - (Constantes.ANCHO/13))/2, (Constantes.ALTO+ (Constantes.ALTO/2)+(Constantes.ALTO/9))/2, "SALIR DEL JUEGO");
+		
+	
+	}
 
 }

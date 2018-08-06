@@ -20,7 +20,7 @@ public class GestorJuego extends GestorPadre
 	private static Point posicionObjeto1=new Point(AccionesBasicas.escalarPantallaX(300), AccionesBasicas.escalarPantallaY(300));
 	private static Point posicionObjeto2=new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(400));
 	
-	private static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
+	public static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
 	
 	//Principal---
 	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");

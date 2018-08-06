@@ -32,8 +32,8 @@ public class Jugador extends Entidad implements MetodosEntidades
 	public static Rectangle areaJugadorInfluencia;
 	
 	
-	public static ArrayList <Objetos> inventarioArray=new ArrayList <Objetos>();
-	
+	//public static ArrayList <Objetos> inventarioArray=new ArrayList <Objetos>();
+	public static Objetos[] inventarioArray=new Objetos[9];
 	public static boolean booleanJugador1=false;
 	public static boolean booleanJugador2=false;
 	public static boolean booleanJugador3=false;
@@ -252,11 +252,29 @@ public class Jugador extends Entidad implements MetodosEntidades
 	}
 	public void cogerObjetos(Objetos objeto) 
 	{
-		inventarioArray.add(objeto);
+		for (int i = 0; i < inventarioArray.length; i++) 
+		{
+			if(inventarioArray[i]==null)
+			{
+				inventarioArray[i]=objeto;
+				break;
+			}
+			
+		}
+		
 	}
 	public void soltarObjetos(Objetos objeto) 
 	{
-		inventarioArray.remove(objeto);
+		//inventarioArray.remove(objeto);
+		for (int i = 0; i < inventarioArray.length; i++) 
+		{
+			if(inventarioArray[i]==objeto)
+			{
+				inventarioArray[i]=null;
+				break;
+			}
+			
+		}
 	}
 	
 	public int getResistencia() {

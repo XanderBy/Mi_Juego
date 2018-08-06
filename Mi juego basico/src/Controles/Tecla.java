@@ -95,7 +95,7 @@ public class Tecla extends Teclado
 		{	
 			if(GestorEscape.activoEscape==true) {
 				GestorEscape.activoEscape=false;
-				GestorJuego.activoJuego=false;
+				GestorJuego.activoJuego=true;
 			}else {
 				GestorEscape.activoEscape=true;
 				GestorJuego.activoJuego=false;
@@ -104,7 +104,7 @@ public class Tecla extends Teclado
 		}
 		if(teclado.tecladoPulsado[7]==true) 
 		{	
-			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
+			System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.length);
 			GestorJuego.cargarArrayObjetos();
 			System.out.println(GestorJuego.objetosMapa.size());
 			for (Objetos a : GestorJuego.objetosMapa) 
@@ -114,7 +114,7 @@ public class Tecla extends Teclado
 				{
 					
 					GestorJuego.jugador.cogerObjetos(a);
-					System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.size());
+					System.out.println("el inventario del personaje es" + GestorJuego.jugador.inventarioArray.length);
 					a.setCogido(true);
 					
 					break;
