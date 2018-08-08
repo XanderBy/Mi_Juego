@@ -1,11 +1,13 @@
 package Controles;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import CosasBasicas.AccionesBasicas;
+import constantes.Constantes;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -23,6 +25,7 @@ public class Raton implements MouseListener
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	public static Objetos recuadroInventario=null;
 	public Point posicionObjetos;
+	public static Dimension tamanoPantalla;
 	
 	public void actualizar()
 	{	
@@ -42,6 +45,8 @@ public class Raton implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{	
+		
+		
 		if(GestorMenuPrincipal.activoMenuPrincipal==true) 
 		{	
 			GestorInventario.activoInventario=false;
@@ -51,6 +56,7 @@ public class Raton implements MouseListener
 			
 			if(puntero.intersects(gmp.nuevaPartida)) {
 				GestorJuego.activoJuego=true;
+				Constantes.dondeEncuentraMenu=false;
 			}
 			if(puntero.intersects(GestorMenuPrincipal.salir)) {
 				System.exit(0);
@@ -77,28 +83,55 @@ public class Raton implements MouseListener
 		}
 		
 		
-		if(GestorEscape.activoEscape==true) {
+		if(GestorEscape.activoEscape==true) 
+		{
 			GestorMenuPrincipal.activoMenuPrincipal=false;
 			GestorInventario.activoInventario=false;
 			GestorJuego.activoJuego=false;
 			GestorOpciones.activoOpciones=false;
-			if(puntero.intersects(GestorEscape.salir)) {
+			if(puntero.intersects(GestorEscape.salirJuego)) {
 				System.exit(0);
 			}
+			
 			if(puntero.intersects(GestorEscape.opciones)) {
+				
 				GestorOpciones.activoOpciones=true;
+			}
+			 
+			if(puntero.intersects(GestorEscape.salirMenu)) {
+				System.out.println("Hola");
+				Constantes.dondeEncuentraMenu=true;
+				GestorMenuPrincipal.activoMenuPrincipal=true;
+				
 			}
 		}
 		
 		
 		if(GestorOpciones.activoOpciones==true) 
 		{
-
+			GestorEscape.activoEscape=false;
+			GestorMenuPrincipal.activoMenuPrincipal=false;
+			
 			if(puntero.intersects(GestorOpciones.cerrar))
 			{
 				GestorOpciones.activoOpciones=false;
+				if(Constantes.dondeEncuentraMenu==true) 
+				{
+					GestorMenuPrincipal.activoMenuPrincipal=true;
+				}else {
+					GestorEscape.activoEscape=true;
+				}
 			}
 			
+			if(puntero.intersects(GestorOpciones.p1920x1080))
+			{
+				tamanoPantalla=new Dimension(1920, 1080);
+				Constantes.arrayPantalla.get(0).setSize(tamanoPantalla);
+				Constantes.arrayPantalla.get(0).setLocation(0, 0);
+				//SuperficieDibujo.arraySuperficie[0].setSize(tamanoPantalla);
+				Constantes.ALTO=1080;
+				Constantes.ANCHO=1920;
+			}
 		}
 		
 		

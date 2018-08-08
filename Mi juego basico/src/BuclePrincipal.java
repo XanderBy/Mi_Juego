@@ -17,6 +17,7 @@ public class BuclePrincipal implements Runnable
 	private static Raton raton= new Raton();
 	static SuperficieDibujo sd= new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
 	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
+	
 	//para los fps
 	//-
 	private static int fps=0;
@@ -35,6 +36,7 @@ public class BuclePrincipal implements Runnable
 	public void run() 
 	{	
 		SuperficieDibujo.getArraySuperficie()[0]=sd;
+		Constantes.arrayPantalla.add(pantalla);
 		//-
 		final int NS_POR_SEGUNDO=1000000000;
 		final int APS_OBJETIVO= 120;

@@ -17,6 +17,7 @@ import visual.Mapa;
 
 public class GestorJuego extends GestorPadre
 {	
+	
 	private static Point posicionObjeto1=new Point(AccionesBasicas.escalarPantallaX(300), AccionesBasicas.escalarPantallaY(300));
 	private static Point posicionObjeto2=new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(400));
 	
@@ -133,5 +134,11 @@ public class GestorJuego extends GestorPadre
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	public static Rectangle getRectangulo() {
+		return rectangulo;
+	}
+	public static void setRectangulo(Rectangle rectangulo) {
+		GestorJuego.rectangulo = rectangulo;
 	}
 }

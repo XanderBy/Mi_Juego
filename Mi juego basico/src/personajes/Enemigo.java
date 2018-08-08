@@ -8,10 +8,12 @@ import interfaces.MetodosEntidades;
 public class Enemigo extends Entidad implements MetodosEntidades
 {
 
-	public Enemigo(int ancho, int alto, Point posicionInicio, int vida,
-			int velocidadMovimiento, String urlQuieto) 
-	{
-		super(ancho, alto, posicionInicio, vida, velocidadMovimiento, velocidadMovimiento, velocidadMovimiento, velocidadMovimiento, urlQuieto);
+	
+	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
+			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
+			String urlQuieto) {
+		super(ancho, alto, posicion, vida, velocidadMovimientoXIzquierda, velocidadMovimientoYArriba,
+				velocidadMovimientoXDerecha, velocidadMovimientoYAbajo, urlQuieto);
 		// TODO Auto-generated constructor stub
 	}
 
