@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import constantes.Constantes;
-import gestores.GestorJuego;
 
 public class Sprites 
 {

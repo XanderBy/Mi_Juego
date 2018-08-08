@@ -49,6 +49,7 @@ public class Raton implements MouseListener
 		
 		if(GestorMenuPrincipal.activoMenuPrincipal==true) 
 		{	
+			GestorJuego.contadorJugador=0;
 			GestorInventario.activoInventario=false;
 			GestorJuego.activoJuego=false;
 			GestorEscape.activoEscape=false;

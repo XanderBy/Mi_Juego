@@ -3,6 +3,7 @@ package CosasBasicas;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import objetos.Objetos;
+import visual.Mapa;
 
 public class AccionesBasicas {
 	
@@ -18,10 +19,10 @@ public class AccionesBasicas {
 	{
 		//GestorJuego.rectangulo.x=GestorJuego.rectangulo.x +velocidad;
 		GestorJuego.rectangulo1x=GestorJuego.rectangulo1x + velocidad;
-		GestorJuego.rectanguloIx= GestorJuego.rectanguloIx + velocidad;
-		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx + velocidad;
-		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx + velocidad;
-		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx + velocidad;
+		Mapa.rectanguloIx= Mapa.rectanguloIx + velocidad;
+		Mapa.rectanguloAbx= Mapa.rectanguloAbx + velocidad;
+		Mapa.rectanguloAx= Mapa.rectanguloAx + velocidad;
+		Mapa.rectanguloDx= Mapa.rectanguloDx + velocidad;
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -36,10 +37,10 @@ public class AccionesBasicas {
 	{
 		//GestorJuego.rectangulo.x=GestorJuego.rectangulo.x - velocidad;
 		GestorJuego.rectangulo1x=GestorJuego.rectangulo1x - velocidad;
-		GestorJuego.rectanguloIx= GestorJuego.rectanguloIx - velocidad;
-		GestorJuego.rectanguloAbx= GestorJuego.rectanguloAbx - velocidad;
-		GestorJuego.rectanguloAx= GestorJuego.rectanguloAx - velocidad;
-		GestorJuego.rectanguloDx= GestorJuego.rectanguloDx - velocidad;
+		Mapa.rectanguloIx= Mapa.rectanguloIx - velocidad;
+		Mapa.rectanguloAbx= Mapa.rectanguloAbx - velocidad;
+		Mapa.rectanguloAx= Mapa.rectanguloAx - velocidad;
+		Mapa.rectanguloDx= Mapa.rectanguloDx - velocidad;
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -55,10 +56,10 @@ public class AccionesBasicas {
 	{
 		//GestorJuego.rectangulo.y=GestorJuego.rectangulo.y + velocidad;
 		GestorJuego.rectangulo1y=GestorJuego.rectangulo1y + velocidad;
-		GestorJuego.rectanguloIy= GestorJuego.rectanguloIy + velocidad;
-		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby + velocidad;
-		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy + velocidad;
-		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy + velocidad;
+		Mapa.rectanguloIy= Mapa.rectanguloIy + velocidad;
+		Mapa.rectanguloAby= Mapa.rectanguloAby + velocidad;
+		Mapa.rectanguloAy= Mapa.rectanguloAy + velocidad;
+		Mapa.rectanguloDy= Mapa.rectanguloDy + velocidad;
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -73,10 +74,10 @@ public class AccionesBasicas {
 	{
 		//GestorJuego.rectangulo.y=GestorJuego.rectangulo.y - velocidad;
 		GestorJuego.rectangulo1y=GestorJuego.rectangulo1y - velocidad;
-		GestorJuego.rectanguloIy= GestorJuego.rectanguloIy - velocidad;
-		GestorJuego.rectanguloAby= GestorJuego.rectanguloAby - velocidad;
-		GestorJuego.rectanguloAy= GestorJuego.rectanguloAy - velocidad;
-		GestorJuego.rectanguloDy= GestorJuego.rectanguloDy - velocidad;
+		Mapa.rectanguloIy= Mapa.rectanguloIy - velocidad;
+		Mapa.rectanguloAby= Mapa.rectanguloAby - velocidad;
+		Mapa.rectanguloAy= Mapa.rectanguloAy - velocidad;
+		Mapa.rectanguloDy= Mapa.rectanguloDy - velocidad;
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{

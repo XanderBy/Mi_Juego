@@ -1,7 +1,11 @@
 package constantes;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
+import gestores.GestorJuego;
+import personajes.Jugador;
+import visual.Mapa;
 import visual.Pantalla;
 
 public class Constantes {
@@ -15,4 +19,10 @@ public class Constantes {
 	public static ArrayList <Pantalla> arrayPantalla=new ArrayList<Pantalla>();
 	public static boolean dondeEncuentraMenu=true;
 	
+	
+	public static void volverTodoCero() {
+		GestorJuego.jugador= new Jugador(30, 55, GestorJuego.posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
+		GestorJuego.mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
+		GestorJuego.mapa.posicion=new Point(0, 0);
+	}
 }

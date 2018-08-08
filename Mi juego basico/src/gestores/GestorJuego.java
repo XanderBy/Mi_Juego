@@ -24,6 +24,7 @@ public class GestorJuego extends GestorPadre
 	public static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
 	
 	//Principal---
+	public static int contadorJugador=0;
 	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
 	//---
@@ -34,18 +35,7 @@ public class GestorJuego extends GestorPadre
 	
 	public static Rectangle rectangulo;
 	
-	public static int rectanguloAx= 0;
-	public static int rectanguloAy= 0;
-	public static Rectangle paredArriba;
-	public static int rectanguloDx= Constantes.ANCHOMAPA;
-	public static int rectanguloDy= 0;
-	public static Rectangle paredDerecha;
-	public static int rectanguloIx= 0;
-	public static int rectanguloIy= 0;
-	public static Rectangle paredIzquierda;
-	public static int rectanguloAbx= 0;
-	public static int rectanguloAby= Constantes.ALTOMAPA;
-	public static Rectangle paredAbajo;
+	
 	
 	public static boolean activoJuego=false;
 	
@@ -61,6 +51,13 @@ public class GestorJuego extends GestorPadre
 	@Override
 	public void dibujar(Graphics2D g) {
 		
+			
+		if(contadorJugador==0) {
+			
+			//Se volverian a generar los objetos
+			Constantes.volverTodoCero();
+			contadorJugador++;
+		}
 		g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
 		
 		//Importante
@@ -69,10 +66,10 @@ public class GestorJuego extends GestorPadre
 		jugador.dibujar(g);
 		
 		
-		paredAbajo= new Rectangle(rectanguloAbx,rectanguloAby, Constantes.ANCHOMAPA, 3);
-		paredIzquierda= new Rectangle(rectanguloIx,rectanguloIy, 3, Constantes.ALTOMAPA);
-		paredArriba= new Rectangle(rectanguloAx,rectanguloAy, Constantes.ANCHOMAPA, 3);
-		paredDerecha= new Rectangle(rectanguloDx,rectanguloDy, 3, Constantes.ALTOMAPA);
+		Mapa.paredAbajo= new Rectangle(Mapa.rectanguloAbx,Mapa.rectanguloAby, Constantes.ANCHOMAPA, 3);
+		Mapa.paredIzquierda= new Rectangle(Mapa.rectanguloIx,Mapa.rectanguloIy, 3, Constantes.ALTOMAPA);
+		Mapa.paredArriba= new Rectangle(Mapa.rectanguloAx,Mapa.rectanguloAy, Constantes.ANCHOMAPA, 3);
+		Mapa.paredDerecha= new Rectangle(Mapa.rectanguloDx,Mapa.rectanguloDy, 3, Constantes.ALTOMAPA);
 		//---
 		//Prueba
 		rectangulo= new Rectangle(rectangulo1x,rectangulo1y,50,50);
@@ -82,10 +79,10 @@ public class GestorJuego extends GestorPadre
 		recorrerArrayBalaMover(g);
 		
 		
-		g.drawRect(rectanguloAbx,rectanguloAby, Constantes.ANCHOMAPA, 3);
-		g.drawRect(rectanguloAx,rectanguloAy, 3, Constantes.ALTOMAPA);
-		g.drawRect(rectanguloDx,rectanguloDy, 3, Constantes.ALTOMAPA);
-		g.drawRect(rectanguloIx,rectanguloIy, Constantes.ANCHOMAPA, 3);
+		g.drawRect(Mapa.rectanguloAbx,Mapa.rectanguloAby, Constantes.ANCHOMAPA, 3);
+		g.drawRect(Mapa.rectanguloAx,Mapa.rectanguloAy, 3, Constantes.ALTOMAPA);
+		g.drawRect(Mapa.rectanguloDx,Mapa.rectanguloDy, 3, Constantes.ALTOMAPA);
+		g.drawRect(Mapa.rectanguloIx,Mapa.rectanguloIy, Constantes.ANCHOMAPA, 3);
 		
 		
 		
@@ -99,10 +96,10 @@ public class GestorJuego extends GestorPadre
 	public static void cargarArrayColisiones() 
 	{
 		colisiones.add(rectangulo);
-		colisiones.add(paredArriba);
-		colisiones.add(paredAbajo);
-		colisiones.add(paredIzquierda);
-		colisiones.add(paredDerecha);
+		colisiones.add(Mapa.paredArriba);
+		colisiones.add(Mapa.paredAbajo);
+		colisiones.add(Mapa.paredIzquierda);
+		colisiones.add(Mapa.paredDerecha);
 	}
 	public static void eliminarArrayColisiones()
 	{	
