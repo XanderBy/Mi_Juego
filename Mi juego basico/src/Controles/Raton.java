@@ -43,7 +43,12 @@ public class Raton implements MouseListener
 	public void mouseClicked(MouseEvent e)
 	{	
 		if(GestorMenuPrincipal.activoMenuPrincipal==true) 
-		{
+		{	
+			GestorInventario.activoInventario=false;
+			GestorJuego.activoJuego=false;
+			GestorEscape.activoEscape=false;
+			GestorOpciones.activoOpciones=false;
+			
 			if(puntero.intersects(gmp.nuevaPartida)) {
 				GestorJuego.activoJuego=true;
 			}
@@ -51,7 +56,6 @@ public class Raton implements MouseListener
 				System.exit(0);
 			}
 			if(puntero.intersects(GestorMenuPrincipal.opciones)) {
-				GestorMenuPrincipal.activoMenuPrincipal=false;
 				GestorOpciones.activoOpciones=true;
 				
 			}
@@ -60,6 +64,9 @@ public class Raton implements MouseListener
 		
 		if(GestorJuego.activoJuego==true) {
 			GestorMenuPrincipal.activoMenuPrincipal=false;
+			GestorInventario.activoInventario=false;
+			GestorEscape.activoEscape=false;
+			GestorOpciones.activoOpciones=false;
 			if(puntero.intersects(GestorJuego.rectangulo)) {
 				System.out.println("Hola");
 			}
@@ -71,23 +78,36 @@ public class Raton implements MouseListener
 		
 		
 		if(GestorEscape.activoEscape==true) {
+			GestorMenuPrincipal.activoMenuPrincipal=false;
+			GestorInventario.activoInventario=false;
+			GestorJuego.activoJuego=false;
+			GestorOpciones.activoOpciones=false;
 			if(puntero.intersects(GestorEscape.salir)) {
 				System.exit(0);
 			}
 			if(puntero.intersects(GestorEscape.opciones)) {
-				GestorEscape.activoEscape=false;
 				GestorOpciones.activoOpciones=true;
 			}
 		}
 		
 		
-		if(GestorOpciones.activoOpciones==true) {
+		if(GestorOpciones.activoOpciones==true) 
+		{
+
+			if(puntero.intersects(GestorOpciones.cerrar))
+			{
+				GestorOpciones.activoOpciones=false;
+			}
 			
 		}
 		
 		
 		if(GestorInventario.activoInventario==true) 
 		{
+			GestorMenuPrincipal.activoMenuPrincipal=false;
+			GestorJuego.activoJuego=false;
+			GestorEscape.activoEscape=false;
+			GestorOpciones.activoOpciones=false;
 			
 			if(GestorInventario.poderMover==true)
 			{
