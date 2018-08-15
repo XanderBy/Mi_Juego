@@ -12,6 +12,7 @@ import dibujadoBasePantalla.ParteInferior;
 import objetos.Armas;
 import objetos.Bala;
 import objetos.Objetos;
+import personajes.Enemigo;
 import personajes.Jugador;
 import visual.Mapa;
 
@@ -22,11 +23,13 @@ public class GestorJuego extends GestorPadre
 	private static Point posicionObjeto2=new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(400));
 	
 	public static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
+	public static Point posicionEnemigo1= new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(500));
 	
 	//Principal---
 	public static int contadorJugador=0;
 	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
+	public Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "");
 	//---
 	
 	
@@ -39,6 +42,7 @@ public class GestorJuego extends GestorPadre
 	
 	public static boolean activoJuego=false;
 	
+	public static ArrayList<Enemigo> enemigos=new ArrayList<Enemigo>();
 	public static ArrayList<Rectangle> colisiones=new ArrayList<Rectangle>();
 	public static ArrayList<Objetos> objetosMapa=new ArrayList<Objetos>();
 	
@@ -53,7 +57,7 @@ public class GestorJuego extends GestorPadre
 		
 			
 		if(contadorJugador==0) {
-			
+			enemigos.add(enemigo1);
 			//Se volverian a generar los objetos
 			Constantes.volverTodoCero();
 			contadorJugador++;
@@ -64,7 +68,7 @@ public class GestorJuego extends GestorPadre
 		mapa.dibujar(g);
 		dibujarArmas(g);
 		jugador.dibujar(g);
-		
+		enemigo1.dibujar(g);
 		
 		Mapa.paredAbajo= new Rectangle(Mapa.rectanguloAbx,Mapa.rectanguloAby, Constantes.ANCHOMAPA, 3);
 		Mapa.paredIzquierda= new Rectangle(Mapa.rectanguloIx,Mapa.rectanguloIy, 3, Constantes.ALTOMAPA);

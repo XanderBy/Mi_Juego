@@ -1,5 +1,7 @@
 package CosasBasicas;
 
+import java.awt.Point;
+
 import constantes.Constantes;
 import gestores.GestorJuego;
 import objetos.Objetos;
@@ -23,6 +25,9 @@ public class AccionesBasicas {
 		Mapa.rectanguloAbx= Mapa.rectanguloAbx + velocidad;
 		Mapa.rectanguloAx= Mapa.rectanguloAx + velocidad;
 		Mapa.rectanguloDx= Mapa.rectanguloDx + velocidad;
+		Point posicion=new Point(GestorJuego.enemigos.get(0).getPosicion().x + velocidad, GestorJuego.enemigos.get(0).getPosicion().y);
+		GestorJuego.enemigos.get(0).setPosicion(posicion);
+		
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -32,6 +37,7 @@ public class AccionesBasicas {
 			}
 		}
 		GestorJuego.eliminarArrayObjetos();
+		
 	}
 	public static void correccionXNegativo(int velocidad) 
 	{
@@ -41,6 +47,9 @@ public class AccionesBasicas {
 		Mapa.rectanguloAbx= Mapa.rectanguloAbx - velocidad;
 		Mapa.rectanguloAx= Mapa.rectanguloAx - velocidad;
 		Mapa.rectanguloDx= Mapa.rectanguloDx - velocidad;
+		Point posicion=new Point(GestorJuego.enemigos.get(0).getPosicion().x - velocidad, GestorJuego.enemigos.get(0).getPosicion().y);
+		GestorJuego.enemigos.get(0).setPosicion(posicion);
+		
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -60,6 +69,8 @@ public class AccionesBasicas {
 		Mapa.rectanguloAby= Mapa.rectanguloAby + velocidad;
 		Mapa.rectanguloAy= Mapa.rectanguloAy + velocidad;
 		Mapa.rectanguloDy= Mapa.rectanguloDy + velocidad;
+		Point posicion=new Point(GestorJuego.enemigos.get(0).getPosicion().x, GestorJuego.enemigos.get(0).getPosicion().y + velocidad);
+		GestorJuego.enemigos.get(0).setPosicion(posicion);
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -69,6 +80,7 @@ public class AccionesBasicas {
 			}
 		}
 		GestorJuego.eliminarArrayObjetos();
+		
 	}
 	public static void correccionYNegativo(int velocidad) 
 	{
@@ -78,6 +90,9 @@ public class AccionesBasicas {
 		Mapa.rectanguloAby= Mapa.rectanguloAby - velocidad;
 		Mapa.rectanguloAy= Mapa.rectanguloAy - velocidad;
 		Mapa.rectanguloDy= Mapa.rectanguloDy - velocidad;
+		Point posicion=new Point(GestorJuego.enemigos.get(0).getPosicion().x, GestorJuego.enemigos.get(0).getPosicion().y - velocidad);
+		GestorJuego.enemigos.get(0).setPosicion(posicion);
+		
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) 
 		{
@@ -87,5 +102,6 @@ public class AccionesBasicas {
 			}
 		}
 		GestorJuego.eliminarArrayObjetos();
+		
 	}
 }
