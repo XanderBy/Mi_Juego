@@ -1,6 +1,7 @@
 package Controles;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import gestores.GestorEscape;
 import gestores.GestorInventario;
@@ -15,6 +16,8 @@ public class Tecla extends Teclado
 	public static String direccion;
 	public static int contDerecha=0;
 	private static int espera=0;
+	
+	public static ArrayList<Bala> arrayBalas=new ArrayList<Bala>();
 	
 	public static void acciones(Teclado teclado) 
 	{
@@ -129,6 +132,7 @@ public class Tecla extends Teclado
 			{	
 				Point posicionBala=new Point(GestorJuego.jugador.getPosicion().x, GestorJuego.jugador.getPosicion().y);
 				Bala bala= new Bala(posicionBala, Tecla.direccion);
+				Tecla.arrayBalas.add(bala);
 				
 			}
 		}else

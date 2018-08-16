@@ -6,6 +6,8 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.sound.midi.Synthesizer;
+
 import CosasBasicas.AccionesBasicas;
 import constantes.Constantes;
 import gestores.GestorEscape;
@@ -24,8 +26,10 @@ public class Raton implements MouseListener
 	private SuperficieDibujo sd;
 	private GestorMenuPrincipal gmp=new GestorMenuPrincipal();
 	public static Objetos recuadroInventario=null;
+	public static Objetos objetoMover=null;
 	public Point posicionObjetos;
 	public static Dimension tamanoPantalla;
+	
 	
 	public void actualizar()
 	{	
@@ -146,11 +150,21 @@ public class Raton implements MouseListener
 			if(GestorInventario.poderMover==true)
 			{
 				
-				if(puntero.intersects(GestorInventario.moverObjeto)) 
+				if(puntero.intersects(GestorInventario.moverObjeto02)) 
 				{
-					posicionObjetos=GestorInventario.moverObjeto.getLocation();
+					System.out.println(objetoMover);
+					//posicionObjetos=GestorInventario.moverObjeto02.getLocation();
+					//objetoMover.posicion=GestorInventario.moverObjeto02.getLocation();
+					for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+						if(GestorJuego.jugador.inventarioArray[i]==objetoMover) {
+							GestorJuego.jugador.inventarioArray[i]=null;
+							break;
+						}
+					}
+					
+					GestorJuego.jugador.inventarioArray[2]=objetoMover;
 					GestorInventario.poderMover=false;
-					System.out.println("Hola");
+					
 				}
 			}
 			
@@ -186,14 +200,24 @@ public class Raton implements MouseListener
 			
 			if(e.getButton()== e.BUTTON3)
 			{
+				for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+					System.out.println(GestorJuego.jugador.inventarioArray[i] + " dwaaaaaaa");
+				}
 				for (Objetos a : GestorJuego.jugador.inventarioArray) 
 				{	
-					
-					if (puntero.intersects(a.getAreaObjetoInfluencia())) {
-						System.out.println(23111111);
-						recuadroInventario=a;
-						break;
+					try {
+						System.out.println(a + " dwaaaaaaa");
+						if (puntero.intersects(a.getAreaObjetoInfluencia())) {
+							System.out.println(23111111);
+							recuadroInventario=a;
+							objetoMover=a;
+							break;
+						}
+					}catch (NullPointerException ee) {
+						// TODO: handle exception
+						
 					}
+					
 				}
 			}
 			

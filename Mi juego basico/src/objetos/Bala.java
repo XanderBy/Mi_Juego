@@ -7,9 +7,10 @@ import java.util.ArrayList;
 
 public class Bala {
 	public Point posicion;
-	private Rectangle rectangulo;
+	public Rectangle rectangulo;
 	public final String direccion;
 	public static int contador=0;
+	public int contadorVida=0;
 	public static ArrayList<Bala>ArrayBalas=new ArrayList<Bala>();
 	
 	
@@ -28,23 +29,27 @@ public class Bala {
 			bala.posicion.y--;
 			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			bala.contadorVida++;
 			break;
 		case "sur":
 			bala.posicion.y++;
 			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			bala.contadorVida++;
 			break;
 
 		case "este":
 			bala.posicion.x++;
 			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			bala.contadorVida++;
 			break;
 
 		case "oeste":
 			bala.posicion.x--;
 			rectangulo=new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			bala.contadorVida++;
 			break;
 			default:
 				System.out.println("Error direccion bala!!");

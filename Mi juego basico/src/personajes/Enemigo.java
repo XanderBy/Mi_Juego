@@ -2,13 +2,18 @@ package personajes;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
+
+import Controles.Tecla;
 import CosasBasicas.DibujosBasicos;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
+import objetos.Bala;
 
 public class Enemigo extends Entidad implements MetodosEntidades
 {
-
+	public Rectangle areaCuerpo;
+	public Rectangle areaDano;
 	private long tiempoAhora= 0;
 	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
 			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
@@ -17,15 +22,33 @@ public class Enemigo extends Entidad implements MetodosEntidades
 				velocidadMovimientoXDerecha, velocidadMovimientoYAbajo, urlQuieto);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public void actualizar()
+	{
+		this.moverse();
+		try {
+			for (Bala a : Tecla.arrayBalas) {
+				if(a.rectangulo.intersects(GestorJuego.enemigos.get(0).areaCuerpo)) {
+					System.out.println("Ha dado");
+					a.rectangulo=new Rectangle(111111111, 111111111, 0, 0);
+					a=null;
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			
+		}
+	}
+	
 	@Override
 	public void dibujar(Graphics2D g) 
 	{
 		DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);
+		areaCuerpo=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
+		actualizar();
 		
-		this.moverse();
 	}
-
+	
 	@Override
 	public void dano(int dano) 
 	{
@@ -44,10 +67,10 @@ public class Enemigo extends Entidad implements MetodosEntidades
 		int aleatorio= (int) (Math.random() * 2) + 1;
 		switch (aleatorio) {
 		case 1:
-			System.out.println(this.getPosicion().x);
+			//System.out.println(this.getPosicion().x);
 			if(this.getPosicion().x > posicionJugador.getX() && tiempoAhora== 100) 
 			{
-				System.out.println("wdaaaa");
+				
 				posicionEnemigoX=posicionEnemigoX-1;
 				posicionEnemigoNueva=new Point(posicionEnemigoX, posicionEnemigoY);
 				this.setPosicion(posicionEnemigoNueva);

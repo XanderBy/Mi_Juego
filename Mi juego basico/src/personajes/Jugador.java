@@ -13,6 +13,7 @@ import CosasBasicas.Sprites;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
+import objetos.Bala;
 import objetos.Objetos;
 import visual.SuperficieDibujo;
 
@@ -211,6 +212,17 @@ public class Jugador extends Entidad implements MetodosEntidades
 	@Override
 	public void dibujar(Graphics2D g) 
 	{	
+		try {
+			for (Bala a : Tecla.arrayBalas) {
+				if(a.contadorVida==100) {
+					Tecla.arrayBalas.remove(a);
+					a=null;
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			
+		}
 		
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
 		//DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);

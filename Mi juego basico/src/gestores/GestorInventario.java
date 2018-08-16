@@ -14,160 +14,204 @@ import objetos.Armas;
 import visual.SuperficieDibujo;
 
 public class GestorInventario extends GestorPadre {
-	public static boolean activoInventario=false;
-	
-	private static int contX=0;
-	private static int contY=0;
-	
-	public static boolean poderMover=false;
-	public static Rectangle moverObjeto;
-	
+	public static boolean activoInventario = false;
+
+	private static int contX = 0;
+	private static int contY = 0;
+	private static int contadorInventario=-1;
+
+	public static boolean poderMover = false;
+	public static Rectangle moverObjeto00;
+	public static Rectangle moverObjeto01;
+	public static Rectangle moverObjeto02;
+	public static Rectangle moverObjeto10;
+	public static Rectangle moverObjeto11;
+	public static Rectangle moverObjeto12;
+	public static Rectangle moverObjeto20;
+	public static Rectangle moverObjeto21;
+	public static Rectangle moverObjeto22;
+	public static Rectangle moverObjeto30;
+	public static Rectangle moverObjeto31;
+	public static Rectangle moverObjeto32;
+
 	public static Rectangle mover;
 	public static Rectangle soltar;
 	public static Rectangle utilizar;
+
 	@Override
 	public void dibujar(Graphics2D g) {
 		g.setColor(Color.darkGray);
 		g.fillRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		//g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
-		
+		// g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
+
 		g.setColor(Color.WHITE);
-		//Superficie Dibujada
-		for (int i = 0; i < 3; i++) 
-		{
-			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-			contY+= SuperficieDibujo.arraySuperficie[0].getHeight()/4;
-			for (int j = 0; j < 3; j++) 
-			{
-				
-				g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
-				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
+		// Superficie Dibujada
+		for (int i = 0; i < 3; i++) {
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+			for (int j = 0; j < 3; j++) {
+
+				g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+						SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+				contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
 			}
-		}	
-		
-		contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-		contY=0;
-		
-		//Armaduras
-		contX=(SuperficieDibujo.arraySuperficie[0].getWidth()/4)+(SuperficieDibujo.arraySuperficie[0].getWidth()/2);
-		for (int i = 0; i < 3; i++) 
-		{
-			contY+=SuperficieDibujo.arraySuperficie[0].getHeight()/5;
-			g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
-			
-		}
-		
-		contY=0;
-		int largo=0;
-		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
-			
-			if(GestorJuego.jugador.inventarioArray[i]==null) {
-				break;
-			}
-			largo++;
-		}
-		if(largo<=3)
-		{
-			largo=1;
-		}
-		if(3 < largo && largo<=6)
-		{
-			largo=2;
-		}
-		if(6 < largo && largo<=9)
-		{
-			largo=3;
-		}
-		int ancho=0;
-		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
-			
-			if(GestorJuego.jugador.inventarioArray[i]==null) {
-				break;
-			}
-			ancho++;
-		}
-		if(ancho<=3)
-		{
-			ancho=2;
-		}
-		if(3 < ancho && ancho<=6)
-		{
-			ancho=3;
-		}
-		if(6 < ancho && ancho<=9)
-		{
-			
-			ancho=4;
 		}
 
-		//objetos dibujados
-		for (int i = 0; i < largo; i++) 
-		{
-			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-			contY+= SuperficieDibujo.arraySuperficie[0].getHeight()/4;
-			for (int j = 0; j < ancho; j++) 
-			{
-				if(i+j == (GestorJuego.jugador.inventarioArray.length)) {
+		contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+		contY = 0;
+
+		// Armaduras
+		contX = (SuperficieDibujo.arraySuperficie[0].getWidth() / 4)
+				+ (SuperficieDibujo.arraySuperficie[0].getWidth() / 2);
+		for (int i = 0; i < 3; i++) {
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 5;
+			g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+
+		}
+
+		contY = 0;
+		
+		//System.out.println("------------------------------");
+		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+			//System.out.println("Objeto" + GestorJuego.jugador.inventarioArray[i]);
+		}
+		//System.out.println("------------------------------");
+		// objetos dibujados
+		for (int i = 0; i < 3; i++) {
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+			
+			for (int j = 0; j < 3; j++) {
+				if (contadorInventario == (GestorJuego.jugador.inventarioArray.length - 1)) {
 					break;
 				}
-				try {
-				Point posicionNueva=new Point(contX, contY);
-					//System.out.println(i+j);
-					GestorJuego.jugador.inventarioArray[i+j].posicion=posicionNueva;
-					//System.out.println(posicionNueva);
-					g.drawImage(GestorJuego.jugador.inventarioArray[i+j].spriteInventario.imagen, GestorJuego.jugador.inventarioArray[i+j].posicion.x, GestorJuego.jugador.inventarioArray[i+j].posicion.y, GestorJuego.jugador.inventarioArray[i+j].spriteInventario.introducirImagenesArray(GestorJuego.jugador.inventarioArray[i+j].spriteInventario.imagen), null);
-					  
-					GestorJuego.jugador.inventarioArray[i+j].areaObjetoInfluencia= new Rectangle(GestorJuego.jugador.inventarioArray[i+j].posicion.x, GestorJuego.jugador.inventarioArray[i+j].posicion.y, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
-				}catch (Exception e) {
-					// TODO: handle exception
+				contadorInventario++;
+				if (GestorJuego.jugador.inventarioArray[contadorInventario] != null) {
+					try {
+						Point posicionNueva = new Point(contX, contY);
+						//System.out.println(posicionNueva);
+						GestorJuego.jugador.inventarioArray[contadorInventario].posicion = posicionNueva;
+						// System.out.println(posicionNueva);
+						g.drawImage(GestorJuego.jugador.inventarioArray[contadorInventario].spriteInventario.imagen,
+								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x,
+								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y,
+								GestorJuego.jugador.inventarioArray[contadorInventario].spriteInventario.introducirImagenesArray(
+										GestorJuego.jugador.inventarioArray[contadorInventario].spriteInventario.imagen),
+								null);
+						//System.out.println(GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x + "  " + GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y);
+						GestorJuego.jugador.inventarioArray[contadorInventario].areaObjetoInfluencia = new Rectangle(
+								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x,
+								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y,
+								SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+								SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 				}
-					
-				contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
+				contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
 			}
+
+			
 		}
-		contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-		contY=0;
-		if(Raton.recuadroInventario!=null) 
-		{
+		contadorInventario=-1;
+		contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+		contY = 0;
+		if (Raton.recuadroInventario != null) {
 			g.setColor(Color.GREEN);
-			g.drawRect(Raton.recuadroInventario.posicion.x, Raton.recuadroInventario.posicion.y, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
+			g.drawRect(Raton.recuadroInventario.posicion.x, Raton.recuadroInventario.posicion.y,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
 			g.setColor(Color.BLACK);
-			g.fillRect(Raton.recuadroInventario.posicion.x,  10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			soltar=new Rectangle(Raton.recuadroInventario.posicion.x,  10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			
-			g.fillRect(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/7, 10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			mover=new Rectangle(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/7, 10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			
-			g.fillRect(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/3, 10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			utilizar= new Rectangle(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/3, 10, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/30);
-			
+			g.fillRect(Raton.recuadroInventario.posicion.x, 10, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+			soltar = new Rectangle(Raton.recuadroInventario.posicion.x, 10,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+
+			g.fillRect(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 7, 10,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+			mover = new Rectangle(
+					Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 7, 10,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+
+			g.fillRect(Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 3, 10,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+			utilizar = new Rectangle(
+					Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 3, 10,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 30);
+
 			g.setColor(Color.white);
 			DibujosBasicos.pintarTexto(g, Raton.recuadroInventario.posicion.x, 30, "Soltar");
-			DibujosBasicos.pintarTexto(g, Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/7, 30, "Mover");
-			DibujosBasicos.pintarTexto(g, Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth()/3, 30, "Utilizar");
-			
+			DibujosBasicos.pintarTexto(g,
+					Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 7, 30,
+					"Mover");
+			DibujosBasicos.pintarTexto(g,
+					Raton.recuadroInventario.posicion.x + SuperficieDibujo.arraySuperficie[0].getWidth() / 3, 30,
+					"Utilizar");
+
 		}
-		if(poderMover==true) 
-		{
-			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-			contY=0;
+		if (poderMover == true) {
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY = 0;
 			g.setColor(Color.ORANGE);
-			//Superficie Dibujada
-			for (int i = 0; i < 3; i++) 
-			{
-				contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-				contY+= SuperficieDibujo.arraySuperficie[0].getHeight()/4;
-				for (int j = 0; j < 3; j++) 
-				{
-					moverObjeto=new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
-					g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth()/9, SuperficieDibujo.arraySuperficie[0].getWidth()/9);
-					contX+= SuperficieDibujo.arraySuperficie[0].getWidth()/9;
+			// Superficie Dibujada
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+
+			moverObjeto00 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto01 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto02 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+			moverObjeto10 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto11 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto12 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+			moverObjeto20 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto21 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			moverObjeto22 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+
+			contY = 0;
+			g.setColor(Color.ORANGE);
+			for (int i = 0; i < 3; i++) {
+				contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+				contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+				for (int j = 0; j < 3; j++) {
+					g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+							SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+					contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
 				}
 			}
-			contX=SuperficieDibujo.arraySuperficie[0].getWidth()/9;
-			contY=0;
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY = 0;
+
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY = 0;
 		}
-		
+
 	}
 
 }
