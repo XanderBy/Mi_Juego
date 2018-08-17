@@ -18,9 +18,9 @@ public class Objetos
 	public int ancho;
 	public int alto;
 	public boolean cogido=false;
+	public TipoObjetos tipoObjeto;
 	
-	
-	public Objetos(Point posicion, String url,String urlInventario, int ancho, int alto) 
+	public Objetos(Point posicion, String url,String urlInventario, int ancho, int alto, TipoObjetos tipoObjetos) 
 	{
 		super();
 		this.posicion = posicion;
@@ -28,6 +28,7 @@ public class Objetos
 		this.urlInventario = urlInventario;
 		this.ancho = ancho;
 		this.alto = alto;
+		this.tipoObjeto=tipoObjetos;
 		cargarImagen(ancho, alto, url);
 		cargarImagenInventario(ancho, alto, urlInventario);
 		this.areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
@@ -90,6 +91,16 @@ public class Objetos
 
 	public void setAreaObjetoInfluencia(Rectangle areaObjetoInfluencia) {
 		this.areaObjetoInfluencia = areaObjetoInfluencia;
+	}
+
+
+	public TipoObjetos getTipoObjeto() {
+		return tipoObjeto;
+	}
+
+
+	public void setTipoObjeto(TipoObjetos tipoObjeto) {
+		this.tipoObjeto = tipoObjeto;
 	}
 	
 }

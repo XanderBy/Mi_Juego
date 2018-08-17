@@ -16,6 +16,7 @@ import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 import gestores.GestorOpciones;
 import objetos.Objetos;
+import objetos.TipoObjetos;
 import visual.SuperficieDibujo;
 
 public class Raton implements MouseListener {
@@ -172,7 +173,19 @@ public class Raton implements MouseListener {
 					recuadroInventario = null;
 				}
 				if (puntero.intersects(GestorInventario.utilizar)) {
-
+					if(objetoMover.tipoObjeto==TipoObjetos.MEDICINAL && GestorJuego.jugador.getVida()+Constantes.VIDA <=100 ) {
+						GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
+					}
+					if(objetoMover.tipoObjeto==TipoObjetos.ESTAMINA && GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <=100) {
+						GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA);
+						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+							if(GestorJuego.jugador.inventarioArray[i]==objetoMover) {
+								GestorJuego.jugador.inventarioArray[i]=null;
+								
+							}
+						}
+						
+					}
 				}
 			} catch (NullPointerException ee) {
 

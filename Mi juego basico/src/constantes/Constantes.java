@@ -18,6 +18,10 @@ public class Constantes {
 	public static final int ALTOMAPA=640;
 	public static ArrayList <Pantalla> arrayPantalla=new ArrayList<Pantalla>();
 	public static boolean dondeEncuentraMenu=true;
+	public static final int ESTAMINA=10;
+	public static final int VIDA=10;
+	public static final int VELOCIDAD=10;
+	
 	
 	
 	public static void volverTodoCero() {
