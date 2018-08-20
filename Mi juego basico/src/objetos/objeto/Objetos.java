@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import Controles.Tecla;
 import CosasBasicas.DibujosBasicos;
 import CosasBasicas.Sprites;
 import constantes.Constantes;
@@ -45,6 +46,8 @@ public class Objetos {
 	public void actualizar() {
 		if (this.usar == true) {
 			if (this.getTipoObjeto().equals(TipoObjetos.ARMAS)) {
+				//Aqui se tendría que cambiar la imagen del jugador para tener el arma actual
+				((Armas) Tecla.objetoElegido).poderDisparar=true;
 			}
 			if (this.getTipoObjeto().equals(TipoObjetos.ESTAMINA)) {
 				if (this.tipoObjeto == TipoObjetos.ESTAMINA
