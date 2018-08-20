@@ -9,10 +9,12 @@ import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
 import dibujadoBasePantalla.ParteInferior;
-import objetos.Objetos;
 import objetos.TipoObjetos;
 import objetos.armas.Armas;
 import objetos.balas.Bala;
+import objetos.objeto.ObjetoEstamina;
+import objetos.objeto.ObjetoVida;
+import objetos.objeto.Objetos;
 import personajes.Enemigo;
 import personajes.Jugador;
 import visual.Mapa;
@@ -34,8 +36,8 @@ public class GestorJuego extends GestorPadre
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.MEDICINAL); 
-	public static Armas arma2=new Armas(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ESTAMINA); 
+	public static ObjetoVida arma1=new ObjetoVida(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.MEDICINAL,10); 
+	public static ObjetoEstamina arma2=new ObjetoEstamina(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ESTAMINA,10); 
 	
 	public static Rectangle rectangulo;
 	

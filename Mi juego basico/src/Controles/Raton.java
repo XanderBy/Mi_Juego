@@ -15,8 +15,8 @@ import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 import gestores.GestorOpciones;
-import objetos.Objetos;
 import objetos.TipoObjetos;
+import objetos.objeto.Objetos;
 import visual.SuperficieDibujo;
 
 public class Raton implements MouseListener {
@@ -128,29 +128,29 @@ public class Raton implements MouseListener {
 			GestorOpciones.activoOpciones = false;
 
 			if (GestorInventario.poderMover == true) {
-				for (int i=0; i<GestorInventario.recuadros.length; i++) {
+				for (int i = 0; i < GestorInventario.recuadros.length; i++) {
 					System.out.println(GestorInventario.recuadros[i]);
-				
-						if (puntero.intersects(GestorInventario.recuadros[i])) {
-							System.out.println(objetoMover);
-							// posicionObjetos=GestorInventario.moverObjeto02.getLocation();
-							// objetoMover.posicion=GestorInventario.moverObjeto02.getLocation();
 
-							if (GestorJuego.jugador.inventarioArray[i] == null) {
-								for (int j = 0; j < GestorJuego.jugador.inventarioArray.length; j++) {
-									if (GestorJuego.jugador.inventarioArray[j] == objetoMover) {
-										GestorJuego.jugador.inventarioArray[j] = null;
-										break;
-									}
+					if (puntero.intersects(GestorInventario.recuadros[i])) {
+						System.out.println(objetoMover);
+						// posicionObjetos=GestorInventario.moverObjeto02.getLocation();
+						// objetoMover.posicion=GestorInventario.moverObjeto02.getLocation();
+
+						if (GestorJuego.jugador.inventarioArray[i] == null) {
+							for (int j = 0; j < GestorJuego.jugador.inventarioArray.length; j++) {
+								if (GestorJuego.jugador.inventarioArray[j] == objetoMover) {
+									GestorJuego.jugador.inventarioArray[j] = null;
+									break;
 								}
-								GestorJuego.jugador.inventarioArray[i] = objetoMover;
-								GestorInventario.poderMover = false;
 							}
-
+							GestorJuego.jugador.inventarioArray[i] = objetoMover;
+							GestorInventario.poderMover = false;
 						}
-					
+
+					}
+
 				}
-				
+
 			}
 
 			try {
@@ -173,18 +173,30 @@ public class Raton implements MouseListener {
 					recuadroInventario = null;
 				}
 				if (puntero.intersects(GestorInventario.utilizar)) {
-					if(objetoMover.tipoObjeto==TipoObjetos.MEDICINAL && GestorJuego.jugador.getVida()+Constantes.VIDA <=100 ) {
-						GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
-					}
-					if(objetoMover.tipoObjeto==TipoObjetos.ESTAMINA && GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <=100) {
-						GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA);
+					if (objetoMover.tipoObjeto == TipoObjetos.MEDICINAL
+							&& GestorJuego.jugador.getVida() + Constantes.VIDA <= 100) {
+						objetoMover.usar=true;
+						//GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
-							if(GestorJuego.jugador.inventarioArray[i]==objetoMover) {
-								GestorJuego.jugador.inventarioArray[i]=null;
-								
+							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
+								objetoMover.actualizar();
+								GestorJuego.jugador.inventarioArray[i] = null;
+								break;
 							}
 						}
-						
+					}
+					if (objetoMover.tipoObjeto == TipoObjetos.ESTAMINA
+							&& GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <= 100) {
+						objetoMover.usar=true;
+						//GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA);
+						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
+								objetoMover.actualizar();
+								GestorJuego.jugador.inventarioArray[i] = null;
+								break;
+							}
+						}
+
 					}
 				}
 			} catch (NullPointerException ee) {

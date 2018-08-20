@@ -198,7 +198,7 @@ public class GestorInventario extends GestorPadre {
 			contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
 			moverObjeto22 = new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
 					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
-			if(contador==0) {
+			if (contador == 0) {
 				AnadirRecuadros();
 				contador++;
 			}
@@ -236,6 +236,7 @@ public class GestorInventario extends GestorPadre {
 		recuadros[10] = moverObjeto31;
 		recuadros[11] = moverObjeto32;
 	}
+
 	public void eliminarRecuadros() {
 		recuadros[0] = null;
 		recuadros[1] = null;

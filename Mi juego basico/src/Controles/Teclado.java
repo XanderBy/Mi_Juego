@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class Teclado implements KeyListener
 {	
-	public static boolean[] tecladoPulsado=new boolean[8];
+	public static boolean[] tecladoPulsado=new boolean[11];
 	public boolean[] teclado=new boolean[3];
 	
 	@Override
@@ -47,6 +47,18 @@ public class Teclado implements KeyListener
 			tecladoPulsado[7]=true;
 			Tecla.acciones(this);
 			break;
+		case KeyEvent.VK_1:
+			tecladoPulsado[8]=true;
+			Tecla.acciones(this);
+			break;
+		case KeyEvent.VK_2:
+			tecladoPulsado[9]=true;
+			Tecla.acciones(this);
+			break;
+		case KeyEvent.VK_3:
+			tecladoPulsado[10]=true;
+			Tecla.acciones(this);
+			break;
 		
 			default:
 				System.out.println("tecla introducida no valida");
@@ -85,6 +97,18 @@ public class Teclado implements KeyListener
 		case KeyEvent.VK_SPACE:
 			Tecla.acciones(this);
 			tecladoPulsado[0]=false;
+			break;
+		case KeyEvent.VK_1:
+			tecladoPulsado[8]=false;
+			Tecla.acciones(this);
+			break;
+		case KeyEvent.VK_2:
+			tecladoPulsado[9]=false;
+			Tecla.acciones(this);
+			break;
+		case KeyEvent.VK_3:
+			tecladoPulsado[10]=false;
+			Tecla.acciones(this);
 			break;
 			default:
 				System.out.println("tecla soltada no valida");

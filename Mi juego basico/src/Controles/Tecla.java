@@ -8,8 +8,8 @@ import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
 import gestores.GestorOpciones;
-import objetos.Objetos;
 import objetos.balas.Bala;
+import objetos.objeto.Objetos;
 
 public class Tecla extends Teclado {
 	public static String direccion;
@@ -128,6 +128,22 @@ public class Tecla extends Teclado {
 						GestorJuego.jugador.getPosicion().y);
 				Bala bala = new Bala(posicionBala, Tecla.direccion);
 				Tecla.arrayBalas.add(bala);
+
+			}
+			// 1
+			if (teclado.tecladoPulsado[8] == true) {
+				GestorJuego.jugador.inventarioArray[0].usar = true;
+				GestorJuego.jugador.inventarioArray[0].actualizar();
+			}
+			// 2
+			if (teclado.tecladoPulsado[9] == true) {
+				GestorJuego.jugador.inventarioArray[1].usar = true;
+				GestorJuego.jugador.inventarioArray[1].actualizar();
+			}
+			// 3
+			if (teclado.tecladoPulsado[10] == true) {
+				GestorJuego.jugador.inventarioArray[2].usar = true;
+				GestorJuego.jugador.inventarioArray[2].actualizar();
 
 			}
 		} else {

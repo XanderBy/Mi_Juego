@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import constantes.Constantes;
 import gestores.GestorJuego;
-import objetos.Objetos;
+import objetos.objeto.Objetos;
 import visual.Mapa;
 
 public class AccionesBasicas {

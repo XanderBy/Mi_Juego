@@ -1,5 +1,5 @@
 package objetos;
 
 public enum TipoObjetos {
-	MEDICINAL,ESTAMINA,VELOCIDAD
+	MEDICINAL,ESTAMINA,VELOCIDAD,ARMAS
 }
