@@ -1,7 +1,10 @@
-package objetos;
+package objetos.armas;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+
+import objetos.Objetos;
+import objetos.TipoObjetos;
 
 
 public class Armas extends Objetos {

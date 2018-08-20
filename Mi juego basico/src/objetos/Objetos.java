@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import CosasBasicas.DibujosBasicos;
 import CosasBasicas.Sprites;
+import objetos.armas.Armas;
 
 public class Objetos 
 {

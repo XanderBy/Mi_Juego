@@ -13,8 +13,8 @@ import CosasBasicas.Sprites;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
-import objetos.Bala;
 import objetos.Objetos;
+import objetos.balas.Bala;
 import visual.SuperficieDibujo;
 
 public class Jugador extends Entidad implements MetodosEntidades

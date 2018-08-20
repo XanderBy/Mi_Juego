@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import objetos.Armas;
+import objetos.armas.Armas;
 import personajes.Jugador;
 import visual.Mapa;
 

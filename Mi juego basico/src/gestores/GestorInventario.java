@@ -10,7 +10,7 @@ import Controles.Raton;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
-import objetos.Armas;
+import objetos.armas.Armas;
 import visual.SuperficieDibujo;
 
 public class GestorInventario extends GestorPadre {
