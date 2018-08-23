@@ -2,8 +2,10 @@
 
 
 import Controles.Raton;
+import Controles.Tecla;
 import Controles.Teclado;
 import constantes.Constantes;
+import objetos.armas.Armas;
 import visual.Pantalla;
 import visual.SuperficieDibujo;
 
@@ -28,6 +30,9 @@ public class BuclePrincipal implements Runnable
 		aps++;
 		dibujar();
 		raton.actualizar();
+		
+		
+		
 		
 		
 	}

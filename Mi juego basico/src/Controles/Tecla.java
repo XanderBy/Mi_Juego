@@ -17,12 +17,14 @@ public class Tecla extends Teclado {
 	public static int contDerecha = 0;
 	public static int contIzquierda = 0;
 	private static int espera = 0;
+	public static int esperarArma = 0;
 	public static Objetos objetoElegido = null;
 	public static ArrayList<Bala> arrayBalas = new ArrayList<Bala>();
 
 	public static void acciones(Teclado teclado) {
 		if (GestorMenuPrincipal.activoMenuPrincipal == false && GestorEscape.activoEscape == false
 				&& GestorInventario.activoInventario == false && GestorOpciones.activoOpciones == false) {
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[1] == true) {
 				GestorJuego.jugador.moverArriba(GestorJuego.jugador.getPosicion(),
 						GestorJuego.jugador.getVelocidadMovimientoYArriba());
@@ -30,9 +32,12 @@ public class Tecla extends Teclado {
 				if (teclado.tecladoPulsado[0] == true) {
 					try {
 						if (((Armas) objetoElegido).poderDisparar == true) {
-							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
-									GestorJuego.jugador.getPosicion().y);
-							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+							if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
+										GestorJuego.jugador.getPosicion().y);
+								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+								esperarArma = 0;
+							}
 						}
 					} catch (NullPointerException e) {
 						// TODO: handle exception
@@ -40,6 +45,7 @@ public class Tecla extends Teclado {
 
 				}
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[2] == true) {
 				GestorJuego.jugador.moverAbajo(GestorJuego.jugador.getPosicion(),
 						GestorJuego.jugador.getVelocidadMovimientoYAbajo());
@@ -47,9 +53,13 @@ public class Tecla extends Teclado {
 				if (teclado.tecladoPulsado[0] == true) {
 					try {
 						if (((Armas) objetoElegido).poderDisparar == true) {
-							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
-									GestorJuego.jugador.getPosicion().y);
-							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+							if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
+										GestorJuego.jugador.getPosicion().y);
+								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+								esperarArma = 0;
+							}
+
 						}
 					} catch (NullPointerException e) {
 						// TODO: handle exception
@@ -57,11 +67,12 @@ public class Tecla extends Teclado {
 
 				}
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[3] == true) {
 
 				GestorJuego.jugador.moverIzquierda(GestorJuego.jugador.getPosicion(),
 						GestorJuego.jugador.getVelocidadMovimientoXIzquierda());
-				
+
 				if (espera == 4) {
 					contIzquierda++;
 					if (contIzquierda == 2) {
@@ -70,15 +81,19 @@ public class Tecla extends Teclado {
 					espera = 0;
 				}
 				espera++;
-				
+
 				// Pasara x cosas
 				direccion = "oeste";
 				if (teclado.tecladoPulsado[0] == true) {
 					try {
 						if (((Armas) objetoElegido).poderDisparar == true) {
-							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
-									GestorJuego.jugador.getPosicion().y);
-							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+							if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
+										GestorJuego.jugador.getPosicion().y);
+								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+								esperarArma = 0;
+							}
+
 						}
 					} catch (NullPointerException e) {
 						// TODO: handle exception
@@ -86,7 +101,7 @@ public class Tecla extends Teclado {
 
 				}
 			}
-
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[4] == true) {
 				GestorJuego.jugador.moverDerecha(GestorJuego.jugador.getPosicion(),
 						GestorJuego.jugador.getVelocidadMovimientoXDerecha());
@@ -105,9 +120,12 @@ public class Tecla extends Teclado {
 				if (teclado.tecladoPulsado[0] == true) {
 					try {
 						if (((Armas) objetoElegido).poderDisparar == true) {
-							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
-									GestorJuego.jugador.getPosicion().y);
-							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+							if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
+										GestorJuego.jugador.getPosicion().y);
+								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+								esperarArma = 0;
+							}
 						}
 					} catch (NullPointerException e) {
 						// TODO: handle exception
@@ -116,6 +134,7 @@ public class Tecla extends Teclado {
 				}
 
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[5] == true) {
 				if (GestorInventario.activoInventario == true) {
 					GestorInventario.activoInventario = false;
@@ -126,6 +145,7 @@ public class Tecla extends Teclado {
 				}
 
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[6] == true) {
 				if (GestorEscape.activoEscape == true) {
 					GestorEscape.activoEscape = false;
@@ -136,6 +156,7 @@ public class Tecla extends Teclado {
 				}
 
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[7] == true) {
 				// System.out.println("el inventario del personaje es" +
 				// GestorJuego.jugador.inventarioArray.length);
@@ -155,15 +176,19 @@ public class Tecla extends Teclado {
 				}
 				GestorJuego.eliminarArrayObjetos();
 			}
+			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[0] == true) {
 				try {
 					if (((Armas) objetoElegido).poderDisparar == true) {
-						//((Armas) objetoElegido).disparar();
-						System.out.println("dwadaw");
-						Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
-								GestorJuego.jugador.getPosicion().y);
-						Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
-						Tecla.arrayBalas.add(bala);
+						// ((Armas) objetoElegido).disparar();
+						((Armas) objetoElegido).disparando = true;
+						if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
+									GestorJuego.jugador.getPosicion().y);
+							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+							Tecla.arrayBalas.add(bala);
+							esperarArma = 0;
+						}
 					}
 
 				} catch (NullPointerException e) {

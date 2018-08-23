@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import Controles.Tecla;
 import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
@@ -36,7 +37,7 @@ public class GestorJuego extends GestorPadre
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ARMAS, 2); 
+	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ARMAS, 50, 2); 
 	public static ObjetoEstamina arma2=new ObjetoEstamina(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ESTAMINA,10); 
 	
 	public static Rectangle rectangulo;
@@ -72,7 +73,11 @@ public class GestorJuego extends GestorPadre
 		dibujarArmas(g);
 		jugador.dibujar(g);
 		enemigo1.dibujar(g);
-		
+		Tecla.esperarArma++;
+		System.out.println(Tecla.esperarArma);
+		if(Tecla.esperarArma==10000000) {
+			Tecla.esperarArma=0;
+		}
 		Mapa.paredAbajo= new Rectangle(Mapa.rectanguloAbx,Mapa.rectanguloAby, Constantes.ANCHOMAPA, 3);
 		Mapa.paredIzquierda= new Rectangle(Mapa.rectanguloIx,Mapa.rectanguloIy, 3, Constantes.ALTOMAPA);
 		Mapa.paredArriba= new Rectangle(Mapa.rectanguloAx,Mapa.rectanguloAy, Constantes.ANCHOMAPA, 3);
@@ -122,16 +127,17 @@ public class GestorJuego extends GestorPadre
 	public static void recorrerArrayBalaMover(Graphics2D g) {
 		try
 		{
+			
 		for (Bala bala : Bala.ArrayBalas) {
 			
-			Bala.contador++;
-			
-			if(Bala.contador!=100)
+			bala.contador++;
+			//System.out.println(bala.contador);
+			if(bala.contador!=10000)
 			{
 				bala.recorridoBala(bala, g);
 			}else
 			{
-				Bala.ArrayBalas.remove(bala);
+				Bala.ArrayBalas.remove(bala); 
 				
 			}
 		}

@@ -14,10 +14,13 @@ public class Armas extends Objetos {
 	public boolean poderDisparar=false;
 	public int velocidadDisparo;
 	public int esperaDisparo;
+	public boolean disparando;
 	
-	public Armas(Point posicion, String url, String urlInventario, int ancho, int alto, TipoObjetos tipoObjetos, int velocidadDisparo) {
+	public Armas(Point posicion, String url, String urlInventario, int ancho, int alto, TipoObjetos tipoObjetos, int esperaDisparo, int velocidadDisparo) {
 		super(posicion, url, urlInventario, ancho, alto, tipoObjetos,0);
 		this.velocidadDisparo=velocidadDisparo;
+		this.esperaDisparo=esperaDisparo;
+		this.disparando=false;
 		this.setCogido(false);
 		this.areaObjetoInfluencia=new Rectangle(posicion.x, posicion.y, ancho, alto);
 		this.poderDisparar=false;
