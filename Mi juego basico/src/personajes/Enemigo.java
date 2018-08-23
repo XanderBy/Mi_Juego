@@ -107,22 +107,22 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		Point posicionJugador = GestorJuego.jugador.getPosicion();
 		if(posicionJugador.y<=this.getPosicion().getY()&& posicionJugador.y+GestorJuego.jugador.getAlto()>=this.getPosicion().getY() && this.getPosicion().x > posicionJugador.getX()) {
 			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "oeste");
+			Bala bala= new Bala(posicionBala, "oeste",GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
 		if(posicionJugador.y<=this.getPosicion().getY()&& posicionJugador.y+GestorJuego.jugador.getAlto()>=this.getPosicion().getY() && this.getPosicion().x < posicionJugador.getX()) {
 			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "este");
+			Bala bala= new Bala(posicionBala, "este",GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
 		if(posicionJugador.x<=this.getPosicion().getX()&& posicionJugador.x+GestorJuego.jugador.getAncho()>=this.getPosicion().getX() && this.getPosicion().y > posicionJugador.getY()) {
 			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "norte");
+			Bala bala= new Bala(posicionBala, "norte",GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
 		if(posicionJugador.x<=this.getPosicion().getX()&& posicionJugador.x+GestorJuego.jugador.getAncho()>=this.getPosicion().getX() && this.getPosicion().y < posicionJugador.getY()) {
 			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "sur");
+			Bala bala= new Bala(posicionBala, "sur",GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
 	}

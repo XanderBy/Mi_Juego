@@ -52,8 +52,12 @@ public class Jugador extends Entidad implements MetodosEntidades
 		this.armadura=armadura;
 		Sprites derecha1=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\1derecha.gif");
 		Sprites derecha2=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\2derecha.gif");
+		Sprites izquierda1=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\1izquierda.gif");
+		Sprites izquierda2=new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\2izquierda.gif");
 		this.imagenesDerecha.add(derecha1);
 		this.imagenesDerecha.add(derecha2);
+		this.imagenesIzquierda.add(izquierda1);
+		this.imagenesIzquierda.add(izquierda2);
 		
 	}
 	public void refrescarInventario() {
@@ -226,7 +230,17 @@ public class Jugador extends Entidad implements MetodosEntidades
 		
 		//DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);		
 		//DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
-		DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesDerecha.get(Tecla.contDerecha), GestorJuego.jugador);
+		
+		if(Teclado.tecladoPulsado[4]==true) {
+			DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesDerecha.get(Tecla.contDerecha), GestorJuego.jugador);
+		}else if(Teclado.tecladoPulsado[3]==true) {
+			DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesIzquierda.get(Tecla.contIzquierda), GestorJuego.jugador);
+			
+		} else {
+			DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesDerecha.get(Tecla.contDerecha), GestorJuego.jugador);
+			
+		}
+		
 		
 		areaJugadorInfluencia=new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
 		g.drawRect(this.getPosicion().x-(this.getPosicion().x/4), this.getPosicion().y-(this.getPosicion().x/4), this.getAncho() + (this.getPosicion().x/2), this.getAlto()+ (this.getPosicion().x/2));

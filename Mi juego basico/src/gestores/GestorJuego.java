@@ -32,11 +32,11 @@ public class GestorJuego extends GestorPadre
 	public static int contadorJugador=0;
 	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
 	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
-	public Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "");
+	public  static Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "");
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ARMAS); 
+	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ARMAS, 2); 
 	public static ObjetoEstamina arma2=new ObjetoEstamina(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ESTAMINA,10); 
 	
 	public static Rectangle rectangulo;
