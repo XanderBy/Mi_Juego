@@ -1,11 +1,13 @@
 package personajes;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import Controles.Tecla;
 import CosasBasicas.DibujosBasicos;
+import constantes.Constantes;
 import gestores.GestorJuego;
 import interfaces.MetodosEntidades;
 import objetos.balas.Bala;
@@ -27,11 +29,19 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		this.moverse();
 		try {
 			for (Bala a : Tecla.arrayBalas) {
-				if (a.rectangulo.intersects(GestorJuego.enemigos.get(0).areaCuerpo)) {
-					System.out.println("Ha dado");
-					a.rectangulo = new Rectangle(111111111, 111111111, 0, 0);
-					a = null;
+				if(a.entidadCreadora instanceof Jugador) {
+					if (a.rectangulo.intersects(GestorJuego.enemigos.get(0).areaCuerpo)) {
+						System.out.println("Ha dado");
+						this.dano(1);
+						a.rectangulo.setLocation(10000000, 10000000);
+						Bala.ArrayBalas.remove(a);
+						a = null;
+					}
+					if(this.getVida()==0) {
+						morir();
+					}
 				}
+			
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -43,8 +53,11 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	@Override
 	public void dibujar(Graphics2D g) {
 		DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(), this.getPosicion().x, this.getPosicion().y);
+		g.setFont(new Font("Mia", Font.ITALIC, 6));
+		DibujosBasicos.pintarTexto(g, this.getPosicion().x, this.getPosicion().y - (this.getPosicion().y / 20),
+				String.valueOf(this.getVida()));
 		areaCuerpo = new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
-		actualizar();
+		this.actualizar();
 
 	}
 
@@ -52,7 +65,12 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	public void dano(int dano) {
 		this.setVida(this.getVida() - dano);
 	}
-
+	
+	public void morir() {
+		GestorJuego.enemigos.remove(this);
+		this.setPosicion(Constantes.DESAPARECER);
+	}
+	
 	public void moverse() {
 
 		tiempoAhora++;
@@ -103,26 +121,35 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		}
 
 	}
+
 	public void disparar() {
 		Point posicionJugador = GestorJuego.jugador.getPosicion();
-		if(posicionJugador.y<=this.getPosicion().getY()&& posicionJugador.y+GestorJuego.jugador.getAlto()>=this.getPosicion().getY() && this.getPosicion().x > posicionJugador.getX()) {
-			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "oeste",GestorJuego.enemigo1);
+		if (posicionJugador.y <= this.getPosicion().getY()
+				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
+				&& this.getPosicion().x > posicionJugador.getX()) {
+			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
+			Bala bala = new Bala(posicionBala, "oeste", GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
-		if(posicionJugador.y<=this.getPosicion().getY()&& posicionJugador.y+GestorJuego.jugador.getAlto()>=this.getPosicion().getY() && this.getPosicion().x < posicionJugador.getX()) {
-			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "este",GestorJuego.enemigo1);
+		if (posicionJugador.y <= this.getPosicion().getY()
+				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
+				&& this.getPosicion().x < posicionJugador.getX()) {
+			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
+			Bala bala = new Bala(posicionBala, "este", GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
-		if(posicionJugador.x<=this.getPosicion().getX()&& posicionJugador.x+GestorJuego.jugador.getAncho()>=this.getPosicion().getX() && this.getPosicion().y > posicionJugador.getY()) {
-			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "norte",GestorJuego.enemigo1);
+		if (posicionJugador.x <= this.getPosicion().getX()
+				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
+				&& this.getPosicion().y > posicionJugador.getY()) {
+			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
+			Bala bala = new Bala(posicionBala, "norte", GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
-		if(posicionJugador.x<=this.getPosicion().getX()&& posicionJugador.x+GestorJuego.jugador.getAncho()>=this.getPosicion().getX() && this.getPosicion().y < posicionJugador.getY()) {
-			Point posicionBala=new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala= new Bala(posicionBala, "sur",GestorJuego.enemigo1);
+		if (posicionJugador.x <= this.getPosicion().getX()
+				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
+				&& this.getPosicion().y < posicionJugador.getY()) {
+			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
+			Bala bala = new Bala(posicionBala, "sur", GestorJuego.enemigo1);
 			Tecla.arrayBalas.add(bala);
 		}
 	}

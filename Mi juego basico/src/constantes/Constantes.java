@@ -21,7 +21,7 @@ public class Constantes {
 	public static final int ESTAMINA=10;
 	public static final int VIDA=10;
 	public static final int VELOCIDAD=10;
-	
+	public static final Point DESAPARECER=new Point(111111111, 111111111); 
 	
 	
 	public static void volverTodoCero() {
