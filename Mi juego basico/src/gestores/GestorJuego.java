@@ -26,19 +26,19 @@ public class GestorJuego extends GestorPadre
 	private static Point posicionObjeto1=new Point(AccionesBasicas.escalarPantallaX(300), AccionesBasicas.escalarPantallaY(300));
 	private static Point posicionObjeto2=new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(400));
 	
-	public static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(200), AccionesBasicas.escalarPantallaY(200));
+	public static Point posicionJugador= new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO/3), AccionesBasicas.escalarPantallaY(Constantes.ALTO/3));
 	public static Point posicionEnemigo1= new Point(AccionesBasicas.escalarPantallaX(500), AccionesBasicas.escalarPantallaY(500));
 	
 	//Principal---
 	public static int contadorJugador=0;
-	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"C:\\\\Users\\\\alexi\\\\Desktop\\\\personaje.gif");
-	public static Mapa mapa= new Mapa(640, 640, "C:\\Users\\alexi\\Desktop\\descarga.png");
+	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"src/recursos/personaje.gif");
+	public static Mapa mapa= new Mapa(640, 640, "src/recursos/descarga.png");
 	public  static Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "");
 	//---
 	
 	
-	public static Armas arma1=new Armas(posicionObjeto1, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ARMAS, 50, 2); 
-	public static ObjetoEstamina arma2=new ObjetoEstamina(posicionObjeto2, "C:\\Users\\alexi\\Desktop\\descarga.jpg", "C:\\Users\\alexi\\Desktop\\descarga.gif", 10, 14, TipoObjetos.ESTAMINA,10); 
+	public static Armas arma1=new Armas(posicionObjeto1, "src/recursos/descarga.jpg", "src/recursos/descarga.jpg", 10, 14, TipoObjetos.ARMAS, 50, 2); 
+	public static ObjetoEstamina arma2=new ObjetoEstamina(posicionObjeto2, "src/recursos/descarga.jpg", "src/recursos/descarga.jpg", 10, 14, TipoObjetos.ESTAMINA,10); 
 	
 	public static Rectangle rectangulo;
 	

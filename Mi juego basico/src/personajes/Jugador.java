@@ -3,8 +3,6 @@ package personajes;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import Controles.Tecla;
 import Controles.Teclado;
 import CosasBasicas.AccionesBasicas;
@@ -16,7 +14,6 @@ import gestores.GestorMorir;
 import interfaces.MetodosEntidades;
 import objetos.balas.Bala;
 import objetos.objeto.Objetos;
-import visual.SuperficieDibujo;
 
 public class Jugador extends Entidad implements MetodosEntidades {
 
@@ -52,10 +49,10 @@ public class Jugador extends Entidad implements MetodosEntidades {
 		// TODO Auto-generated constructor stub
 		this.resistencia = resistencia;
 		this.armadura = armadura;
-		Sprites derecha1 = new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\1derecha.gif");
-		Sprites derecha2 = new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\2derecha.gif");
-		Sprites izquierda1 = new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\1izquierda.gif");
-		Sprites izquierda2 = new Sprites(55, 75, "C:\\Users\\alexi\\Desktop\\2izquierda.gif");
+		Sprites derecha1 = new Sprites(55, 75, "src/recursos/1derecha.gif");
+		Sprites derecha2 = new Sprites(55, 75, "src/recursos/2derecha.gif");
+		Sprites izquierda1 = new Sprites(55, 75, "src/recursos/1izquierda.gif");
+		Sprites izquierda2 = new Sprites(55, 75, "src/recursos/2izquierda.gif");
 		this.imagenesDerecha.add(derecha1);
 		this.imagenesDerecha.add(derecha2);
 		this.imagenesIzquierda.add(izquierda1);
@@ -303,8 +300,8 @@ public class Jugador extends Entidad implements MetodosEntidades {
 	}
 
 	public void morir() {
-		GestorJuego.activoJuego=false;
-		GestorMorir.gestorMorirActivo=true;
+		GestorJuego.activoJuego = false;
+		GestorMorir.gestorMorirActivo = true;
 	}
 
 	@Override

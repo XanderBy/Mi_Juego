@@ -14,6 +14,7 @@ import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
 import gestores.GestorMenuPrincipal;
+import gestores.GestorMorir;
 import gestores.GestorOpciones;
 import objetos.TipoObjetos;
 import objetos.objeto.Objetos;
@@ -29,6 +30,7 @@ public class Raton implements MouseListener {
 	public static Objetos objetoMover = null;
 	public Point posicionObjetos;
 	public static Dimension tamanoPantalla;
+	public static Point posicionJugadorNueva;
 
 	public void actualizar() {
 
@@ -118,7 +120,17 @@ public class Raton implements MouseListener {
 				// SuperficieDibujo.arraySuperficie[0].setSize(tamanoPantalla);
 				Constantes.ALTO = 1080;
 				Constantes.ANCHO = 1920;
+				posicionJugadorNueva = new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO / 2), AccionesBasicas.escalarPantallaY(Constantes.ALTO / 3));
+				GestorJuego.jugador.setPosicion(posicionJugadorNueva);
 			}
+		}
+
+		if (GestorMorir.gestorMorirActivo == true) {
+			if (e.getButton() == e.BUTTON1) {
+				GestorMorir.gestorMorirActivo = false;
+				GestorMenuPrincipal.activoMenuPrincipal = true;
+			}
+
 		}
 
 		if (GestorInventario.activoInventario == true) {
@@ -175,8 +187,8 @@ public class Raton implements MouseListener {
 				if (puntero.intersects(GestorInventario.utilizar)) {
 					if (objetoMover.tipoObjeto == TipoObjetos.MEDICINAL
 							&& GestorJuego.jugador.getVida() + Constantes.VIDA <= 100) {
-						objetoMover.usar=true;
-						//GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
+						objetoMover.usar = true;
+						// GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
 							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
 								objetoMover.actualizar();
@@ -187,8 +199,9 @@ public class Raton implements MouseListener {
 					}
 					if (objetoMover.tipoObjeto == TipoObjetos.ESTAMINA
 							&& GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <= 100) {
-						objetoMover.usar=true;
-						//GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA);
+						objetoMover.usar = true;
+						// GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() +
+						// Constantes.ESTAMINA);
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
 							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
 								objetoMover.actualizar();
