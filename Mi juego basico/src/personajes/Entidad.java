@@ -15,6 +15,10 @@ public class Entidad
 	private String urlIzquierda;
 	private String urlAbajo;
 	private Sprites sprite;
+	public Sprites derecha;
+	public Sprites izquierda;
+	public Sprites arriba;
+	public Sprites abajo;
 	private int vida;
 	private int velocidadMovimientoXIzquierda;
 	private int velocidadMovimientoYArriba;

@@ -7,14 +7,11 @@ import java.util.ArrayList;
 
 import Controles.Tecla;
 import CosasBasicas.AccionesBasicas;
-import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
-import dibujadoBasePantalla.ParteInferior;
 import objetos.TipoObjetos;
 import objetos.armas.Armas;
 import objetos.balas.Bala;
 import objetos.objeto.ObjetoEstamina;
-import objetos.objeto.ObjetoVida;
 import objetos.objeto.Objetos;
 import personajes.Enemigo;
 import personajes.Jugador;
@@ -33,7 +30,7 @@ public class GestorJuego extends GestorPadre
 	public static int contadorJugador=0;
 	public static Jugador jugador= new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,Constantes.velocidadGeneral,"src/recursos/personaje.gif");
 	public static Mapa mapa= new Mapa(640, 640, "src/recursos/descarga.png");
-	public  static Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "");
+	public  static Enemigo enemigo1=new Enemigo(10, 10,  posicionEnemigo1, 10, 1, 1, 1, 1, "src/recursos/enemigo/enemigoQuieto.gif");
 	//---
 	
 	
@@ -74,7 +71,7 @@ public class GestorJuego extends GestorPadre
 		jugador.dibujar(g);
 		enemigo1.dibujar(g);
 		Tecla.esperarArma++;
-		System.out.println(Tecla.esperarArma);
+		//System.out.println(Tecla.esperarArma);
 		if(Tecla.esperarArma==10000000) {
 			Tecla.esperarArma=0;
 		}

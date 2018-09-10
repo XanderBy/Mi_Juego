@@ -5,9 +5,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import javax.sound.midi.Synthesizer;
-
 import CosasBasicas.AccionesBasicas;
 import constantes.Constantes;
 import gestores.GestorEscape;
@@ -120,7 +117,8 @@ public class Raton implements MouseListener {
 				// SuperficieDibujo.arraySuperficie[0].setSize(tamanoPantalla);
 				Constantes.ALTO = 1080;
 				Constantes.ANCHO = 1920;
-				posicionJugadorNueva = new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO / 2), AccionesBasicas.escalarPantallaY(Constantes.ALTO / 3));
+				posicionJugadorNueva = new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO / 2),
+						AccionesBasicas.escalarPantallaY(Constantes.ALTO / 3));
 				GestorJuego.jugador.setPosicion(posicionJugadorNueva);
 			}
 		}

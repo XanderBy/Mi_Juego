@@ -6,7 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import objetos.armas.Armas;
+import personajes.Enemigo;
 import personajes.Jugador;
+import spawn.SpawnEnemigo;
 import visual.Mapa;
 
 public class DibujosBasicos 
@@ -24,6 +26,14 @@ public class DibujosBasicos
 	public static void pintarImagenJugador(Graphics2D g, Sprites sprite, Jugador jugador)
 	{
 		g.drawImage(sprite.imagen, jugador.getPosicion().x, jugador.getPosicion().y, sprite.introducirImagenesArray(sprite.imagen), null);
+	}
+	public static void pintarImagenSpawnEnemigo(Graphics2D g, Sprites sprite, SpawnEnemigo enemigo)
+	{
+		g.drawImage(sprite.imagen, enemigo.posicionSpawn().x, enemigo.posicionSpawn().y, sprite.introducirImagenesArray(sprite.imagen), null);
+	}
+	public static void pintarImagenEnemigo(Graphics2D g, Sprites sprite, Enemigo enemigo)
+	{
+		g.drawImage(sprite.imagen, enemigo.getPosicion().x, enemigo.getPosicion().y, sprite.introducirImagenesArray(sprite.imagen), null);
 	}
 	public static void pintarImagenArmas(Graphics2D g, Sprites sprite, Armas armas)
 	{
