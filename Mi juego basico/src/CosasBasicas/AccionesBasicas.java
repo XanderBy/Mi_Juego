@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import constantes.Constantes;
 import gestores.GestorJuego;
+import objetos.balas.Bala;
 import objetos.objeto.Objetos;
 import visual.Mapa;
 
@@ -34,6 +35,11 @@ public class AccionesBasicas {
 			// TODO: handle exception
 		}
 
+		for (Bala a : Bala.ArrayBalas) {
+
+			a.posicion.x = a.posicion.x + velocidad;
+		}
+
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {
 			if (a.cogido == false) {
@@ -60,6 +66,10 @@ public class AccionesBasicas {
 		} catch (IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
+		for (Bala a : Bala.ArrayBalas) {
+
+			a.posicion.x = a.posicion.x - velocidad;
+		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {
 			if (a.cogido == false) {
@@ -85,6 +95,10 @@ public class AccionesBasicas {
 		} catch (IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
+		for (Bala a : Bala.ArrayBalas) {
+
+			a.posicion.y = a.posicion.y + velocidad;
+		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {
 			if (a.cogido == false) {
@@ -109,6 +123,10 @@ public class AccionesBasicas {
 					GestorJuego.enemigos.get(0).getPosicion().y - velocidad);
 			GestorJuego.enemigos.get(0).setPosicion(posicion);
 		} catch (IndexOutOfBoundsException e) {
+		}
+		for (Bala a : Bala.ArrayBalas) {
+
+			a.posicion.y = a.posicion.y - velocidad;
 		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {

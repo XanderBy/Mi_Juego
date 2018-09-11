@@ -45,7 +45,11 @@ public class Bala {
 			}
 
 			rectangulo = new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
-			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			System.out.println(bala.contador);
+			//if(bala.contador!=10000) {
+				g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+			//}
+			
 			bala.contadorVida++;
 			break;
 		case "sur":

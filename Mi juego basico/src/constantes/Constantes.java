@@ -17,8 +17,8 @@ public class Constantes {
 
 	public static int velocidadGeneral = 2;
 
-	public static final int ANCHOMAPA = 640;
-	public static final int ALTOMAPA = 640;
+	public static final int ANCHOMAPA = 1920;
+	public static final int ALTOMAPA = 1920;
 
 	public static ArrayList<Pantalla> arrayPantalla = new ArrayList<Pantalla>();
 
@@ -39,7 +39,7 @@ public class Constantes {
 		GestorJuego.jugador = new Jugador(30, 55, GestorJuego.posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,
 				Constantes.velocidadGeneral, Constantes.velocidadGeneral, Constantes.velocidadGeneral,
 				"src/recursos/personaje.gif");
-		GestorJuego.mapa = new Mapa(640, 640, "src/recursos/descarga.png");
+		GestorJuego.mapa = new Mapa(ANCHOMAPA, ALTOMAPA, "src/recursos/prueba.png");
 		GestorJuego.mapa.posicion = new Point(0, 0);
 	}
 }

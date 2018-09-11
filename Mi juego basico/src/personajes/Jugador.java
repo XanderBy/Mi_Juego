@@ -213,7 +213,7 @@ public class Jugador extends Entidad implements MetodosEntidades {
 	public void dibujar(Graphics2D g) {
 		try {
 			for (Bala a : Tecla.arrayBalas) {
-				if (a.contadorVida == 100) {
+				if (a.contadorVida == 1000) {
 					Tecla.arrayBalas.remove(a);
 					a = null;
 				}
