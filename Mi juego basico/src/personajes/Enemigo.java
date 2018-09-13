@@ -21,13 +21,16 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	private int contDerecha = 0;
 	private int contArriba = 0;
 	private int contAbajo = 0;
-	private int donde=4;
+	public int donde=4;
+	public int velocidadDisparo;
+	
 
 	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
 			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
-			String urlQuieto) {
+			String urlQuieto, int velocidadDisparo) {
 		super(ancho, alto, posicion, vida, velocidadMovimientoXIzquierda, velocidadMovimientoYArriba,
 				velocidadMovimientoXDerecha, velocidadMovimientoYAbajo, urlQuieto);
+		this.velocidadDisparo=velocidadDisparo;
 		derecha = new Sprites(50, 50, "src/recursos/enemigo/enemigoDerechaQuieto.gif");
 		izquierda = new Sprites(50, 50, "src/recursos/enemigo/enemigoIzquierdaQuieto.gif");
 		arriba = new Sprites(50, 50, "src/recursos/enemigo/enemigoArribaQuieto.gif");
@@ -53,7 +56,7 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 
 	public void actualizar() {
 		try {
-			for (Bala a : Tecla.arrayBalas) {
+			for (Bala a : Bala.ArrayBalas) {
 				if (a.entidadCreadora instanceof Jugador) {
 					if (a.rectangulo.intersects(GestorJuego.enemigos.get(0).areaCuerpo)) {
 						System.out.println("Ha dado");
@@ -201,29 +204,29 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
 				&& this.getPosicion().x > posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala = new Bala(posicionBala, "oeste", GestorJuego.enemigo1);
-			Tecla.arrayBalas.add(bala);
+			Bala bala = new Bala(posicionBala, "oeste", this);
+			//Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.y <= this.getPosicion().getY()
 				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
 				&& this.getPosicion().x < posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala = new Bala(posicionBala, "este", GestorJuego.enemigo1);
-			Tecla.arrayBalas.add(bala);
+			Bala bala = new Bala(posicionBala, "este", this);
+			//Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y > posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala = new Bala(posicionBala, "norte", GestorJuego.enemigo1);
-			Tecla.arrayBalas.add(bala);
+			Bala bala = new Bala(posicionBala, "norte", this);
+			//Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y < posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
-			Bala bala = new Bala(posicionBala, "sur", GestorJuego.enemigo1);
-			Tecla.arrayBalas.add(bala);
+			Bala bala = new Bala(posicionBala, "sur", this);
+			//Tecla.arrayBalas.add(bala);
 		}
 	}
 

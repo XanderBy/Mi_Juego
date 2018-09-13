@@ -13,6 +13,8 @@ import personajes.Jugador;
 
 public class Bala {
 	public Point posicion;
+	public int X=0;
+	public int Y=0;
 	public Rectangle rectangulo;
 	public final String direccion;
 	public int contador = 0;
@@ -23,6 +25,8 @@ public class Bala {
 	public Bala(Point posicion, String direccion, Entidad entidadCreadora) {
 		super();
 		this.posicion = posicion;
+		this.X=posicion.x;
+		this.Y=posicion.y;
 		this.direccion = direccion;
 		this.entidadCreadora = entidadCreadora;
 		rectangulo = new Rectangle(posicion.x, posicion.y, 2, 2);
@@ -32,24 +36,24 @@ public class Bala {
 		}
 	}
 
-	public void recorridoBala(Bala bala, Graphics2D g) {
+	public void recorridoBala(Bala bala, Graphics2D g, Enemigo enemigo) {
 		switch (direccion) {
 		case "norte":
 
 			if (this.entidadCreadora instanceof Jugador) {
+				//System.out.println("Disparando Norte");
 				bala.posicion.y = bala.posicion.y - ((Armas) Tecla.objetoElegido).velocidadDisparo;
 
 			}
 			if (this.entidadCreadora instanceof Enemigo) {
-				bala.posicion.y--;
+				bala.posicion.y -= enemigo.velocidadDisparo;
 			}
 
 			rectangulo = new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
-			System.out.println(bala.contador);
-			//if(bala.contador!=10000) {
-				g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
-			//}
-			
+			//System.out.println(bala.contador);
+
+			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
+
 			bala.contadorVida++;
 			break;
 		case "sur":
@@ -60,7 +64,7 @@ public class Bala {
 			if (this.entidadCreadora instanceof Enemigo) {
 				bala.posicion.y++;
 			}
-			bala.posicion.y++;
+			//bala.posicion.y++;
 			rectangulo = new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
 			bala.contadorVida++;

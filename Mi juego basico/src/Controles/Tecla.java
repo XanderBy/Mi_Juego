@@ -19,7 +19,7 @@ public class Tecla extends Teclado {
 	private static int espera = 0;
 	public static int esperarArma = 0;
 	public static Objetos objetoElegido = null;
-	public static ArrayList<Bala> arrayBalas = new ArrayList<Bala>();
+	// public static ArrayList<Bala> arrayBalas = new ArrayList<Bala>();
 
 	public static void acciones(Teclado teclado) {
 		if (GestorMenuPrincipal.activoMenuPrincipal == false && GestorEscape.activoEscape == false
@@ -33,6 +33,7 @@ public class Tecla extends Teclado {
 					try {
 						if (((Armas) objetoElegido).poderDisparar == true) {
 							if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
+								System.out.println("Deberia estar creando una bala con direccion norte");
 								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
 										GestorJuego.jugador.getPosicion().y);
 								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
@@ -177,16 +178,19 @@ public class Tecla extends Teclado {
 				GestorJuego.eliminarArrayObjetos();
 			}
 			// ------------------------------------------------------------------
+			//Disparar
 			if (teclado.tecladoPulsado[0] == true) {
 				try {
 					if (((Armas) objetoElegido).poderDisparar == true) {
+						
 						// ((Armas) objetoElegido).disparar();
 						((Armas) objetoElegido).disparando = true;
 						if (((Armas) objetoElegido).esperaDisparo <= esperarArma) {
 							Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
 									GestorJuego.jugador.getPosicion().y);
+							//System.out.println("Holaaaaaaaaaaaaaaaaa");
 							Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
-							Tecla.arrayBalas.add(bala);
+							// Tecla.arrayBalas.add(bala);
 							esperarArma = 0;
 						}
 					}

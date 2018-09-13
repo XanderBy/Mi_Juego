@@ -6,6 +6,8 @@ import constantes.Constantes;
 import gestores.GestorJuego;
 import objetos.balas.Bala;
 import objetos.objeto.Objetos;
+import personajes.Enemigo;
+import personajes.Jugador;
 import visual.Mapa;
 
 public class AccionesBasicas {
@@ -28,16 +30,35 @@ public class AccionesBasicas {
 		Mapa.rectanguloDx = Mapa.rectanguloDx + velocidad;
 
 		try {
-			Point posicion = new Point(GestorJuego.enemigos.get(0).getPosicion().x + velocidad,
-					GestorJuego.enemigos.get(0).getPosicion().y);
-			GestorJuego.enemigos.get(0).setPosicion(posicion);
+			for (Enemigo a : GestorJuego.enemigos) {
+
+				Point posicion = new Point(a.getPosicion().x + velocidad, a.getPosicion().y);
+				a.setPosicion(posicion);
+			}
 		} catch (IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
 
 		for (Bala a : Bala.ArrayBalas) {
+			if (a.entidadCreadora instanceof Enemigo) {
 
-			a.posicion.x = a.posicion.x + velocidad;
+				a.posicion.x = a.posicion.x + velocidad;
+
+			}
+			if (a.entidadCreadora instanceof Jugador) {
+
+				// System.out.println("Cambiando de posicion las balas");
+				// System.out.println("Velocidad de disparo jugador" + ((Armas)
+				// Tecla.objetoElegido).velocidadDisparo);
+				if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
+					System.out.println(a.posicion);
+					a.posicion.x = a.posicion.x + (velocidad);
+				}
+				
+				// a.posicion.x = a.posicion.x - velocidad - ((Armas)
+				// Tecla.objetoElegido).velocidadDisparo;
+			}
+
 		}
 
 		GestorJuego.cargarArrayObjetos();
@@ -60,15 +81,28 @@ public class AccionesBasicas {
 		Mapa.rectanguloDx = Mapa.rectanguloDx - velocidad;
 
 		try {
-			Point posicion = new Point(GestorJuego.enemigos.get(0).getPosicion().x - velocidad,
-					GestorJuego.enemigos.get(0).getPosicion().y);
-			GestorJuego.enemigos.get(0).setPosicion(posicion);
+			for (Enemigo a : GestorJuego.enemigos) {
+
+				Point posicion = new Point(a.getPosicion().x - velocidad, a.getPosicion().y);
+				a.setPosicion(posicion);
+			}
+
 		} catch (IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
 		for (Bala a : Bala.ArrayBalas) {
+			if (a.entidadCreadora instanceof Enemigo) {
 
-			a.posicion.x = a.posicion.x - velocidad;
+				a.posicion.x = a.posicion.x - velocidad;
+
+			}
+			
+			if (a.entidadCreadora instanceof Jugador) {
+				if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
+					a.posicion.x = a.posicion.x - (velocidad);
+				}
+				
+			}
 		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {
@@ -89,15 +123,28 @@ public class AccionesBasicas {
 		Mapa.rectanguloAy = Mapa.rectanguloAy + velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy + velocidad;
 		try {
-			Point posicion = new Point(GestorJuego.enemigos.get(0).getPosicion().x,
-					GestorJuego.enemigos.get(0).getPosicion().y + velocidad);
-			GestorJuego.enemigos.get(0).setPosicion(posicion);
+			for (Enemigo a : GestorJuego.enemigos) {
+
+				Point posicion = new Point(a.getPosicion().x, a.getPosicion().y + velocidad);
+				a.setPosicion(posicion);
+			}
 		} catch (IndexOutOfBoundsException e) {
 			// TODO: handle exception
 		}
+
 		for (Bala a : Bala.ArrayBalas) {
 
-			a.posicion.y = a.posicion.y + velocidad;
+			if (a.entidadCreadora instanceof Enemigo) {
+				a.posicion.y = a.posicion.y + velocidad;
+
+			}
+			if (a.entidadCreadora instanceof Jugador) {
+				if (a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
+					System.out.println(a.posicion);
+					a.posicion.y = a.posicion.y + (velocidad);
+				}
+				
+			}
 		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {
@@ -119,14 +166,25 @@ public class AccionesBasicas {
 		Mapa.rectanguloAy = Mapa.rectanguloAy - velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy - velocidad;
 		try {
-			Point posicion = new Point(GestorJuego.enemigos.get(0).getPosicion().x,
-					GestorJuego.enemigos.get(0).getPosicion().y - velocidad);
-			GestorJuego.enemigos.get(0).setPosicion(posicion);
+			for (Enemigo a : GestorJuego.enemigos) {
+
+				Point posicion = new Point(a.getPosicion().x, a.getPosicion().y - velocidad);
+				a.setPosicion(posicion);
+			}
 		} catch (IndexOutOfBoundsException e) {
 		}
 		for (Bala a : Bala.ArrayBalas) {
+			if (a.entidadCreadora instanceof Enemigo) {
 
-			a.posicion.y = a.posicion.y - velocidad;
+				a.posicion.y = a.posicion.y - velocidad;
+
+			}
+			if (a.entidadCreadora instanceof Jugador) {
+				if(a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
+					a.posicion.y = a.posicion.y - (velocidad);
+				}
+				
+			}
 		}
 		GestorJuego.cargarArrayObjetos();
 		for (Objetos a : GestorJuego.objetosMapa) {

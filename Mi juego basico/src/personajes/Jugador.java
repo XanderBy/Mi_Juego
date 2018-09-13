@@ -141,70 +141,75 @@ public class Jugador extends Entidad implements MetodosEntidades {
 		// GestorJuego.rectangulo= new
 		// Rectangle(GestorJuego.rectangulo1x,GestorJuego.rectangulo1y,50,50);
 		// GestorJuego.jugador.colisionMover();
-		for (Rectangle a : GestorJuego.colisiones) {
+		try {
+			for (Rectangle a : GestorJuego.colisiones) {
 
-			// System.out.println(GestorJuego.colisiones.size());
-			if (areaJugador1.intersects(a)) {
-				// GestorJuego.jugador.colisionMover();
-				booleanJugador1 = true;
-			}
-			if (!areaJugador1.intersects(a)) {
-				// GestorJuego.jugador.colisionMover();
-				booleanJugador1 = false;
-			}
-			if (areaJugador2.intersects(a)) {
-				booleanJugador2 = true;
-			}
-			if (!areaJugador2.intersects(a)) {
-				booleanJugador2 = false;
-			}
-			if (areaJugador3.intersects(a)) {
-				booleanJugador3 = true;
-			}
-			if (!areaJugador3.intersects(a)) {
-				booleanJugador3 = false;
-			}
-			if (areaJugador4.intersects(a)) {
-				booleanJugador4 = true;
-			}
-			if (!areaJugador4.intersects(a)) {
-				booleanJugador4 = false;
-			}
-			if (areaJugador5.intersects(a)) {
-				booleanJugador5 = true;
-			}
-			if (!areaJugador5.intersects(a)) {
-				booleanJugador5 = false;
-			}
-			if (areaJugador6.intersects(a)) {
-				booleanJugador6 = true;
-			}
-			if (!areaJugador6.intersects(a)) {
-				booleanJugador6 = false;
-			}
-			if (areaJugador7.intersects(a)) {
-				booleanJugador7 = true;
-			}
-			if (!areaJugador7.intersects(a)) {
-				booleanJugador7 = false;
-			}
-			if (areaJugador8.intersects(a)) {
-				// GestorJuego.jugador.colisionMover();
-				booleanJugador8 = true;
-			}
-			if (!areaJugador8.intersects(a)) {
-				// GestorJuego.jugador.colisionMover();
-				booleanJugador8 = false;
-			}
-			if (booleanJugador1 == true || booleanJugador2 == true || booleanJugador3 == true || booleanJugador4 == true
-					|| booleanJugador5 == true || booleanJugador6 == true || booleanJugador7 == true
-					|| booleanJugador8 == true) {
+				// System.out.println(GestorJuego.colisiones.size());
+				if (areaJugador1.intersects(a)) {
+					// GestorJuego.jugador.colisionMover();
+					booleanJugador1 = true;
+				}
+				if (!areaJugador1.intersects(a)) {
+					// GestorJuego.jugador.colisionMover();
+					booleanJugador1 = false;
+				}
+				if (areaJugador2.intersects(a)) {
+					booleanJugador2 = true;
+				}
+				if (!areaJugador2.intersects(a)) {
+					booleanJugador2 = false;
+				}
+				if (areaJugador3.intersects(a)) {
+					booleanJugador3 = true;
+				}
+				if (!areaJugador3.intersects(a)) {
+					booleanJugador3 = false;
+				}
+				if (areaJugador4.intersects(a)) {
+					booleanJugador4 = true;
+				}
+				if (!areaJugador4.intersects(a)) {
+					booleanJugador4 = false;
+				}
+				if (areaJugador5.intersects(a)) {
+					booleanJugador5 = true;
+				}
+				if (!areaJugador5.intersects(a)) {
+					booleanJugador5 = false;
+				}
+				if (areaJugador6.intersects(a)) {
+					booleanJugador6 = true;
+				}
+				if (!areaJugador6.intersects(a)) {
+					booleanJugador6 = false;
+				}
+				if (areaJugador7.intersects(a)) {
+					booleanJugador7 = true;
+				}
+				if (!areaJugador7.intersects(a)) {
+					booleanJugador7 = false;
+				}
+				if (areaJugador8.intersects(a)) {
+					// GestorJuego.jugador.colisionMover();
+					booleanJugador8 = true;
+				}
+				if (!areaJugador8.intersects(a)) {
+					// GestorJuego.jugador.colisionMover();
+					booleanJugador8 = false;
+				}
+				if (booleanJugador1 == true || booleanJugador2 == true || booleanJugador3 == true || booleanJugador4 == true
+						|| booleanJugador5 == true || booleanJugador6 == true || booleanJugador7 == true
+						|| booleanJugador8 == true) {
 
-				GestorJuego.jugador.colisionMover();
-				break;
-			}
+					GestorJuego.jugador.colisionMover();
+					break;
+				}
 
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
 		}
+		
 		GestorJuego.jugador.colisionMover();
 		GestorJuego.eliminarArrayColisiones();
 	}
@@ -212,9 +217,9 @@ public class Jugador extends Entidad implements MetodosEntidades {
 	@Override
 	public void dibujar(Graphics2D g) {
 		try {
-			for (Bala a : Tecla.arrayBalas) {
+			for (Bala a : Bala.ArrayBalas) {
 				if (a.contadorVida == 1000) {
-					Tecla.arrayBalas.remove(a);
+					Bala.ArrayBalas.remove(a);
 					a = null;
 				}
 			}
@@ -225,7 +230,7 @@ public class Jugador extends Entidad implements MetodosEntidades {
 
 		// Dano al jugador
 		try {
-			for (Bala a : Tecla.arrayBalas) {
+			for (Bala a : Bala.ArrayBalas) {
 				if (a.entidadCreadora instanceof Enemigo) {
 					if (a.rectangulo.intersects(GestorJuego.jugador.areaJugadorParaDano)) {
 						System.out.println("Ha dado");

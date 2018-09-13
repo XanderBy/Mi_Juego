@@ -24,7 +24,7 @@ public class Sprites
 		} catch (IOException e) 
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		pixeles=new int[ancho * alto];
 		introducirImagenesArray(imagen);

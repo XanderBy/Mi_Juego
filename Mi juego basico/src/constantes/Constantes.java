@@ -17,8 +17,8 @@ public class Constantes {
 
 	public static int velocidadGeneral = 2;
 
-	public static final int ANCHOMAPA = 1920;
-	public static final int ALTOMAPA = 1920;
+	public static final int ANCHOMAPA = 2560;
+	public static final int ALTOMAPA = 2560;
 
 	public static ArrayList<Pantalla> arrayPantalla = new ArrayList<Pantalla>();
 

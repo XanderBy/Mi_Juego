@@ -69,9 +69,9 @@ public class Raton implements MouseListener {
 			GestorInventario.activoInventario = false;
 			GestorEscape.activoEscape = false;
 			GestorOpciones.activoOpciones = false;
-			if (puntero.intersects(GestorJuego.rectangulo)) {
-				System.out.println("Hola");
-			}
+			//if (puntero.intersects(GestorJuego.rectangulo)) {
+				//System.out.println("Hola");
+			//}
 
 		}
 
