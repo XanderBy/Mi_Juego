@@ -21,16 +21,15 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	private int contDerecha = 0;
 	private int contArriba = 0;
 	private int contAbajo = 0;
-	public int donde=4;
+	public int donde = 4;
 	public int velocidadDisparo;
-	
 
 	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
 			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
 			String urlQuieto, int velocidadDisparo) {
 		super(ancho, alto, posicion, vida, velocidadMovimientoXIzquierda, velocidadMovimientoYArriba,
 				velocidadMovimientoXDerecha, velocidadMovimientoYAbajo, urlQuieto);
-		this.velocidadDisparo=velocidadDisparo;
+		this.velocidadDisparo = velocidadDisparo;
 		derecha = new Sprites(50, 50, "src/recursos/enemigo/enemigoDerechaQuieto.gif");
 		izquierda = new Sprites(50, 50, "src/recursos/enemigo/enemigoIzquierdaQuieto.gif");
 		arriba = new Sprites(50, 50, "src/recursos/enemigo/enemigoArribaQuieto.gif");
@@ -58,15 +57,18 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		try {
 			for (Bala a : Bala.ArrayBalas) {
 				if (a.entidadCreadora instanceof Jugador) {
-					if (a.rectangulo.intersects(GestorJuego.enemigos.get(0).areaCuerpo)) {
-						System.out.println("Ha dado");
-						this.dano(1);
-						a.rectangulo.setLocation(10000000, 10000000);
-						Bala.ArrayBalas.remove(a);
-						a = null;
-					}
-					if (this.getVida() == 0) {
-						morir();
+					for (Enemigo ss : GestorJuego.enemigos) {
+
+						if (a.rectangulo.intersects(ss.areaCuerpo)) {
+							System.out.println("Ha dado");
+							this.dano(1);
+							a.rectangulo.setLocation(10000000, 10000000);
+							Bala.ArrayBalas.remove(a);
+							a = null;
+						}
+						if (this.getVida() == 0) {
+							morir();
+						}
 					}
 				}
 
@@ -81,23 +83,23 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	@Override
 	public void dibujar(Graphics2D g) {
 		if (this.donde == 1) {
-			//DibujosBasicos.pintarImagenEnemigo(g, this.izquierda, this);
+			// DibujosBasicos.pintarImagenEnemigo(g, this.izquierda, this);
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesIzquierda.get(contIzquierda), this);
 		}
 		if (this.donde == 2) {
-			//DibujosBasicos.pintarImagenEnemigo(g, this.derecha, this);
+			// DibujosBasicos.pintarImagenEnemigo(g, this.derecha, this);
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesDerecha.get(contDerecha), this);
 		}
 		if (this.donde == 3) {
-			//DibujosBasicos.pintarImagenEnemigo(g, this.arriba, this);
+			// DibujosBasicos.pintarImagenEnemigo(g, this.arriba, this);
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesArriba.get(contArriba), this);
 		}
 		if (this.donde == 4) {
-			//DibujosBasicos.pintarImagenEnemigo(g, this.abajo, this);
+			// DibujosBasicos.pintarImagenEnemigo(g, this.abajo, this);
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesAbajo.get(contAbajo), this);
 		}
 		this.moverse();
-		
+
 		g.setFont(new Font("Mia", Font.ITALIC, 6));
 		DibujosBasicos.pintarTexto(g, this.getPosicion().x, this.getPosicion().y - (this.getPosicion().y / 20),
 				String.valueOf(this.getVida()));
@@ -205,28 +207,28 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				&& this.getPosicion().x > posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "oeste", this);
-			//Tecla.arrayBalas.add(bala);
+			// Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.y <= this.getPosicion().getY()
 				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
 				&& this.getPosicion().x < posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "este", this);
-			//Tecla.arrayBalas.add(bala);
+			// Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y > posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "norte", this);
-			//Tecla.arrayBalas.add(bala);
+			// Tecla.arrayBalas.add(bala);
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y < posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "sur", this);
-			//Tecla.arrayBalas.add(bala);
+			// Tecla.arrayBalas.add(bala);
 		}
 	}
 

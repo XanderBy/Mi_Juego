@@ -18,7 +18,7 @@ import personajes.Jugador;
 import visual.Mapa;
 
 public class GestorJuego extends GestorPadre {
-
+	public static int contPrueba = 0;
 	private static Point posicionObjeto1 = new Point(AccionesBasicas.escalarPantallaX(300),
 			AccionesBasicas.escalarPantallaY(300));
 	private static Point posicionObjeto2 = new Point(AccionesBasicas.escalarPantallaX(500),
@@ -45,7 +45,7 @@ public class GestorJuego extends GestorPadre {
 	// ---
 
 	public static Armas arma1 = new Armas(posicionObjeto1, "src/recursos/descarga.jpg", "src/recursos/descarga.jpg", 10,
-			14, TipoObjetos.ARMAS, 50, 2);
+			14, TipoObjetos.ARMAS, 50, 4);
 	public static ObjetoEstamina arma2 = new ObjetoEstamina(posicionObjeto2, "src/recursos/descarga.jpg",
 			"src/recursos/descarga.jpg", 10, 14, TipoObjetos.ESTAMINA, 10);
 
@@ -67,8 +67,8 @@ public class GestorJuego extends GestorPadre {
 	public void dibujar(Graphics2D g) {
 
 		if (contadorJugador == 0) {
-			 enemigos.add(enemigo1);
-			 enemigos.add(enemigo2);
+			enemigos.add(enemigo1);
+			enemigos.add(enemigo2);
 			// Se volverian a generar los objetos
 			Constantes.volverTodoCero();
 			contadorJugador++;
@@ -79,8 +79,8 @@ public class GestorJuego extends GestorPadre {
 		mapa.dibujar(g);
 		dibujarArmas(g);
 		jugador.dibujar(g);
-		 enemigo1.dibujar(g);
-		 enemigo2.dibujar(g);
+		enemigo1.dibujar(g);
+		enemigo2.dibujar(g);
 		try {
 			// Esto sirve para que no dispare seguido es el contador que va aumentado hasta
 			// el tiempo que tenga cada arma
@@ -140,26 +140,40 @@ public class GestorJuego extends GestorPadre {
 
 	public static void recorrerArrayBalaMover(Graphics2D g) {
 		try {
-			//Disparar cuando haya algun enemigo
-			if(enemigos.size()!=0) {
+			// Disparar cuando haya algun enemigo
+			if (enemigos.size() != 0) {
 				for (Enemigo enemigo : enemigos) {
 
 					for (Bala bala : Bala.ArrayBalas) {
-
+						
 						bala.contador++;
 						// System.out.println(bala.contador);
-						if (bala.contador != 1000) {
-							bala.recorridoBala(bala, g, enemigo);
-						} else {
-							Bala.ArrayBalas.remove(bala);
-							bala = null;
-
+						if(bala.entidadCreadora instanceof Jugador) {
+							contPrueba++;
 						}
+						
+							if (bala.contador != 1000) {
+								bala.recorridoBala(bala, g, enemigo);
+							} else {
+								Bala.ArrayBalas.remove(bala);
+								bala = null;
+
+							}
+						
+						
 					}
+					if(contPrueba==contPrueba) {
+						contPrueba=0;
+						break;
+					}
+					
 				}
-			}else {
-				//Disparar cuando no haya enemigos
-				//System.out.println("Pasa esto cuando no hay enemigos");
+				System.out.println(contPrueba+ " El contador de prueba!!!! " + Bala.ArrayBalas.size());
+				
+			} 
+			if(enemigos.size()==0){
+				// Disparar cuando no haya enemigos
+				// System.out.println("Pasa esto cuando no hay enemigos");
 				for (Bala bala : Bala.ArrayBalas) {
 
 					bala.contador++;
@@ -174,7 +188,6 @@ public class GestorJuego extends GestorPadre {
 				}
 			}
 			
-
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

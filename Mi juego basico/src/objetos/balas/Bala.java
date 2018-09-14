@@ -41,7 +41,6 @@ public class Bala {
 		case "norte":
 
 			if (this.entidadCreadora instanceof Jugador) {
-				//System.out.println("Disparando Norte");
 				bala.posicion.y = bala.posicion.y - ((Armas) Tecla.objetoElegido).velocidadDisparo;
 
 			}
@@ -51,7 +50,6 @@ public class Bala {
 
 			rectangulo = new Rectangle(bala.posicion.x, bala.posicion.y, 2, 2);
 			//System.out.println(bala.contador);
-
 			g.fillRect(bala.posicion.x, bala.posicion.y, 2, 2);
 
 			bala.contadorVida++;

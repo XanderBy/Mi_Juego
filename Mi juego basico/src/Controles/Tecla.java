@@ -37,6 +37,7 @@ public class Tecla extends Teclado {
 								Point posicionBala = new Point(GestorJuego.jugador.getPosicion().x,
 										GestorJuego.jugador.getPosicion().y);
 								Bala bala = new Bala(posicionBala, Tecla.direccion, GestorJuego.jugador);
+								System.out.println(Bala.ArrayBalas.size());
 								esperarArma = 0;
 							}
 						}

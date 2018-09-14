@@ -2,6 +2,9 @@ package CosasBasicas;
 
 import java.awt.Point;
 
+import Controles.Tecla;
+
+import objetos.armas.Armas;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import objetos.balas.Bala;
@@ -50,11 +53,11 @@ public class AccionesBasicas {
 				// System.out.println("Cambiando de posicion las balas");
 				// System.out.println("Velocidad de disparo jugador" + ((Armas)
 				// Tecla.objetoElegido).velocidadDisparo);
-				if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
-					System.out.println(a.posicion);
-					a.posicion.x = a.posicion.x + (velocidad);
-				}
-				
+				//if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
+					//System.out.println(a.posicion);
+					//a.posicion.x = a.posicion.x + (velocidad + (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
+				//}
+				a.posicion.x = a.posicion.x + velocidad;
 				// a.posicion.x = a.posicion.x - velocidad - ((Armas)
 				// Tecla.objetoElegido).velocidadDisparo;
 			}
@@ -98,10 +101,10 @@ public class AccionesBasicas {
 			}
 			
 			if (a.entidadCreadora instanceof Jugador) {
-				if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
-					a.posicion.x = a.posicion.x - (velocidad);
-				}
-				
+				//if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
+					//a.posicion.x = a.posicion.x - (velocidad - (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
+				//}
+				a.posicion.x = a.posicion.x  - velocidad;
 			}
 		}
 		GestorJuego.cargarArrayObjetos();
@@ -139,11 +142,11 @@ public class AccionesBasicas {
 
 			}
 			if (a.entidadCreadora instanceof Jugador) {
-				if (a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
-					System.out.println(a.posicion);
-					a.posicion.y = a.posicion.y + (velocidad);
-				}
-				
+				//if (a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
+					//System.out.println(a.posicion);
+					//a.posicion.y = a.posicion.y + (velocidad + (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
+				//}
+				a.posicion.y = a.posicion.y + velocidad;
 			}
 		}
 		GestorJuego.cargarArrayObjetos();
@@ -180,10 +183,10 @@ public class AccionesBasicas {
 
 			}
 			if (a.entidadCreadora instanceof Jugador) {
-				if(a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
-					a.posicion.y = a.posicion.y - (velocidad);
-				}
-				
+				//if(a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
+					//a.posicion.y = a.posicion.y - (velocidad - (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
+				//}
+				a.posicion.y = a.posicion.y - velocidad;
 			}
 		}
 		GestorJuego.cargarArrayObjetos();

@@ -6,13 +6,22 @@ import visual.Pantalla;
 import visual.SuperficieDibujo;
 
 public class BuclePrincipal implements Runnable {
-
+	//Para saber si esta funcionando el juego
 	private static boolean corriendo = false;
+	
+	//hilo principal para el bucle
 	private Thread hilo = new Thread(this);
-
+	
+	//son todas las teclas que e instanciado
 	private static Teclado teclado = new Teclado();
+	
+	//El raton
 	private static Raton raton = new Raton();
+	
+	//Donde se dibuja todo
 	static SuperficieDibujo sd = new SuperficieDibujo(Constantes.ANCHO, Constantes.ALTO, teclado, raton);
+	
+	//La pantalla donde se dibuja todo el tamano etc...
 	private Pantalla pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO, sd);
 
 	// para los fps
