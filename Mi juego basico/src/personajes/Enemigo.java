@@ -61,12 +61,12 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 
 						if (a.rectangulo.intersects(ss.areaCuerpo)) {
 							System.out.println("Ha dado");
-							this.dano(1);
+							ss.dano(1);
 							a.rectangulo.setLocation(10000000, 10000000);
 							Bala.ArrayBalas.remove(a);
 							a = null;
 						}
-						if (this.getVida() == 0) {
+						if (ss.getVida() == 0) {
 							morir();
 						}
 					}

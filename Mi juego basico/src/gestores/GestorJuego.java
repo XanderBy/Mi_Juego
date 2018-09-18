@@ -45,7 +45,7 @@ public class GestorJuego extends GestorPadre {
 	// ---
 
 	public static Armas arma1 = new Armas(posicionObjeto1, "src/recursos/descarga.jpg", "src/recursos/descarga.jpg", 10,
-			14, TipoObjetos.ARMAS, 50, 4);
+			14, TipoObjetos.ARMAS, 50, 10);
 	public static ObjetoEstamina arma2 = new ObjetoEstamina(posicionObjeto2, "src/recursos/descarga.jpg",
 			"src/recursos/descarga.jpg", 10, 14, TipoObjetos.ESTAMINA, 10);
 
@@ -87,7 +87,7 @@ public class GestorJuego extends GestorPadre {
 			if (Tecla.esperarArma != ((Armas) Tecla.objetoElegido).esperaDisparo) {
 				Tecla.esperarArma++;
 			}
-		} catch (NullPointerException e) {
+		} catch (NullPointerException| ClassCastException e) {
 			// TODO: handle exception
 		}
 
@@ -168,7 +168,6 @@ public class GestorJuego extends GestorPadre {
 					}
 					
 				}
-				System.out.println(contPrueba+ " El contador de prueba!!!! " + Bala.ArrayBalas.size());
 				
 			} 
 			if(enemigos.size()==0){
