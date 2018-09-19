@@ -80,8 +80,6 @@ public class BuclePrincipal implements Runnable {
 	public void iniciar() {
 		hilo.start();
 		BuclePrincipal.corriendo = true;
-
-		// actualizar();
 	}
 
 	public void parar() {
@@ -91,7 +89,6 @@ public class BuclePrincipal implements Runnable {
 			hilo.join();
 
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

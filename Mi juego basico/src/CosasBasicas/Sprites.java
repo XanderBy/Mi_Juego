@@ -10,7 +10,7 @@ import constantes.Constantes;
 
 public class Sprites 
 {
-	//Esta clase es dudosa creo que seria mejor coger la misma imagen
+
 	private int ancho;
 	private int alto;
 	private int[] pixeles;
@@ -23,8 +23,7 @@ public class Sprites
 			
 		} catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+
 		}
 		pixeles=new int[ancho * alto];
 		introducirImagenesArray(imagen);
@@ -43,7 +42,7 @@ public class Sprites
 						return null;
 						
 					}else {
-						//System.out.println("dadwa");
+
 					return Color.getColor("", this.pixeles[(x*y)]= imagen.getRGB(x, y));
 					}
 					

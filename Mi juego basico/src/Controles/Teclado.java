@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 
 public class Teclado implements KeyListener {
 	public static boolean[] tecladoPulsado = new boolean[11];
-	public boolean[] teclado = new boolean[3];
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -13,7 +12,6 @@ public class Teclado implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			tecladoPulsado[0] = true;
 			Tecla.acciones(this);
-
 			break;
 		case KeyEvent.VK_W:
 			tecladoPulsado[1] = true;

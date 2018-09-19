@@ -35,6 +35,8 @@ public class Constantes {
 	public static final Point posicionSpawn3 = null;
 	public static final Point posicionSpawn4 = null;
 
+	
+	//Esto lo tengo que terminar
 	public static void volverTodoCero() {
 		GestorJuego.jugador = new Jugador(30, 55, GestorJuego.posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,
 				Constantes.velocidadGeneral, Constantes.velocidadGeneral, Constantes.velocidadGeneral,

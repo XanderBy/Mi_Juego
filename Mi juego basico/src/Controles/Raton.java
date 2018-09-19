@@ -21,8 +21,6 @@ public class Raton implements MouseListener {
 
 	public static Point puntaRaton;
 	private Rectangle puntero;
-	private SuperficieDibujo sd;
-	private GestorMenuPrincipal gmp = new GestorMenuPrincipal();
 	public static Objetos recuadroInventario = null;
 	public static Objetos objetoMover = null;
 	public Point posicionObjetos;
@@ -51,7 +49,7 @@ public class Raton implements MouseListener {
 			GestorEscape.activoEscape = false;
 			GestorOpciones.activoOpciones = false;
 
-			if (puntero.intersects(gmp.nuevaPartida)) {
+			if (puntero.intersects(GestorMenuPrincipal.nuevaPartida)) {
 				GestorJuego.activoJuego = true;
 				Constantes.dondeEncuentraMenu = false;
 			}
@@ -69,9 +67,6 @@ public class Raton implements MouseListener {
 			GestorInventario.activoInventario = false;
 			GestorEscape.activoEscape = false;
 			GestorOpciones.activoOpciones = false;
-			//if (puntero.intersects(GestorJuego.rectangulo)) {
-				//System.out.println("Hola");
-			//}
 
 		}
 
@@ -114,7 +109,6 @@ public class Raton implements MouseListener {
 				tamanoPantalla = new Dimension(1920, 1080);
 				Constantes.arrayPantalla.get(0).setSize(tamanoPantalla);
 				Constantes.arrayPantalla.get(0).setLocation(0, 0);
-				// SuperficieDibujo.arraySuperficie[0].setSize(tamanoPantalla);
 				Constantes.ALTO = 1080;
 				Constantes.ANCHO = 1920;
 				posicionJugadorNueva = new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO / 2),
@@ -143,9 +137,7 @@ public class Raton implements MouseListener {
 
 					if (puntero.intersects(GestorInventario.recuadros[i])) {
 						System.out.println(objetoMover);
-						// posicionObjetos=GestorInventario.moverObjeto02.getLocation();
-						// objetoMover.posicion=GestorInventario.moverObjeto02.getLocation();
-
+						
 						if (GestorJuego.jugador.inventarioArray[i] == null) {
 							for (int j = 0; j < GestorJuego.jugador.inventarioArray.length; j++) {
 								if (GestorJuego.jugador.inventarioArray[j] == objetoMover) {
@@ -169,7 +161,6 @@ public class Raton implements MouseListener {
 				}
 				if (puntero.intersects(GestorInventario.soltar)) {
 					for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
-						// GestorJuego.jugador.inventarioArray.remove(recuadroInventario);
 						if (GestorJuego.jugador.inventarioArray[i] == recuadroInventario) {
 							GestorJuego.jugador.inventarioArray[i] = null;
 						}
@@ -186,7 +177,7 @@ public class Raton implements MouseListener {
 					if (objetoMover.tipoObjeto == TipoObjetos.MEDICINAL
 							&& GestorJuego.jugador.getVida() + Constantes.VIDA <= 100) {
 						objetoMover.usar = true;
-						// GestorJuego.jugador.setVida(GestorJuego.jugador.getVida() + Constantes.VIDA);
+
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
 							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
 								objetoMover.actualizar();
@@ -198,8 +189,7 @@ public class Raton implements MouseListener {
 					if (objetoMover.tipoObjeto == TipoObjetos.ESTAMINA
 							&& GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <= 100) {
 						objetoMover.usar = true;
-						// GestorJuego.jugador.setResistencia(GestorJuego.jugador.getResistencia() +
-						// Constantes.ESTAMINA);
+						
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
 							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
 								objetoMover.actualizar();
@@ -224,7 +214,6 @@ public class Raton implements MouseListener {
 							break;
 						}
 					} catch (NullPointerException ee) {
-						// TODO: handle exception
 
 					}
 

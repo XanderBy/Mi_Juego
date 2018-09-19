@@ -25,7 +25,7 @@ public class AccionesBasicas {
 
 	public static void correccionXPositivo(int velocidad) {
 
-		// GestorJuego.rectangulo.x=GestorJuego.rectangulo.x +velocidad;
+
 		GestorJuego.rectangulo1x = GestorJuego.rectangulo1x + velocidad;
 		Mapa.rectanguloIx = Mapa.rectanguloIx + velocidad;
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx + velocidad;
@@ -50,16 +50,7 @@ public class AccionesBasicas {
 			}
 			if (a.entidadCreadora instanceof Jugador) {
 
-				// System.out.println("Cambiando de posicion las balas");
-				// System.out.println("Velocidad de disparo jugador" + ((Armas)
-				// Tecla.objetoElegido).velocidadDisparo);
-				//if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
-					//System.out.println(a.posicion);
-					//a.posicion.x = a.posicion.x + (velocidad + (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
-				//}
 				a.posicion.x = a.posicion.x + velocidad;
-				// a.posicion.x = a.posicion.x - velocidad - ((Armas)
-				// Tecla.objetoElegido).velocidadDisparo;
 			}
 
 		}
@@ -76,7 +67,7 @@ public class AccionesBasicas {
 
 	public static void correccionXNegativo(int velocidad) {
 
-		// GestorJuego.rectangulo.x=GestorJuego.rectangulo.x - velocidad;
+
 		GestorJuego.rectangulo1x = GestorJuego.rectangulo1x - velocidad;
 		Mapa.rectanguloIx = Mapa.rectanguloIx - velocidad;
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx - velocidad;
@@ -99,12 +90,10 @@ public class AccionesBasicas {
 				a.posicion.x = a.posicion.x - velocidad;
 
 			}
-			
+
 			if (a.entidadCreadora instanceof Jugador) {
-				//if (a.direccion.equalsIgnoreCase("norte") || a.direccion.equalsIgnoreCase("sur")) {
-					//a.posicion.x = a.posicion.x - (velocidad - (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
-				//}
-				a.posicion.x = a.posicion.x  - velocidad;
+
+				a.posicion.x = a.posicion.x - velocidad;
 			}
 		}
 		GestorJuego.cargarArrayObjetos();
@@ -119,7 +108,7 @@ public class AccionesBasicas {
 
 	public static void correccionYPositivo(int velocidad) {
 
-		// GestorJuego.rectangulo.y=GestorJuego.rectangulo.y + velocidad;
+
 		GestorJuego.rectangulo1y = GestorJuego.rectangulo1y + velocidad;
 		Mapa.rectanguloIy = Mapa.rectanguloIy + velocidad;
 		Mapa.rectanguloAby = Mapa.rectanguloAby + velocidad;
@@ -142,10 +131,7 @@ public class AccionesBasicas {
 
 			}
 			if (a.entidadCreadora instanceof Jugador) {
-				//if (a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
-					//System.out.println(a.posicion);
-					//a.posicion.y = a.posicion.y + (velocidad + (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
-				//}
+
 				a.posicion.y = a.posicion.y + velocidad;
 			}
 		}
@@ -161,8 +147,7 @@ public class AccionesBasicas {
 
 	public static void correccionYNegativo(int velocidad) {
 
-		// TODO: handle exception
-		// GestorJuego.rectangulo.y=GestorJuego.rectangulo.y - velocidad;
+
 		GestorJuego.rectangulo1y = GestorJuego.rectangulo1y - velocidad;
 		Mapa.rectanguloIy = Mapa.rectanguloIy - velocidad;
 		Mapa.rectanguloAby = Mapa.rectanguloAby - velocidad;
@@ -183,9 +168,7 @@ public class AccionesBasicas {
 
 			}
 			if (a.entidadCreadora instanceof Jugador) {
-				//if(a.direccion.equalsIgnoreCase("este") || a.direccion.equalsIgnoreCase("oeste")) {
-					//a.posicion.y = a.posicion.y - (velocidad - (((Armas) Tecla.objetoElegido).velocidadDisparo - velocidad));
-				//}
+
 				a.posicion.y = a.posicion.y - velocidad;
 			}
 		}

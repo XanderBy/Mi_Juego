@@ -83,19 +83,19 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	@Override
 	public void dibujar(Graphics2D g) {
 		if (this.donde == 1) {
-			// DibujosBasicos.pintarImagenEnemigo(g, this.izquierda, this);
+
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesIzquierda.get(contIzquierda), this);
 		}
 		if (this.donde == 2) {
-			// DibujosBasicos.pintarImagenEnemigo(g, this.derecha, this);
+
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesDerecha.get(contDerecha), this);
 		}
 		if (this.donde == 3) {
-			// DibujosBasicos.pintarImagenEnemigo(g, this.arriba, this);
+
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesArriba.get(contArriba), this);
 		}
 		if (this.donde == 4) {
-			// DibujosBasicos.pintarImagenEnemigo(g, this.abajo, this);
+
 			DibujosBasicos.pintarImagenEnemigo(g, this.imagenesAbajo.get(contAbajo), this);
 		}
 		this.moverse();
@@ -122,13 +122,13 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	public void moverse() {
 
 		tiempoAhora++;
-		// System.out.println(tiempoAhora);
+
 		Point posicionJugador = GestorJuego.jugador.getPosicion();
 		int posicionEnemigoX = (int) this.getPosicion().getX();
 		int posicionEnemigoY = (int) this.getPosicion().getY();
 		Point posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
 
-		// System.out.println(this.getPosicion() + " " + posicionJugador);
+
 		int aleatorio = (int) (Math.random() * 2) + 1;
 		switch (aleatorio) {
 		case 1:
@@ -207,28 +207,28 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				&& this.getPosicion().x > posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "oeste", this);
-			// Tecla.arrayBalas.add(bala);
+
 		}
 		if (posicionJugador.y <= this.getPosicion().getY()
 				&& posicionJugador.y + GestorJuego.jugador.getAlto() >= this.getPosicion().getY()
 				&& this.getPosicion().x < posicionJugador.getX()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "este", this);
-			// Tecla.arrayBalas.add(bala);
+
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y > posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "norte", this);
-			// Tecla.arrayBalas.add(bala);
+
 		}
 		if (posicionJugador.x <= this.getPosicion().getX()
 				&& posicionJugador.x + GestorJuego.jugador.getAncho() >= this.getPosicion().getX()
 				&& this.getPosicion().y < posicionJugador.getY()) {
 			Point posicionBala = new Point(this.getPosicion().x, this.getPosicion().y);
 			Bala bala = new Bala(posicionBala, "sur", this);
-			// Tecla.arrayBalas.add(bala);
+
 		}
 	}
 

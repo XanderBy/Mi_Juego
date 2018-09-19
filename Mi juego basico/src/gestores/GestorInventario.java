@@ -4,13 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-
 import Controles.Raton;
-import CosasBasicas.AccionesBasicas;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
-import objetos.armas.Armas;
 import visual.SuperficieDibujo;
 
 public class GestorInventario extends GestorPadre {
@@ -46,7 +42,7 @@ public class GestorInventario extends GestorPadre {
 	public void dibujar(Graphics2D g) {
 		g.setColor(Color.darkGray);
 		g.fillRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
-		// g.scale(Constantes.ESCALAX, Constantes.ESCALAY);
+
 
 		g.setColor(Color.WHITE);
 		// Superficie Dibujada
@@ -76,11 +72,9 @@ public class GestorInventario extends GestorPadre {
 
 		contY = 0;
 
-		// System.out.println("------------------------------");
 		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
-			// System.out.println("Objeto" + GestorJuego.jugador.inventarioArray[i]);
+
 		}
-		// System.out.println("------------------------------");
 		// objetos dibujados
 		for (int i = 0; i < 3; i++) {
 			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
@@ -94,9 +88,9 @@ public class GestorInventario extends GestorPadre {
 				if (GestorJuego.jugador.inventarioArray[contadorInventario] != null) {
 					try {
 						Point posicionNueva = new Point(contX, contY);
-						// System.out.println(posicionNueva);
+
 						GestorJuego.jugador.inventarioArray[contadorInventario].posicion = posicionNueva;
-						// System.out.println(posicionNueva);
+
 						g.drawImage(GestorJuego.jugador.inventarioArray[contadorInventario].spriteInventario.imagen,
 								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x,
 								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y,
@@ -104,8 +98,7 @@ public class GestorInventario extends GestorPadre {
 										.introducirImagenesArray(
 												GestorJuego.jugador.inventarioArray[contadorInventario].spriteInventario.imagen),
 								null);
-						// System.out.println(GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x
-						// + " " + GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y);
+
 						GestorJuego.jugador.inventarioArray[contadorInventario].areaObjetoInfluencia = new Rectangle(
 								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.x,
 								GestorJuego.jugador.inventarioArray[contadorInventario].posicion.y,
