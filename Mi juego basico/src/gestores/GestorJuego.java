@@ -15,6 +15,7 @@ import objetos.objeto.ObjetoEstamina;
 import objetos.objeto.Objetos;
 import personajes.Enemigo;
 import personajes.Jugador;
+import visual.Casa;
 import visual.Mapa;
 
 public class GestorJuego extends GestorPadre {
@@ -23,6 +24,8 @@ public class GestorJuego extends GestorPadre {
 			AccionesBasicas.escalarPantallaY(300));
 	private static Point posicionObjeto2 = new Point(AccionesBasicas.escalarPantallaX(500),
 			AccionesBasicas.escalarPantallaY(400));
+	private static Point posicionCasa1 = new Point(AccionesBasicas.escalarPantallaX(700),
+			AccionesBasicas.escalarPantallaY(700));
 
 	public static Point posicionJugador = new Point(AccionesBasicas.escalarPantallaX(Constantes.ANCHO / 3),
 			AccionesBasicas.escalarPantallaY(Constantes.ALTO / 3));
@@ -48,8 +51,9 @@ public class GestorJuego extends GestorPadre {
 			14, TipoObjetos.ARMAS, 50, 10);
 	public static ObjetoEstamina arma2 = new ObjetoEstamina(posicionObjeto2, "src/recursos/descarga.jpg",
 			"src/recursos/descarga.jpg", 10, 14, TipoObjetos.ESTAMINA, 10);
-
-	public static Rectangle rectangulo;
+	
+	public static Casa casa1=new Casa(posicionCasa1.x, posicionCasa1.y, 148, 176, "C:\\Users\\alexi\\Desktop\\recursos\\casaAzul.gif");
+	
 
 	public static boolean activoJuego = false;
 
@@ -78,16 +82,19 @@ public class GestorJuego extends GestorPadre {
 		// Importante
 		mapa.dibujar(g);
 		dibujarArmas(g);
+		//
 		jugador.dibujar(g);
 		enemigo1.dibujar(g);
 		enemigo2.dibujar(g);
+		casa1.dibujar(g);
+		
 		try {
 			// Esto sirve para que no dispare seguido es el contador que va aumentado hasta
 			// el tiempo que tenga cada arma
 			if (Tecla.esperarArma != ((Armas) Tecla.objetoElegido).esperaDisparo) {
 				Tecla.esperarArma++;
 			}
-		} catch (NullPointerException| ClassCastException e) {
+		} catch (NullPointerException | ClassCastException e) {
 			// TODO: handle exception
 		}
 
@@ -99,8 +106,6 @@ public class GestorJuego extends GestorPadre {
 		Mapa.paredDerecha = new Rectangle(Mapa.rectanguloDx, Mapa.rectanguloDy, 3, Constantes.ALTOMAPA);
 		// ---
 		// Prueba
-		rectangulo = new Rectangle(rectangulo1x, rectangulo1y, 50, 50);
-		g.drawRect(rectangulo.x, rectangulo.y, 50, 50);
 		// ---
 
 		recorrerArrayBalaMover(g);
@@ -118,7 +123,6 @@ public class GestorJuego extends GestorPadre {
 	}
 
 	public static void cargarArrayColisiones() {
-		colisiones.add(rectangulo);
 		colisiones.add(Mapa.paredArriba);
 		colisiones.add(Mapa.paredAbajo);
 		colisiones.add(Mapa.paredIzquierda);
@@ -145,32 +149,31 @@ public class GestorJuego extends GestorPadre {
 				for (Enemigo enemigo : enemigos) {
 
 					for (Bala bala : Bala.ArrayBalas) {
-						
+
 						bala.contador++;
 						// System.out.println(bala.contador);
-						if(bala.entidadCreadora instanceof Jugador) {
+						if (bala.entidadCreadora instanceof Jugador) {
 							contPrueba++;
 						}
-						
-							if (bala.contador != 1000) {
-								bala.recorridoBala(bala, g, enemigo);
-							} else {
-								Bala.ArrayBalas.remove(bala);
-								bala = null;
 
-							}
-						
-						
+						if (bala.contador != 1000) {
+							bala.recorridoBala(bala, g, enemigo);
+						} else {
+							Bala.ArrayBalas.remove(bala);
+							bala = null;
+
+						}
+
 					}
-					if(contPrueba==contPrueba) {
-						contPrueba=0;
+					if (contPrueba == contPrueba) {
+						contPrueba = 0;
 						break;
 					}
-					
+
 				}
-				
-			} 
-			if(enemigos.size()==0){
+
+			}
+			if (enemigos.size() == 0) {
 				// Disparar cuando no haya enemigos
 				// System.out.println("Pasa esto cuando no hay enemigos");
 				for (Bala bala : Bala.ArrayBalas) {
@@ -186,17 +189,10 @@ public class GestorJuego extends GestorPadre {
 					}
 				}
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 
-	public static Rectangle getRectangulo() {
-		return rectangulo;
-	}
-
-	public static void setRectangulo(Rectangle rectangulo) {
-		GestorJuego.rectangulo = rectangulo;
-	}
 }

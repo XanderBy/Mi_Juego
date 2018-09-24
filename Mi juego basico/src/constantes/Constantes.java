@@ -21,6 +21,8 @@ public class Constantes {
 	public static final int ALTOMAPA = 2560;
 
 	public static ArrayList<Pantalla> arrayPantalla = new ArrayList<Pantalla>();
+	
+	
 
 	public static boolean dondeEncuentraMenu = true;
 

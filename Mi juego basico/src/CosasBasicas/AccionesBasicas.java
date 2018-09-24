@@ -31,7 +31,7 @@ public class AccionesBasicas {
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx + velocidad;
 		Mapa.rectanguloAx = Mapa.rectanguloAx + velocidad;
 		Mapa.rectanguloDx = Mapa.rectanguloDx + velocidad;
-
+		GestorJuego.casa1.setPosicionX(GestorJuego.casa1.getPosicionX() + velocidad);
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -73,7 +73,7 @@ public class AccionesBasicas {
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx - velocidad;
 		Mapa.rectanguloAx = Mapa.rectanguloAx - velocidad;
 		Mapa.rectanguloDx = Mapa.rectanguloDx - velocidad;
-
+		GestorJuego.casa1.setPosicionX(GestorJuego.casa1.getPosicionX() - velocidad);
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -114,6 +114,7 @@ public class AccionesBasicas {
 		Mapa.rectanguloAby = Mapa.rectanguloAby + velocidad;
 		Mapa.rectanguloAy = Mapa.rectanguloAy + velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy + velocidad;
+		GestorJuego.casa1.setPosicionY(GestorJuego.casa1.getPosicionY() + velocidad);
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -153,6 +154,7 @@ public class AccionesBasicas {
 		Mapa.rectanguloAby = Mapa.rectanguloAby - velocidad;
 		Mapa.rectanguloAy = Mapa.rectanguloAy - velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy - velocidad;
+		GestorJuego.casa1.setPosicionY(GestorJuego.casa1.getPosicionY() - velocidad);
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
