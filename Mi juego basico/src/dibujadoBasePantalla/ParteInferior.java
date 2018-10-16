@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
 import gestores.GestorJuego;
+import personajes.Jugador;
 import visual.SuperficieDibujo;
 
 public class ParteInferior {
@@ -16,12 +17,16 @@ public class ParteInferior {
 
 	public static void dibujar(Graphics2D g) {
 		g.setColor(Color.BLACK);
+		
+		
+		
 		g.fillRect(0,
 				(SuperficieDibujo.arraySuperficie[0].getHeight() / 2)
 						- SuperficieDibujo.arraySuperficie[0].getHeight() / 10,
 				SuperficieDibujo.arraySuperficie[0].getWidth(), SuperficieDibujo.arraySuperficie[0].getHeight() / 2);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Mia", Font.ITALIC, 10));
+		g.drawString("Contador de muertes: "+Jugador.contadorMuertes, 0,SuperficieDibujo.arraySuperficie[0].getHeight()/80);
 		g.drawString("Vida: ", SuperficieDibujo.arraySuperficie[0].getWidth() / 200,
 				(SuperficieDibujo.arraySuperficie[0].getHeight() / 4)
 						+ SuperficieDibujo.arraySuperficie[0].getHeight() / 6

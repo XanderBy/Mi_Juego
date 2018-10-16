@@ -3,6 +3,7 @@ package Controles;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import gestores.GestorCreditos;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -148,12 +149,23 @@ public class Tecla extends Teclado {
 			}
 			// ------------------------------------------------------------------
 			if (teclado.tecladoPulsado[6] == true) {
-				if (GestorEscape.activoEscape == true) {
-					GestorEscape.activoEscape = false;
-					GestorJuego.activoJuego = true;
-				} else {
-					GestorEscape.activoEscape = true;
-					GestorJuego.activoJuego = false;
+				if(GestorJuego.activoJuego) {
+					if(GestorEscape.activoEscape == false){
+						GestorEscape.activoEscape = true;
+						GestorJuego.activoJuego = false;
+					}
+					
+				}else {
+					if (GestorEscape.activoEscape == true) {
+						GestorEscape.activoEscape = false;
+						GestorJuego.activoJuego = true;
+					}
+				}
+				
+				
+				if(GestorCreditos.GestorCreditosActivo==true) {
+					GestorCreditos.GestorCreditosActivo=false;
+					GestorMenuPrincipal.activoMenuPrincipal=true;
 				}
 
 			}

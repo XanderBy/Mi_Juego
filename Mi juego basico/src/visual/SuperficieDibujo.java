@@ -9,6 +9,7 @@ import Controles.Raton;
 import Controles.Teclado;
 import constantes.Constantes;
 import dibujadoBasePantalla.ParteInferior;
+import gestores.GestorCreditos;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -44,6 +45,7 @@ public class SuperficieDibujo extends Canvas {
 	private GestorEscape ge=new GestorEscape();
 	private GestorOpciones go=new GestorOpciones();
 	private GestorMorir gm=new GestorMorir();
+	private GestorCreditos gc=new GestorCreditos(); 
 	
 	
 	public SuperficieDibujo(int ancho, int alto, Teclado teclado, Raton raton) 
@@ -97,6 +99,9 @@ public class SuperficieDibujo extends Canvas {
 		if(GestorMorir.gestorMorirActivo==true) 
 		{
 			gm.dibujar(g);
+		}
+		if(GestorCreditos.GestorCreditosActivo==true) {
+			gc.dibujar(g);
 		}
 		g.dispose();
 		buffer.show();

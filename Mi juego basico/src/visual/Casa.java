@@ -4,9 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import CosasBasicas.Objetos;
 import CosasBasicas.Sprites;
 
-public class Casa {
+public class Casa implements Objetos {
 	private Rectangle areaCasa;
 	private int posicionX;
 	private int posicionY;
@@ -24,10 +25,21 @@ public class Casa {
 		this.alto = alto;
 		this.url = url;
 		this.sprite=new Sprites(ancho, alto, url);
+		
+		
 	}
 	
 	public void dibujar(Graphics2D g) {
+		try {
+			Objetos.borrarObjetosArray(this);
+			Objetos.borrarObjetosColisionArray(areaCasa);
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+		}
+		
 		this.areaCasa=new Rectangle(this.posicionX, this.posicionY, this.ancho, this.alto);
+		Objetos.introducirObjetosArray(this);
+		Objetos.introducirObjetosColisionArray(areaCasa);
 		g.drawImage(this.sprite.imagen, this.posicionX, this.posicionY, this.ancho, this.alto, null);
 	}
 

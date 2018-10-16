@@ -19,6 +19,7 @@ public class Jugador extends Entidad implements MetodosEntidades {
 
 	private int resistencia;
 	private int armadura;
+	public static int contadorMuertes=0;
 	public static Rectangle areaJugador1;
 	public static Rectangle areaJugador2;
 	public static Rectangle areaJugador3;

@@ -23,6 +23,8 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	private int contAbajo = 0;
 	public int donde = 4;
 	public int velocidadDisparo;
+	
+	
 
 	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
 			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
@@ -67,6 +69,7 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 							a = null;
 						}
 						if (ss.getVida() == 0) {
+							Jugador.contadorMuertes++;
 							morir();
 						}
 					}

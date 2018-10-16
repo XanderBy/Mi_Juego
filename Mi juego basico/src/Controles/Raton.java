@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import CosasBasicas.AccionesBasicas;
 import constantes.Constantes;
+import gestores.GestorCreditos;
 import gestores.GestorEscape;
 import gestores.GestorInventario;
 import gestores.GestorJuego;
@@ -28,7 +29,7 @@ public class Raton implements MouseListener {
 	public static Point posicionJugadorNueva;
 
 	public void actualizar() {
-
+		
 		SuperficieDibujo.arraySuperficie[0].actualizar();
 		puntaRaton = SuperficieDibujo.arraySuperficie[0].posicionRaton;
 		// System.out.println("posicion raton:" + puntaRaton);
@@ -48,6 +49,7 @@ public class Raton implements MouseListener {
 			GestorJuego.activoJuego = false;
 			GestorEscape.activoEscape = false;
 			GestorOpciones.activoOpciones = false;
+			GestorCreditos.GestorCreditosActivo=false;
 
 			if (puntero.intersects(GestorMenuPrincipal.nuevaPartida)) {
 				GestorJuego.activoJuego = true;
@@ -59,6 +61,10 @@ public class Raton implements MouseListener {
 			if (puntero.intersects(GestorMenuPrincipal.opciones)) {
 				GestorOpciones.activoOpciones = true;
 
+			}
+			if(puntero.intersects(GestorMenuPrincipal.creditos)) {
+				GestorCreditos.GestorCreditosActivo=true;
+				GestorMenuPrincipal.activoMenuPrincipal = false;
 			}
 		}
 

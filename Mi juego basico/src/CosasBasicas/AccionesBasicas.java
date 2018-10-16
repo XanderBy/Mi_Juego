@@ -1,16 +1,15 @@
 package CosasBasicas;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
-import Controles.Tecla;
-
-import objetos.armas.Armas;
 import constantes.Constantes;
 import gestores.GestorJuego;
 import objetos.balas.Bala;
 import objetos.objeto.Objetos;
 import personajes.Enemigo;
 import personajes.Jugador;
+import visual.Casa;
 import visual.Mapa;
 
 public class AccionesBasicas {
@@ -25,13 +24,20 @@ public class AccionesBasicas {
 
 	public static void correccionXPositivo(int velocidad) {
 
-
 		GestorJuego.rectangulo1x = GestorJuego.rectangulo1x + velocidad;
 		Mapa.rectanguloIx = Mapa.rectanguloIx + velocidad;
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx + velocidad;
 		Mapa.rectanguloAx = Mapa.rectanguloAx + velocidad;
 		Mapa.rectanguloDx = Mapa.rectanguloDx + velocidad;
-		GestorJuego.casa1.setPosicionX(GestorJuego.casa1.getPosicionX() + velocidad);
+
+		try {
+			for (Object a : GestorJuego.objetosMapaFijo) {
+				((Casa) a).setPosicionX(((Casa) a).getPosicionX() + velocidad);
+			}
+		} catch (IndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -67,13 +73,21 @@ public class AccionesBasicas {
 
 	public static void correccionXNegativo(int velocidad) {
 
-
 		GestorJuego.rectangulo1x = GestorJuego.rectangulo1x - velocidad;
 		Mapa.rectanguloIx = Mapa.rectanguloIx - velocidad;
 		Mapa.rectanguloAbx = Mapa.rectanguloAbx - velocidad;
 		Mapa.rectanguloAx = Mapa.rectanguloAx - velocidad;
 		Mapa.rectanguloDx = Mapa.rectanguloDx - velocidad;
-		GestorJuego.casa1.setPosicionX(GestorJuego.casa1.getPosicionX() - velocidad);
+
+		try {
+			for (Object a : GestorJuego.objetosMapaFijo) {
+
+				((Casa) a).setPosicionX(((Casa) a).getPosicionX() - velocidad);
+			}
+		} catch (IndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -108,13 +122,20 @@ public class AccionesBasicas {
 
 	public static void correccionYPositivo(int velocidad) {
 
-
 		GestorJuego.rectangulo1y = GestorJuego.rectangulo1y + velocidad;
 		Mapa.rectanguloIy = Mapa.rectanguloIy + velocidad;
 		Mapa.rectanguloAby = Mapa.rectanguloAby + velocidad;
 		Mapa.rectanguloAy = Mapa.rectanguloAy + velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy + velocidad;
-		GestorJuego.casa1.setPosicionY(GestorJuego.casa1.getPosicionY() + velocidad);
+
+		try {
+			for (Object a : GestorJuego.objetosMapaFijo) {
+				((Casa) a).setPosicionY(((Casa) a).getPosicionY() + velocidad);
+			}
+		} catch (IndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
@@ -148,13 +169,21 @@ public class AccionesBasicas {
 
 	public static void correccionYNegativo(int velocidad) {
 
-
 		GestorJuego.rectangulo1y = GestorJuego.rectangulo1y - velocidad;
 		Mapa.rectanguloIy = Mapa.rectanguloIy - velocidad;
 		Mapa.rectanguloAby = Mapa.rectanguloAby - velocidad;
 		Mapa.rectanguloAy = Mapa.rectanguloAy - velocidad;
 		Mapa.rectanguloDy = Mapa.rectanguloDy - velocidad;
-		GestorJuego.casa1.setPosicionY(GestorJuego.casa1.getPosicionY() - velocidad);
+
+		try {
+			for (Object a : GestorJuego.objetosMapaFijo) {
+				((Casa) a).setPosicionY(((Casa) a).getPosicionY() - velocidad);
+
+			}
+		} catch (IndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+
 		try {
 			for (Enemigo a : GestorJuego.enemigos) {
 
