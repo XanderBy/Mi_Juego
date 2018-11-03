@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 
 import Controles.Tecla;
 import CosasBasicas.DibujosBasicos;
@@ -14,8 +15,11 @@ import interfaces.MetodosEntidades;
 import objetos.balas.Bala;
 
 public class Enemigo extends Entidad implements MetodosEntidades {
+	private boolean moverse = false;
+	private boolean dispararAJugador = false;
 	public Rectangle areaCuerpo;
 	public Rectangle areaDano;
+	public Rectangle areaActivacion;
 	private long tiempoAhora = 0;
 	private int contIzquierda = 0;
 	private int contDerecha = 0;
@@ -23,8 +27,6 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 	private int contAbajo = 0;
 	public int donde = 4;
 	public int velocidadDisparo;
-	
-	
 
 	public Enemigo(int ancho, int alto, Point posicion, int vida, int velocidadMovimientoXIzquierda,
 			int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha, int velocidadMovimientoYAbajo,
@@ -108,6 +110,10 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				String.valueOf(this.getVida()));
 		areaCuerpo = new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), this.getAlto());
 
+		areaActivacion = new Rectangle(this.getPosicion().x - ((this.getAncho() * 12) / 2),
+				this.getPosicion().y - ((this.getAlto() * 12) / 2), this.getAncho() * 20, this.getAlto() * 20);
+		g.draw(areaActivacion);
+
 		this.actualizar();
 
 	}
@@ -131,28 +137,108 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		int posicionEnemigoY = (int) this.getPosicion().getY();
 		Point posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
 
+		if (this.moverse) {
+			int aleatorio = (int) (Math.random() * 2) + 1;
+			switch (aleatorio) {
+			case 1:
 
-		int aleatorio = (int) (Math.random() * 2) + 1;
-		switch (aleatorio) {
-		case 1:
+				// IZQUIERDA
+				if (this.getPosicion().x > posicionJugador.getX() && tiempoAhora == 50) {
 
-			// IZQUIERDA
-			if (this.getPosicion().x > posicionJugador.getX() && tiempoAhora == 50) {
+					contIzquierda++;
+					if (contIzquierda == 2) {
+						contIzquierda = 0;
+					}
+					this.donde = 1;
 
-				contIzquierda++;
-				if (contIzquierda == 2) {
-					contIzquierda = 0;
+					posicionEnemigoX = posicionEnemigoX - 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
 				}
-				this.donde = 1;
+				// DERECHA
+				if (this.getPosicion().x < posicionJugador.getX() && tiempoAhora == 50) {
 
-				posicionEnemigoX = posicionEnemigoX - 1;
-				posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
-				this.setPosicion(posicionEnemigoNueva);
-				tiempoAhora = 0;
+					contDerecha++;
+					if (contDerecha == 2) {
+						contDerecha = 0;
+					}
+					this.donde = 2;
+
+					posicionEnemigoX = posicionEnemigoX + 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
+				}
+				break;
+			case 2:
+				// Arriba
+
+				if (this.getPosicion().y > posicionJugador.getY() && tiempoAhora == 50) {
+					contArriba++;
+					if (contArriba == 2) {
+						contArriba = 0;
+					}
+					this.donde = 3;
+					posicionEnemigoY = posicionEnemigoY - 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
+				}
+				// Abajo
+				if (this.getPosicion().y < posicionJugador.getY() && tiempoAhora == 50) {
+					contAbajo++;
+					if (contAbajo == 2) {
+						contAbajo = 0;
+					}
+					this.donde = 4;
+
+					posicionEnemigoY = posicionEnemigoY + 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
+				}
+				break;
+
+			default:
+				break;
 			}
-			// DERECHA
-			if (this.getPosicion().x < posicionJugador.getX() && tiempoAhora == 50) {
+		}else {
+			int aleatorio = (int) (Math.random() * 4) + 1;
+			switch (aleatorio) {
+			case 1:
 
+				// IZQUIERDA
+				if(tiempoAhora == 50) {
+					contIzquierda++;
+					if (contIzquierda == 2) {
+						contIzquierda = 0;
+					}
+					this.donde = 1;
+
+					posicionEnemigoX = posicionEnemigoX - 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
+				}
+				break;
+			case 2:
+				// Arriba
+				if(tiempoAhora == 50) {
+					contArriba++;
+					if (contArriba == 2) {
+						contArriba = 0;
+					}
+					this.donde = 3;
+					posicionEnemigoY = posicionEnemigoY - 1;
+					posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
+					this.setPosicion(posicionEnemigoNueva);
+					tiempoAhora = 0;
+				}
+				break;
+			case 3:
+				//Derecha
+				if(tiempoAhora == 50) {
 				contDerecha++;
 				if (contDerecha == 2) {
 					contDerecha = 0;
@@ -163,24 +249,11 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
 				this.setPosicion(posicionEnemigoNueva);
 				tiempoAhora = 0;
-			}
-			break;
-		case 2:
-			// Arriba
-
-			if (this.getPosicion().y > posicionJugador.getY() && tiempoAhora == 50) {
-				contArriba++;
-				if (contArriba == 2) {
-					contArriba = 0;
 				}
-				this.donde = 3;
-				posicionEnemigoY = posicionEnemigoY - 1;
-				posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
-				this.setPosicion(posicionEnemigoNueva);
-				tiempoAhora = 0;
-			}
-			// Abajo
-			if (this.getPosicion().y < posicionJugador.getY() && tiempoAhora == 50) {
+				break;
+			case 4:
+				//Abajo
+				if(tiempoAhora == 50) {
 				contAbajo++;
 				if (contAbajo == 2) {
 					contAbajo = 0;
@@ -191,11 +264,12 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 				posicionEnemigoNueva = new Point(posicionEnemigoX, posicionEnemigoY);
 				this.setPosicion(posicionEnemigoNueva);
 				tiempoAhora = 0;
+				}
+				break;
+			default:
+				break;
 			}
-			break;
 
-		default:
-			break;
 		}
 		if (tiempoAhora == 50) {
 			tiempoAhora = 0;
@@ -235,4 +309,20 @@ public class Enemigo extends Entidad implements MetodosEntidades {
 		}
 	}
 
+	public boolean isMoverse() {
+		return moverse;
+	}
+
+	public void setMoverse(boolean moverse) {
+		this.moverse = moverse;
+	}
+
+	public boolean isDispararAJugador() {
+		return dispararAJugador;
+	}
+
+	public void setDispararAJugador(boolean dispararAJugador) {
+		this.dispararAJugador = dispararAJugador;
+	}
+	
 }

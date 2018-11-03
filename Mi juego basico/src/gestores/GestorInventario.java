@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import Controles.Raton;
 import CosasBasicas.DibujosBasicos;
 import constantes.Constantes;
+import personajes.Jugador;
 import visual.SuperficieDibujo;
 
 public class GestorInventario extends GestorPadre {
@@ -31,6 +32,10 @@ public class GestorInventario extends GestorPadre {
 	public static Rectangle moverObjeto31 = null;
 	public static Rectangle moverObjeto32 = null;
 
+	public static Rectangle armadura1 = null;
+	public static Rectangle armadura2 = null;
+	public static Rectangle armadura3 = null;
+
 	public static Rectangle[] recuadros = { moverObjeto00, moverObjeto01, moverObjeto02, moverObjeto10, moverObjeto11,
 			moverObjeto12, moverObjeto20, moverObjeto21, moverObjeto22, moverObjeto30, moverObjeto31, moverObjeto32 };
 
@@ -42,24 +47,12 @@ public class GestorInventario extends GestorPadre {
 	public void dibujar(Graphics2D g) {
 		g.setColor(Color.darkGray);
 		g.fillRect(0, 0, Constantes.ANCHO, Constantes.ALTO);
+		HuecosInventario(g);
+		HuecosArmadura(g);
 
+	}
 
-		g.setColor(Color.WHITE);
-		// Superficie Dibujada
-		for (int i = 0; i < 3; i++) {
-			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
-			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
-			for (int j = 0; j < 3; j++) {
-
-				g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
-						SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
-				contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
-			}
-		}
-
-		contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
-		contY = 0;
-
+	public void HuecosArmadura(Graphics2D g) {
 		// Armaduras
 		contX = (SuperficieDibujo.arraySuperficie[0].getWidth() / 4)
 				+ (SuperficieDibujo.arraySuperficie[0].getWidth() / 2);
@@ -69,12 +62,45 @@ public class GestorInventario extends GestorPadre {
 					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
 
 		}
-
+		contX=0;
 		contY = 0;
-
-		for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
+		//Objetos dibujados
+		try {
+		contX = (SuperficieDibujo.arraySuperficie[0].getWidth() / 4)
+				+ (SuperficieDibujo.arraySuperficie[0].getWidth() / 2);
+		for (int i = 0; i < 3; i++) {
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 5;
+			
+			Jugador.inventarioArmadurasArray[i].areaObjetoInfluencia=new Rectangle(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+					SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+			
 
 		}
+		
+		contY = 0;
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+		}
+	}
+
+	public void HuecosInventario(Graphics2D g) {
+		contY=0;
+		g.setColor(Color.WHITE);
+		// Superficie Dibujada
+		for (int i = 0; i < 3; i++) {
+			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			contY += SuperficieDibujo.arraySuperficie[0].getHeight() / 4;
+			for (int j = 0; j < 3; j++) {
+				//g.drawImage(img, x, y, bgcolor, observer);
+				g.drawRect(contX, contY, SuperficieDibujo.arraySuperficie[0].getWidth() / 9,
+						SuperficieDibujo.arraySuperficie[0].getWidth() / 9);
+				contX += SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+			}
+		}
+
+		contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;
+		contY = 0;
+
 		// objetos dibujados
 		for (int i = 0; i < 3; i++) {
 			contX = SuperficieDibujo.arraySuperficie[0].getWidth() / 9;

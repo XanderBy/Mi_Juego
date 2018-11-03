@@ -15,6 +15,7 @@ import gestores.GestorMenuPrincipal;
 import gestores.GestorMorir;
 import gestores.GestorOpciones;
 import objetos.TipoObjetos;
+import objetos.objeto.Armadura;
 import objetos.objeto.Objetos;
 import visual.SuperficieDibujo;
 
@@ -29,7 +30,7 @@ public class Raton implements MouseListener {
 	public static Point posicionJugadorNueva;
 
 	public void actualizar() {
-		
+
 		SuperficieDibujo.arraySuperficie[0].actualizar();
 		puntaRaton = SuperficieDibujo.arraySuperficie[0].posicionRaton;
 		// System.out.println("posicion raton:" + puntaRaton);
@@ -49,7 +50,7 @@ public class Raton implements MouseListener {
 			GestorJuego.activoJuego = false;
 			GestorEscape.activoEscape = false;
 			GestorOpciones.activoOpciones = false;
-			GestorCreditos.GestorCreditosActivo=false;
+			GestorCreditos.GestorCreditosActivo = false;
 
 			if (puntero.intersects(GestorMenuPrincipal.nuevaPartida)) {
 				GestorJuego.activoJuego = true;
@@ -62,8 +63,8 @@ public class Raton implements MouseListener {
 				GestorOpciones.activoOpciones = true;
 
 			}
-			if(puntero.intersects(GestorMenuPrincipal.creditos)) {
-				GestorCreditos.GestorCreditosActivo=true;
+			if (puntero.intersects(GestorMenuPrincipal.creditos)) {
+				GestorCreditos.GestorCreditosActivo = true;
 				GestorMenuPrincipal.activoMenuPrincipal = false;
 			}
 		}
@@ -143,7 +144,7 @@ public class Raton implements MouseListener {
 
 					if (puntero.intersects(GestorInventario.recuadros[i])) {
 						System.out.println(objetoMover);
-						
+
 						if (GestorJuego.jugador.inventarioArray[i] == null) {
 							for (int j = 0; j < GestorJuego.jugador.inventarioArray.length; j++) {
 								if (GestorJuego.jugador.inventarioArray[j] == objetoMover) {
@@ -195,7 +196,7 @@ public class Raton implements MouseListener {
 					if (objetoMover.tipoObjeto == TipoObjetos.ESTAMINA
 							&& GestorJuego.jugador.getResistencia() + Constantes.ESTAMINA <= 100) {
 						objetoMover.usar = true;
-						
+
 						for (int i = 0; i < GestorJuego.jugador.inventarioArray.length; i++) {
 							if (GestorJuego.jugador.inventarioArray[i] == objetoMover) {
 								objetoMover.actualizar();
@@ -204,6 +205,19 @@ public class Raton implements MouseListener {
 							}
 						}
 
+					}
+					if (objetoMover.tipoObjeto == TipoObjetos.ARMADURA) {
+						if (((Armadura) objetoMover).getParte() == 1) {
+							GestorJuego.jugador.inventarioArmadurasArray[0] = objetoMover;
+						}
+						if (((Armadura) objetoMover).getParte() == 2) {
+							GestorJuego.jugador.inventarioArmadurasArray[1] = objetoMover;
+						}
+						if (((Armadura) objetoMover).getParte() == 3) {
+							GestorJuego.jugador.inventarioArmadurasArray[2] = objetoMover;
+						}
+
+						objetoMover.actualizar();
 					}
 				}
 			} catch (NullPointerException ee) {

@@ -46,8 +46,8 @@ public class Objetos {
 	public void actualizar() {
 		if (this.usar == true) {
 			if (this.getTipoObjeto().equals(TipoObjetos.ARMAS)) {
-				//Aqui se tendría que cambiar la imagen del jugador para tener el arma actual
-				((Armas) Tecla.objetoElegido).poderDisparar=true;
+				// Aqui se tendría que cambiar la imagen del jugador para tener el arma actual
+				((Armas) Tecla.objetoElegido).poderDisparar = true;
 			}
 			if (this.getTipoObjeto().equals(TipoObjetos.ESTAMINA)) {
 				if (this.tipoObjeto == TipoObjetos.ESTAMINA
@@ -71,6 +71,11 @@ public class Objetos {
 						}
 					}
 				}
+
+			}
+			if (this.getTipoObjeto().equals(TipoObjetos.ARMADURA)) {
+
+				GestorJuego.jugador.setArmadura(GestorJuego.jugador.getArmadura() + this.sumarle);
 
 			}
 

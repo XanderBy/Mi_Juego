@@ -46,7 +46,7 @@ public class GestorJuego extends GestorPadre {
 
 	// Principal---
 	public static int contadorJugador = 0;
-	public static Jugador jugador = new Jugador(30, 55, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,
+	public static Jugador jugador = new Jugador(55, 75, posicionJugador, 100, 50, 0, Constantes.velocidadGeneral,
 			Constantes.velocidadGeneral, Constantes.velocidadGeneral, Constantes.velocidadGeneral,
 			"src/recursos/personaje.gif");
 	public static Mapa mapa = new Mapa(2560, 2560, "src/recursos/prueba.png");

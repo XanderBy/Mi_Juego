@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>recursos</name>
-			<type>2</type>
-			<location>C:/Users/alexi/Desktop/Mi juego/Mi juego basico/src/recursos</location>
-		</link>
-	</linkedResources>
 </projectDescription>

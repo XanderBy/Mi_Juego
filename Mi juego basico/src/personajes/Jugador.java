@@ -19,28 +19,22 @@ public class Jugador extends Entidad implements MetodosEntidades {
 
 	private int resistencia;
 	private int armadura;
-	public static int contadorMuertes=0;
+	public static int contadorMuertes = 0;
 	public static Rectangle areaJugador1;
 	public static Rectangle areaJugador2;
 	public static Rectangle areaJugador3;
 	public static Rectangle areaJugador4;
-	public static Rectangle areaJugador5;
-	public static Rectangle areaJugador6;
-	public static Rectangle areaJugador7;
-	public static Rectangle areaJugador8;
 	public static Rectangle areaJugadorInfluencia;
 	public static Rectangle areaJugadorParaDano;
 
 	// public static ArrayList <Objetos> inventarioArray=new ArrayList <Objetos>();
 	public static Objetos[] inventarioArray = new Objetos[9];
+	public static Objetos[] inventarioArmadurasArray = new Objetos[3];
+
 	public static boolean booleanJugador1 = false;
 	public static boolean booleanJugador2 = false;
 	public static boolean booleanJugador3 = false;
 	public static boolean booleanJugador4 = false;
-	public static boolean booleanJugador5 = false;
-	public static boolean booleanJugador6 = false;
-	public static boolean booleanJugador7 = false;
-	public static boolean booleanJugador8 = false;
 
 	public Jugador(int ancho, int alto, Point posicion, int vida, int resistencia, int armadura,
 			int velocidadMovimientoXIzquierda, int velocidadMovimientoYArriba, int velocidadMovimientoXDerecha,
@@ -97,38 +91,34 @@ public class Jugador extends Entidad implements MetodosEntidades {
 
 	public void colisionMover() {
 		// lado izquierdo
-		if (booleanJugador1 == true && booleanJugador8 == true && booleanJugador7 == true
-				|| booleanJugador1 == true && booleanJugador8 == true
-				|| booleanJugador8 == true && booleanJugador7 == true || booleanJugador1 == true
-				|| booleanJugador7 == true || booleanJugador8 == true) {
+		if (booleanJugador1 == true && booleanJugador4 == true && booleanJugador3 == true || booleanJugador1 == true
+				|| booleanJugador1 == true && booleanJugador4 == true
+				|| booleanJugador4 == true && booleanJugador3 == true) {
 			this.setVelocidadMovimientoXIzquierda(0);
 
 		} else {
 			this.setVelocidadMovimientoXIzquierda(Constantes.velocidadGeneral);
 		}
 		// arriba
-		if (booleanJugador1 == true && booleanJugador2 == true && booleanJugador3 == true
+		if (booleanJugador1 == true && booleanJugador2 == true && booleanJugador4 == true
 				|| booleanJugador1 == true && booleanJugador2 == true
-				|| booleanJugador2 == true && booleanJugador3 == true || booleanJugador2 == true
-				|| booleanJugador3 == true || booleanJugador1 == true) {
+				|| booleanJugador1 == true && booleanJugador4 == true) {
 			this.setVelocidadMovimientoYArriba(0);
 		} else {
 			this.setVelocidadMovimientoYArriba(Constantes.velocidadGeneral);
 		}
 		// derecha
-		if (booleanJugador3 == true && booleanJugador4 == true && booleanJugador5 == true
-				|| booleanJugador3 == true && booleanJugador4 == true
-				|| booleanJugador4 == true && booleanJugador5 == true || booleanJugador3 == true
-				|| booleanJugador5 == true || booleanJugador4 == true) {
+		if (booleanJugador1 == true && booleanJugador2 == true && booleanJugador3 == true
+				|| booleanJugador1 == true && booleanJugador2 == true
+				|| booleanJugador2 == true && booleanJugador3 == true) {
 			this.setVelocidadMovimientoXDerecha(0);
 		} else {
 			this.setVelocidadMovimientoXDerecha(Constantes.velocidadGeneral);
 		}
 		// Abajo
-		if (booleanJugador5 == true && booleanJugador6 == true && booleanJugador7 == true
-				|| booleanJugador5 == true && booleanJugador6 == true
-				|| booleanJugador6 == true && booleanJugador7 == true || booleanJugador7 == true
-				|| booleanJugador6 == true || booleanJugador5 == true) {
+		if (booleanJugador2 == true && booleanJugador3 == true && booleanJugador4 == true
+				|| booleanJugador2 == true && booleanJugador3 == true
+				|| booleanJugador3 == true && booleanJugador4 == true) {
 			this.setVelocidadMovimientoYAbajo(0);
 		} else {
 			this.setVelocidadMovimientoYAbajo(Constantes.velocidadGeneral);
@@ -137,11 +127,6 @@ public class Jugador extends Entidad implements MetodosEntidades {
 
 	public static void colision() {
 		GestorJuego.cargarArrayColisiones();
-		// areaJugador8= new Rectangle(GestorJuego.jugador.getPosicion().x,
-		// GestorJuego.jugador.getPosicion().y+GestorJuego.jugador.getAlto()/2 , 2, 2);
-		// GestorJuego.rectangulo= new
-		// Rectangle(GestorJuego.rectangulo1x,GestorJuego.rectangulo1y,50,50);
-		// GestorJuego.jugador.colisionMover();
 		try {
 			for (Rectangle a : GestorJuego.colisiones) {
 
@@ -172,45 +157,18 @@ public class Jugador extends Entidad implements MetodosEntidades {
 				if (!areaJugador4.intersects(a)) {
 					booleanJugador4 = false;
 				}
-				if (areaJugador5.intersects(a)) {
-					booleanJugador5 = true;
-				}
-				if (!areaJugador5.intersects(a)) {
-					booleanJugador5 = false;
-				}
-				if (areaJugador6.intersects(a)) {
-					booleanJugador6 = true;
-				}
-				if (!areaJugador6.intersects(a)) {
-					booleanJugador6 = false;
-				}
-				if (areaJugador7.intersects(a)) {
-					booleanJugador7 = true;
-				}
-				if (!areaJugador7.intersects(a)) {
-					booleanJugador7 = false;
-				}
-				if (areaJugador8.intersects(a)) {
-					// GestorJuego.jugador.colisionMover();
-					booleanJugador8 = true;
-				}
-				if (!areaJugador8.intersects(a)) {
-					// GestorJuego.jugador.colisionMover();
-					booleanJugador8 = false;
-				}
-				if (booleanJugador1 == true || booleanJugador2 == true || booleanJugador3 == true || booleanJugador4 == true
-						|| booleanJugador5 == true || booleanJugador6 == true || booleanJugador7 == true
-						|| booleanJugador8 == true) {
+				if (booleanJugador1 == true || booleanJugador2 == true || booleanJugador3 == true
+						|| booleanJugador4 == true) {
 
 					GestorJuego.jugador.colisionMover();
 					break;
 				}
 
 			}
-		}catch (NullPointerException e) {
+		} catch (NullPointerException e) {
 			// TODO: handle exception
 		}
-		
+
 		GestorJuego.jugador.colisionMover();
 		GestorJuego.eliminarArrayColisiones();
 	}
@@ -250,9 +208,6 @@ public class Jugador extends Entidad implements MetodosEntidades {
 			// TODO: handle exception
 
 		}
-		// DibujosBasicos.pintarRectangulo(g, this.getAncho(), this.getAlto(),
-		// this.getPosicion().x, this.getPosicion().y);
-		// DibujosBasicos.pintarImagenJugador(g, this.getSprite(), this);
 
 		if (Teclado.tecladoPulsado[4] == true) {
 			DibujosBasicos.pintarImagenJugador(g, GestorJuego.jugador.imagenesDerecha.get(Tecla.contDerecha),
@@ -276,32 +231,28 @@ public class Jugador extends Entidad implements MetodosEntidades {
 		g.drawRect(this.getPosicion().x - (this.getPosicion().x / 4), this.getPosicion().y - (this.getPosicion().x / 4),
 				this.getAncho() + (this.getPosicion().x / 2), this.getAlto() + (this.getPosicion().x / 2));
 
-		areaJugador1 = new Rectangle(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
-		g.drawRect(this.getPosicion().x + 10, this.getPosicion().y + 10, 2, 2);
+		areaJugador1 = new Rectangle(this.getPosicion().x, this.getPosicion().y, this.getAncho(), 2);
+		g.drawRect(this.getPosicion().x, this.getPosicion().y, this.getAncho(), 2);
 
-		areaJugador2 = new Rectangle(this.getPosicion().x + this.getAncho() / 2, this.getPosicion().y, 2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho() / 2, this.getPosicion().y, 2, 2);
+		areaJugador2 = new Rectangle(this.getPosicion().x + this.getAncho(), this.getPosicion().y, 2, this.getAlto());
+		g.drawRect(this.getPosicion().x + this.getAncho(), this.getPosicion().y, 2, this.getAlto());
 
-		areaJugador3 = new Rectangle(this.getPosicion().x + this.getAncho() - 10, this.getPosicion().y + 10, 2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho() - 10, this.getPosicion().y + 10, 2, 2);
+		areaJugador3 = new Rectangle(this.getPosicion().x, this.getPosicion().y + this.getAlto(), this.getAncho(), 2);
+		g.drawRect(this.getPosicion().x, this.getPosicion().y + this.getAlto(), this.getAncho(), 2);
 
-		areaJugador4 = new Rectangle(this.getPosicion().x + this.getAncho(), this.getPosicion().y + this.getAlto() / 2,
-				2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho(), this.getPosicion().y + this.getAlto() / 2, 2, 2);
-
-		areaJugador5 = new Rectangle(this.getPosicion().x + this.getAncho() - 10,
-				this.getPosicion().y + this.getAlto() - 10, 2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho() - 10, this.getPosicion().y + this.getAlto() - 10, 2, 2);
-
-		areaJugador6 = new Rectangle(this.getPosicion().x + this.getAncho() / 2, this.getPosicion().y + this.getAlto(),
-				2, 2);
-		g.drawRect(this.getPosicion().x + this.getAncho() / 2, this.getPosicion().y + this.getAlto(), 2, 2);
-
-		areaJugador7 = new Rectangle(this.getPosicion().x + 10, this.getPosicion().y + this.getAlto() - 10, 2, 2);
-		g.drawRect(this.getPosicion().x + 10, this.getPosicion().y + this.getAlto() - 10, 2, 2);
-
-		areaJugador8 = new Rectangle(this.getPosicion().x, this.getPosicion().y + this.getAlto() / 2, 2, 2);
-		g.drawRect(this.getPosicion().x, this.getPosicion().y + this.getAlto() / 2, 2, 2);
+		areaJugador4 = new Rectangle(this.getPosicion().x, this.getPosicion().y, 2, this.getAlto());
+		g.drawRect(this.getPosicion().x, this.getPosicion().y, 2, this.getAlto());
+		try {
+		for (Enemigo a : GestorJuego.enemigos) {
+			if(this.areaJugadorInfluencia.intersects(a.areaActivacion)) {
+				a.setMoverse(true);
+			}else {
+				a.setMoverse(false);
+			}
+		}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+		}
 
 	}
 
